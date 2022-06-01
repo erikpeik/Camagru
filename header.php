@@ -9,6 +9,8 @@
 				<li><i class="ti ti-camera-plus"></i></li>
 				<li><i class="fa-regular fa-compass"></i></li>
 				<li><i class="fa-regular fa-heart"></i></li>
+				<li><button>LOGIN</button></li>
+				<li><button>SIGN UP</button></li>
 			</ul>
 		</div>
 	</nav>
