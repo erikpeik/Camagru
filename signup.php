@@ -18,7 +18,7 @@
 				<input type='text' name='email' placeholder="Email" required>
 				<input type='text' name='uid' placeholder="Username" required>
 				<input type='password' name='pwd' placeholder="Password" required>
-				<input type='password' name='pwdrepeat' placeholder="Repeat password" required>
+				<input type='password' name='pwd_repeat' placeholder="Repeat password" required>
 				<button type='submit' name='submit'>Sign Up</button>
 			</form>
 		</section>
