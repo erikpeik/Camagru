@@ -32,10 +32,10 @@ class SignupContr extends Signup {
 			header('location: ../index.php?error=pwd_match');
 			exit();
 		}
-#		if ($this->uid_taken()) {
-#			header('location: ../index.php?error=uid_taken');
-#			exit();
-#		}
+		if ($this->uid_taken()) {
+			header('location: ../index.php?error=uid_taken');
+			exit();
+		}
 		$this->set_user($this->name, $this->email, $this->uid, $this->pwd);
 	}
 
