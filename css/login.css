@@ -1,0 +1,47 @@
+.login_logo {
+	display: block;
+	margin: 2em auto 2em auto;
+	height: 3em;
+}
+
+.box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	background-color: #fff;
+	border: 1px solid #dbdbdb;
+	border-radius: 1px;
+	margin: auto;
+	margin-top: 2em;
+	padding-bottom: 2em;
+	width: 22em;
+}
+
+.login_input {
+	border: 1px solid #dbdbdb;
+	width: 20.2em;
+	height: 2.7em;
+	margin: 0.2em 3.1em 0.2em 3.1em;
+	background-color: rgb(250, 250, 250);
+
+	border-radius: 0.3em 0.3em;
+	color: #333;
+}
+
+.login_button {
+	width: 20.2em;
+	height: 2.3em;
+	margin: 0.6em 3.1em 0.2em 3.1em;
+	background-color: rgb(67, 148, 239);
+	border: none;
+	border-radius: 0.3em 0.3em;
+	color: white;
+	font-weight: 700;
+}
+
+/* Autofill keep form color to gray */
+input:-webkit-autofill {
+	box-shadow:0 0 0 50px rgb(250, 250, 250) inset;
+	color: #333;
+}
