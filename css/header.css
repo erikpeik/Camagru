@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -12,7 +13,6 @@ li {
 	list-style: none;
 	display: inline;
 }
-
 
 .navbar {
 	display: flex;
@@ -50,7 +50,7 @@ li {
 }
 
 .logo {
-	height: 29px;
+	height: 2em;
 }
 
 .menu {
@@ -60,8 +60,7 @@ li {
 
 .nav-links li {
 	margin: auto;
-	transform: translateY(0px);
-	font-size: 25px;
+	font-size: 1.5em;
 	margin-left: 5px;
 	margin-right: 5px;
 }
@@ -74,4 +73,8 @@ li {
 
 #house {
 	font-size: 105%;
+}
+
+.text {
+	color: black;
 }
