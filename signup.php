@@ -6,21 +6,43 @@
 		<link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
 		<script src="https://kit.fontawesome.com/c0a2ce9299.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/login.css">
 		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 	</head>
 	<body>
-		<?php include_once "header.php" ?>
-		<section class="signup-form">
-			<h2>Sign Up</h2>
-			<form action="includes/signup-inc.php" method='post'>
-				<input type='text' name='name' placeholder="Full Name" required>
-				<input type='text' name='email' placeholder="Email" required>
-				<input type='text' name='uid' placeholder="Username" autocomplete="username"required>
-				<input type='password' name='pwd' placeholder="Password" autocomplete="new-password" required>
-				<input type='password' name='pwd_repeat' placeholder="Repeat password" autocomplete="new-password"required>
-				<button type='submit' name='submit'>Sign Up</button>
-			</form>
-		</section>
+		<div class='login-container'>
+			<div class='box'>
+				<section class="signup-form">
+					<img class="login_logo" style='margin-bottom: 1em;' src="images/logo.svg" alt="logo">
+					<p id='signup-welcome'>Sign up to see photos and videos from your friends.</p>
+					<form action="includes/signup-inc.php" method='post'>
+					<div class='input-container'>
+							<label for="name">Email</label>
+							<input type='text' name='email' autocomplete="email" required>
+						</div>
+						<div class='input-container'>
+							<label for="name">Full Name</label>
+							<input type='text' name='name' autocomplete="fname" required>
+						</div>
+						<div class='input-container'>
+							<label for="name">Username</label>
+							<input type='text' name='uid' autocomplete="username"required>
+						</div>
+						<div class='input-container'>
+							<label for="name">Password</label>
+							<input type='password' name='pwd' autocomplete="new-password" required>
+						</div>
+						<div class='input-container'>
+							<label for="name">Repeat Password</label>
+							<input type='password' name='pwd_repeat' autocomplete="new-password"required>
+						</div>
+						<button class='login_button' type='submit' name='submit'>Sign Up</button>
+					</form>
+				</section>
+			</div>
+			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em;'>
+				<p id='login-text'>Have an account? <span id='signup-text' onclick="location.href = 'login.php'">Log in<span></p>
+			</div>
+		</div>
 	</body>
 </html>
