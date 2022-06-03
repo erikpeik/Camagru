@@ -1,8 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION["user_id"])) {
+	header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Camagru</title>
+		<title>Sign Up • Camagru</title>
 		<link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
 		<script src="https://kit.fontawesome.com/c0a2ce9299.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/style.css">

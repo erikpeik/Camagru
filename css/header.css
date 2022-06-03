@@ -1,7 +1,3 @@
-a {
-	text-decoration: none;
-}
-
 li {
 	list-style: none;
 	display: inline;
@@ -13,34 +9,20 @@ li {
 	justify-content: space-between;
 	padding: 10px;
 	background-color: rgb(255, 255, 255);
-	color: rgb(255, 255, 255);
 	border-bottom: 1px solid #dbdbdb;
 }
 
-.nav-links i {
-	color: rgb(22, 22, 22);
+.nav-links li {
+	margin: auto;
+	font-size: 1.5em;
+	margin-left: 5px;
+	margin-right: 5px;
+	transition: 0.5s ease;
+	color: black;
 }
 
-.nav-links button {
-	display: inline-block;
-	border: none;
-	padding: 0.4em 1.2em;
-	margin: 0 0.3em 0.3em 0;
-	border-radius: 10px 10px;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 700;
-	font-size: 15px;
-	color: #FFFFFF;
-	background-color: rgb(67, 148, 239);
-	text-align: center;
-	transition: all 0.3s;
-}
-
-.nav-links button:hover {
-	background-color: rgb(50, 114, 188);
-	cursor: pointer;
+.nav-links li:hover{
+	border-radius: 5px;
 }
 
 .logo {
@@ -52,23 +34,28 @@ li {
 	gap: 1em;
 }
 
-.nav-links li {
-	margin: auto;
-	font-size: 1.5em;
-	margin-left: 5px;
-	margin-right: 5px;
+#user-icon {
+	background-color: rgb(240, 240, 240);
+	padding: 3px 4.63px;
+	border-radius: 50% 50%;
+	box-shadow: 0px 0px 4px rgb(118, 118, 118);
 }
 
-.nav-links li:hover{
-	color: rgba(255, 255, 255, 0.5);
-	border-radius: 5px;
+#user-icon:hover {
+	cursor: pointer;
 	transition: 0.5s ease;
+	box-shadow: 0px 0px 10px rgb(118, 118, 118);
 }
 
-#house {
-	font-size: 105%;
+#logout-icon {
+	background-color: rgb(240, 240, 240);
+	padding: 3px 4.63px;
+	border-radius: 50% 50%;
+	box-shadow: 0px 0px 4px rgb(118, 118, 118);
 }
 
-.text {
-	color: black;
+#logout-icon:hover {
+	cursor: pointer;
+	transition: 0.5s ease;
+	box-shadow: 0px 0px 10px rgb(118, 118, 118);
 }
