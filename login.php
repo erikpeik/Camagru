@@ -15,8 +15,15 @@
 			<section class="signup-form">
 				<img class="login_logo" src="images/logo.svg" alt="logo">
 				<form action="includes/login-inc.php" method='post'>
-					<input class='login_input' type='text' name='name' placeholder="Username/Email" autocomplete="username" required>
-					<input class='login_input' type='password' name='pwd' placeholder="Password" autocomplete="current-password" required>
+					<div class='input-container'>
+						<label for="name">Username/Email</label>
+						<input class='login_input' type='text' name='name' autocomplete="username" required>
+					</div>
+					<div class='input-container'>
+						<label for="name">Password</label>
+						<input class='login_input' type='password' name='pwd' autocomplete="current-password" required>
+					</div>
+
 					<button class='login_button'type='submit' name='submit'>Log In</button>
 				</form>
 			</section>

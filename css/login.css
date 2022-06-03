@@ -18,17 +18,6 @@
 	width: 22em;
 }
 
-.login_input {
-	border: 1px solid #dbdbdb;
-	width: 20.2em;
-	height: 2.7em;
-	margin: 0.2em 3.1em 0.2em 3.1em;
-	background-color: rgb(250, 250, 250);
-
-	border-radius: 0.3em 0.3em;
-	color: #333;
-}
-
 .login_button {
 	width: 20.2em;
 	height: 2.3em;
@@ -44,4 +33,31 @@
 input:-webkit-autofill {
 	box-shadow:0 0 0 50px rgb(250, 250, 250) inset;
 	color: #333;
+}
+
+.input-container {
+	border: 1px solid #dbdbdb;
+	width: 268px;
+	height: 36px;
+	margin: 0.2em 3em 0.2em 3em;
+	background-color: rgb(250, 250, 250);
+	border-radius: 0.3em 0.3em;
+	color: #333;
+}
+
+.input-container input {
+	border: none;
+	font-size: 12px;
+	outline: 0;
+	margin: 16px 0 0 7px;
+	width: 80%;
+	background-color: rgb(250, 250, 250);
+}
+
+.input-container label {
+	font-size: 12px;
+	position: absolute;
+	transform-origin: top left;
+	transform: translate(0, 2px) scale(1);
+	transition: all .1s ease-in-out;
 }
