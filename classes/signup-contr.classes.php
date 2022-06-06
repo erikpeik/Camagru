@@ -32,6 +32,10 @@ class SignupContr extends Signup {
 			header('location: ../signup.php?error=pwd_match');
 			exit();
 		}
+		if ($this->invalid_password() == false) {
+			header('location: ../signup.php?error=invalid_password');
+			exit();
+		}
 		if ($this->uid_taken()) {
 			header('location: ../signup.php?error=uid_taken');
 			exit();
@@ -45,7 +49,7 @@ class SignupContr extends Signup {
 	}
 
 	private function invalid_uid() {
-		return (preg_match("/^[A-Za-z0-9_]{4,20}$/", $this->uid));
+		return (preg_match("/^[a-z0-9_]{4,20}$/i", $this->uid));
 	}
 
 	private function invalid_email() {
@@ -54,6 +58,10 @@ class SignupContr extends Signup {
 
 	private function pwd_match() {
 		return ($this->pwd == $this->pwd_repeat);
+	}
+
+	private function invalid_password() {
+		return (preg_match("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/", $this->pwd));
 	}
 
 	private function uid_taken() {
