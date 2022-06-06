@@ -40,7 +40,8 @@ class SignupContr extends Signup {
 			header('location: ../signup.php?error=uid_taken');
 			exit();
 		}
-		$this->set_user($this->name, $this->email, $this->uid, $this->pwd);
+		#$activation_code = generate_activation_code();
+		$this->set_user($this->name, $this->email, $this->uid, $this->pwd, '1234');
 	}
 
 	private function empty_input() {
