@@ -28,6 +28,14 @@ function error_handler($error) {
 	else if ($error == 'uid_taken') {
 		$message = "Username is already taken, try other one.";
 	}
+	else if ($error == 'user_not_found') {
+		$message = "Login failed, user not found.\\n".
+		"You can register new user by clicking \\'Sign up\\' below.";
+	}
+	else if ($error == 'wrong_password') {
+		$message = 'Login failed, wrong password.\\n'.
+		"You can change your password down below.";
+	}
 	else {
 		$message = 'Unknown error code: '.$error;
 	}
