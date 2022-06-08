@@ -13,6 +13,7 @@ class Signup extends Dbh {
 	}
 
 	protected function set_user($name, $email, $uid, $pwd, $activation_code, int $expiry = 30 * 60) {
+		include_once '../includes/auth.php';
 		$statement = $this->connect()->prepare('INSERT INTO users (users_name,
 		users_uid, users_pwd, users_email,activation_code, activation_expiry) VALUES (?, ?, ?, ?, ?, ?);');
 		$hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -22,12 +23,26 @@ class Signup extends Dbh {
 			header('location: ../signup.php?error=statement_failed');
 			exit();
 		}
-	#	send_activation_email($email, $activation_code);
-		$activation_link = "https://localhost:8080/camagru/auth.php?email=$email&activation_code=$activation_code";
-		$subject = 'Activate your account';
-		$message = "Hi, Please click the following link to activate your account: ".$activation_link;
-		mail($email, $subject, $message);
+		$this->send_activation_email($email, $name, $activation_code);
 		$statement = null;
 		header("location: ../login.php?error=check_email_for_verification");
+	}
+
+	protected function send_activation_email($email, $name, $activation_code) {
+		include_once '../includes/mail_sender.php';
+
+		$hashed_activation = password_hash($activation_code, PASSWORD_DEFAULT);
+		$activation_link = "https://localhost:8080/camagru/auth.php?email=".$email."&activation_code=".$hashed_activation;
+		$subject = 'Activate your account';
+		$message = file_get_contents('../mail.html');
+		$empty = array("%name%", "%code%", "%link%");
+		$replace = array($name, $activation_code, $activation_link);
+		$message = str_replace($empty, $replace, $message);
+		$headers = array(
+			'MIME-Version' => '1.0',
+			'Content-type' => 'text/html; charset=iso-8859-1',
+			'X-Mailer' => 'PHP/'.phpversion()
+		);
+		mail($email, $subject, $message, $headers);
 	}
 }

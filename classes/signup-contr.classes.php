@@ -16,6 +16,7 @@ class SignupContr extends Signup {
 	}
 
 	public function signup_user() {
+		include_once '../includes/auth.php';
 		if ($this->empty_input()) {
 			header('location: ../signup.php?error=empty_input');
 			exit();
@@ -40,8 +41,8 @@ class SignupContr extends Signup {
 			header('location: ../signup.php?error=uid_taken');
 			exit();
 		}
-		#$activation_code = generate_activation_code();
-		$this->set_user($this->name, $this->email, $this->uid, $this->pwd, '1234');
+		$activation_code = strval(mt_rand(100000, 999999));
+		$this->set_user($this->name, $this->email, $this->uid, $this->pwd, $activation_code);
 	}
 
 	private function empty_input() {

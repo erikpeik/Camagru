@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<style>
+			body {
+				background-color: rgb(250, 250, 250);
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: 'Segoe UI','Roboto',Helvetica,Arial,sans-serif;
+				text-align: center;
+			}
+			.activate_button {
+				width: 80%;
+				height: 2.3em;
+				margin: 20px 20px 20px 20px;
+				background-color: rgb(67, 148, 239);
+				border: none;
+				border-radius: 4px 4px;
+				color: white;
+				font-weight: 700;
+				padding: 10px 10px 10px 10px;
+				font-style: normal;
+			}
+			h3 {
+				color: rgb(60, 60, 60);
+				margin-bottom: 20px;
+			}
+			.container {
+				background-color: white;
+				width: 80%;
+				border: 1px solid rgb(200, 200, 200);
+				margin: auto;
+				margin-top: 10px;
+				margin-bottom: 20px;
+			}
+			.login-code {
+				margin-top: 10px;
+				margin-bottom: 20px;
+				font-size: 30px;
+				font-weight: 700;
+				letter-spacing: 10px;
+			}
+			.header {
+				background-color: white;
+				border-bottom: 1px solid rgb(200, 200, 200);
+			}
+			span {
+				display: inline-block;
+			}
+			.logo {
+				height: 50px;
+				margin: 20px;
+			}
+			a:hover {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<img class="logo" src="https://raw.githubusercontent.com/erikpeik/Camagru/master/images/logo.svg" alt="logo" class="logo">
+		</div>
+		<div class="container">
+			<br>
+			<h3>Hi %name%,</h1>
+			<span style="font-size: 18px; font-weight: 700; text-align: center;">Let's finish creating your account!</span><br />
+			<span>Here is your login approval code:</span><br>
+			<span class="login-code">%code%</span><br>
+			<a href="%link%">Click here to activate your account</a> or use the button below:<br><br><br>
+			<a href="%link%" class="activate_button"><span>Activate your account</spawn></a><br><br>
+		</div>
+		<br>
+	</body>
+</html>
