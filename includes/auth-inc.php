@@ -38,7 +38,7 @@ function find_unverified_user($activation_code, $email) {
 	print(print_r($user)."<br><br>");
 	if ($user) {
 #		header("Location: signup.php?error=user_exists");
-	#	print(print_r($user)."<br><br>");
+		print(print_r($user)."<br><br>");
 		// Already expired, delete the inactive user with expired activation code
 		if ((int)$user[0]['expired'] === 1) {
 		#	header("Location: signup.php?error=delete_user");
@@ -46,28 +46,42 @@ function find_unverified_user($activation_code, $email) {
 			return null;
 		}
 		// verify the activation code
-		$hashed_authentication = password_hash($activation_code, PASSWORD_DEFAULT);
-		if (password_verify($hashed_authentication, $user[0]['activation_code'])) {
+		#$hashed_authentication = hash('whirlpool', $activation_code);
+		if ($activation_code == $user[0]['activation_code']) {
+
 			return $user;
 		}
 	#	header("Location: signup.php?error=delete_user");
 	}
-	print("Activation: ". password_hash("12345", PASSWORD_DEFAULT) ."<br>");
-	print("Activation: ". $activation_code."<br>");
+#	print("Activation: ". hash('whirlpool', "12345") ."<br>");
+#	print("Activation: ". $activation_code."<br>");
 	print("Hashed: ". $user[0]['activation_code']);
 #	header("Location: signup.php?error=no_user ");
 	return null;
 }
 
-function activate_user(int $user_id) {
-	include_once 'config/database.php';
-	include_once '../config/database.php';
-	$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPT);
-	$sql = 'UPDATE users SET active = 1, activated_at = CURRENT_TIMESTAMP
-	WHERE id = :id';
-	$statement = $dbh->prepare($sql);
-	$statement->bindValue(':id', $user_id, PDO::PARAM_INT);
-	return $statement->execute();
+function activate_user(int $users_id) {
+	$DB_USER = 'root';
+	$DB_PASSWORD = 'phppiscine';
+	$DB_HOST = 'localhost';
+	$DB_PORT = '3308';
+	$DB_NAME = 'camagru_emende';
+	$DB_DSN = "mysql:dbname=$DB_NAME;host=$DB_HOST;port=$DB_PORT";
+	$DB_OPT = [
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+	];
+
+	try {
+		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPT);
+		$sql = 'UPDATE users SET active = 1, activated_at = CURRENT_TIMESTAMP
+		WHERE users_id = ?';
+		$statement = $dbh->prepare($sql);
+		$statement->execute(array($users_id));
+	}
+	catch (PDOException $e) {
+		print("Error!: " . $e->getMessage() . "<br/>");
+	}
+	return true;
 }
 
 function console_log($output, $with_script_tags = true) {

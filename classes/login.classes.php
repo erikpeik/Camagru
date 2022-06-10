@@ -54,7 +54,7 @@ class Login extends Dbh {
 	protected function get_user($uid, $pwd) {
 		$statement = $this->check_if_user_exist($uid, $pwd);
 		$pwd_hashed = $statement->fetchAll(PDO::FETCH_ASSOC);
-		$check_pwd = password_verify($pwd, $pwd_hashed[0]["users_pwd"]);
+		$check_pwd = (hash('whirlpool', $pwd) == $pwd_hashed[0]["users_pwd"]);
 		if ($check_pwd == false) {
 			$statement = null;
 			header('location: ../login.php?error=wrong_password');

@@ -18,9 +18,9 @@ class Signup extends Dbh {
 		date_default_timezone_set("Europe/Helsinki");
 		$statement = $this->connect()->prepare('INSERT INTO users (users_name,
 		users_uid, users_pwd, users_email,activation_code, activation_expiry) VALUES (?, ?, ?, ?, ?, ?);');
-		$hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+		$hashed_pwd = hash('whirlpool', $pwd);
 		if (!$statement->execute(array($name, $uid, $hashed_pwd, $email,
-				password_hash($activation_code, PASSWORD_DEFAULT), date('Y-m-d H:i:s', time() + $expiry)))) {
+			hash('whirlpool', $activation_code), date('Y-m-d H:i:s', time() + $expiry)))) {
 			$statement = null;
 			header('location: ../signup.php?error=statement_failed');
 			exit();
@@ -33,7 +33,7 @@ class Signup extends Dbh {
 	protected function send_activation_email($email, $name, $activation_code) {
 		include_once('../config/app.php');
 
-		$hashed_activation = password_hash($activation_code, PASSWORD_DEFAULT);
+		$hashed_activation = hash('whirlpool', $activation_code);
 		$activation_link = "$APP_URL/auth.php?email=".$email."&activation_code=".$hashed_activation;
 		$subject = 'Activate your account';
 		$message = file_get_contents('../mails/activate_mail.html');
