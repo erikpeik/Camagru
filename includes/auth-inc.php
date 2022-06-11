@@ -42,7 +42,7 @@ function find_unverified_user($activation_code, $email, $pdo) {
 			return $user;
 		}
 	}
-	return null;
+#	return null;
 }
 
 function activate_user(int $users_id, $pdo) {
