@@ -26,5 +26,3 @@
 			updated_at datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 		);";
 	$db->exec($sql);
-
-#	const APP_URL = 'https://localhost:8080/auth'
