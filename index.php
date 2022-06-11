@@ -1,6 +1,9 @@
 <?php
-include 'config/setup.php';
 session_start();
+ob_start();
+
+include 'config/setup.php';
+
 if (!isset($_SESSION["user_id"])) {
 	header("Location: login.php");
 }
