@@ -34,12 +34,11 @@ function find_unverified_user($activation_code, $email, $pdo) {
 	if ($user) {
 		// Already expired, delete the inactive user with expired activation code
 		if ((int)$user[0]['expired'] === 1) {
-			delete_user_by_id($user[	0]['users_id'], $pdo);
+			delete_user_by_id($user[0]['users_id'], $pdo);
 			return null;
 		}
 		// verify the activation code
 		if ($activation_code == $user[0]['activation_code']) {
-
 			return $user;
 		}
 	}
