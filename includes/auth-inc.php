@@ -30,7 +30,7 @@ function find_unverified_user($activation_code, $email, $pdo) {
 	catch (PDOException $e) {
 		print("Error!!: " . $e->getMessage() . "<br/>");
 	}
-#	print_r($user);
+	print_r($user);
 	if ($user) {
 		// Already expired, delete the inactive user with expired activation code
 		if ((int)$user[0]['expired'] === 1) {
