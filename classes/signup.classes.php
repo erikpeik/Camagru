@@ -27,7 +27,7 @@ class Signup extends Dbh {
 		}
 		$this->send_activation_email($email, $name, $activation_code);
 		$statement = null;
-		header("location: ../login.php?error=check_email_for_verification");
+		header("location: ../auth.php?email=$email");
 	}
 
 	protected function send_activation_email($email, $name, $activation_code) {

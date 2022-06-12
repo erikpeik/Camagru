@@ -4,7 +4,7 @@ class Login extends Dbh {
 	private function check_if_user_exist($uid, $pwd) {
 		$statement = $this->connect()->prepare('SELECT users_pwd FROM users
 		WHERE users_uid = ? OR users_email = ?;');
-		if (!$statement->execute(array($uid, $pwd))) {
+		if (!$statement->execute(array($uid, $uid))) {
 			$statement = null;
 			header('location: ../login.php?error=statement_failed');
 			exit();
@@ -35,9 +35,9 @@ class Login extends Dbh {
 
 	private function check_if_user_active($uid) {
 		$sql = 'SELECT users_uid, users_pwd, active, users_email
-		FROM users WHERE users_uid = ?;';
+		FROM users WHERE users_uid = ? or users_email = ?;';
 		$statement = $this->connect()->prepare($sql);
-		if (!$statement->execute(array($uid))) {
+		if (!$statement->execute(array($uid, $uid))) {
 			$statement = null;
 			header('location: ../login.php?error=statement_failed');
 			exit();
@@ -61,7 +61,7 @@ class Login extends Dbh {
 			exit();
 		}
 		else if ($check_pwd == true) {
-			$statement = $this->check_user_and_password($uid, $pwd);
+			$statement = $this->check_user_and_password($uid, hash('whirlpool', $pwd));
 			$user = $statement->fetchAll(PDO::FETCH_ASSOC);
 			if (!$this->check_if_user_active($uid)) {
 				header('location: ../login.php?error=user_not_active');

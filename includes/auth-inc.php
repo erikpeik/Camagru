@@ -56,3 +56,21 @@ function activate_user(int $users_id, $pdo) {
 	}
 	return true;
 }
+
+
+include_once '../config/database.php';
+include_once 'config/database.php';
+
+if (isset($_POST['code']) && isset($_POST['email']) && isset($_POST['submit'])) {
+	try {
+		$pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPT);
+	}
+	catch (PDOException $e) {
+		print("Error!: " . $e->getMessage() . "<br/>");
+	}
+	$user = find_unverified_user(hash('whirlpool', $_POST['code']), $_POST['email'], $pdo);
+	if (!is_null($user) && activate_user($user[0]["users_id"], $pdo)) {
+		header("Location: ../login.php?error=account_activated");
+	}
+	header("Location: ../signup.php?error=activation_link_not_valid");
+}
