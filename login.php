@@ -14,10 +14,8 @@ if (isset($_GET['error'])) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<?php include_once 'frontend/head.html'; ?>
 		<title>Login • Camagru</title>
-		<link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
-		<script src="https://kit.fontawesome.com/c0a2ce9299.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/login.css">
 		<link rel="icon" type="image/x-icon" href="images/favicon.png">
@@ -30,11 +28,16 @@ if (isset($_GET['error'])) {
 					<form action="includes/login-inc.php" method='post'>
 						<div class='input-container'>
 							<label for="name">Username, or email</label>
-							<input class='login_input' type='text' name='name' autocomplete="username" required>
+							<input class='login_input' type='text' name='name' autocomplete="username"
+							pattern="[a-zA-Z0-9_]{4,20}"
+							title="Invalid username. Lenght is between 4-20 and contains only letters, number and underscore _" required>
 						</div>
 						<div class='input-container'>
 							<label for="name">Password</label>
-							<input class='login_input' type='password' name='pwd' autocomplete="current-password" required>
+							<input class='login_input' type='password'
+							pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*"
+							title="Invalid password format. Lenght is at least 8 character long, at least one upper- and lowercase letter, and one special character [!@#$%^&*]"
+							name='pwd' autocomplete="current-password" required>
 						</div>
 						<button class='login_button'type='submit' name='submit'>Log In</button>
 					</form>

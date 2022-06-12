@@ -10,6 +10,5 @@
 			<li id='logout-icon' title='Logout' onclick="location.href = 'index.php?logout=true'"><i class="ti ti-door-exit"></i></li>
 			<li id='user-icon'><i class="ti ti-user"><span id='name-text'><?php echo($_SESSION['user_uid']); ?></span></i></li>
 		</ul>
-
 	</nav>
 </header>

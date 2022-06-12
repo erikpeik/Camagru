@@ -10,7 +10,7 @@ function error_handler($error) {
 	}
 	else if ($error == 'invalid_uid') {
 		$message = "Invalid username. Requirements:\\n".
-		"- Length is between 8-20\\n".
+		"- Length is between 4-20\\n".
 		"- Contains only letters, numbers and underscore _";
 	}
 	else if ($error == 'invalid_email') {
