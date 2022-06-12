@@ -30,7 +30,9 @@ if (isset($_GET['error'])) {
 					<form action="includes/signup-inc.php" method='post'>
 					<div class='input-container'>
 							<label for="name">Email</label>
-							<input type='text' name='email' autocomplete="email" required>
+							<input type='text' name='email' autocomplete="email"
+							pattern="[A-Za-z0-9_\-.]+@([A-Za-z0-9_\-]+\.)+[A-Za-z0-9_\-.]{2,4}"
+							title="Invalid email pattern. '@' is at least required. for example: test@outlook.com" required>
 						</div>
 						<div class='input-container'>
 							<label for="name">Full Name</label>
@@ -38,15 +40,23 @@ if (isset($_GET['error'])) {
 						</div>
 						<div class='input-container'>
 							<label for="name">Username</label>
-							<input type='text' name='uid' autocomplete="username"required>
+							<input type='text' name='uid' autocomplete="username"
+							pattern="[a-zA-Z0-9_]{4,20}"
+							title="Invalid username. Lenght is between 4-20 and contains only letters, number and underscore _" required>
 						</div>
 						<div class='input-container'>
 							<label for="name">Password</label>
-							<input type='password' name='pwd' autocomplete="new-password" required>
+							<input type='password' name='pwd' autocomplete="new-password"
+							pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*"
+							title="Invalid password format. Lenght is at least 8 character long, at least one upper- and lowercase letter, and one special character [!@#$%^&*]"
+							required>
 						</div>
 						<div class='input-container'>
 							<label for="name">Repeat Password</label>
-							<input type='password' name='pwd_repeat' autocomplete="new-password"required>
+							<input type='password' name='pwd_repeat' autocomplete="new-password"
+							pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*"
+							title="Invalid password format. Lenght is at least 8 character long, at least one upper- and lowercase letter, and one special character [!@#$%^&*]"
+							required>
 						</div>
 						<button class='login_button' type='submit' name='submit'>Sign Up</button>
 					</form>

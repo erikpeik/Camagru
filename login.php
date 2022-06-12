@@ -29,7 +29,7 @@ if (isset($_GET['error'])) {
 						<div class='input-container'>
 							<label for="name">Username, or email</label>
 							<input class='login_input' type='text' name='name' autocomplete="username"
-							pattern="[a-zA-Z0-9_]{4,20}"
+							pattern="[a-zA-Z0-9_@.]{4,20}"
 							title="Invalid username. Lenght is between 4-20 and contains only letters, number and underscore _" required>
 						</div>
 						<div class='input-container'>
