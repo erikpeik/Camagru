@@ -14,7 +14,8 @@ if (isset($_GET['email']) && isset($_GET['activation_code'])) {
 		print("Error!: " . $e->getMessage() . "<br/>");
 	}
 	$user = find_unverified_user($_GET['activation_code'], $_GET['email'], $pdo);
-	if (!is_null($user) && activate_user($user[0]['users_id'], $pdo)) {
+	if ($user) {
+		activate_user($user[0]['users_id'], $pdo);
 		header("Location: login.php?error=account_activated");
 	}
 	header("Location: signup.php?error=activation_link_not_valid");
