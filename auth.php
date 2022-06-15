@@ -17,8 +17,9 @@ if (isset($_GET['email']) && isset($_GET['activation_code'])) {
 	if ($user) {
 		activate_user($user[0]['users_id'], $pdo);
 		header("Location: login.php?msg=account_activated");
+	} else {
+		header("Location: signup.php?msg=activation_link_not_valid");
 	}
-	header("Location: signup.php?msg=activation_link_not_valid");
 }
 
 include_once 'includes/msg_handler.php';

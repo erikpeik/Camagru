@@ -73,6 +73,7 @@ if (isset($_POST['code']) && isset($_POST['email']) && isset($_POST['submit'])) 
 	if ($user) {
 		activate_user($user[0]["users_id"], $pdo);
 		header("Location: ../login.php?msg=account_activated");
+	} else {
+		header("Location: ../signup.php?msg=activation_link_not_valid");
 	}
-	header("Location: ../signup.php?msg=activation_link_not_valid");
 }
