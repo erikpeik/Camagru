@@ -1,17 +1,12 @@
 <?php
-include_once 'includes/error_handler.php';
+include_once 'includes/msg_handler.php';
 session_start();
 
 if (isset($_SESSION["user_id"])) {
 	header("Location: index.php");
 }
 
-if (isset($_GET['error'])) {
-	echo(error_handler($_GET['error']));
-}
-
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -61,6 +56,9 @@ if (isset($_GET['error'])) {
 						<button class='login_button' type='submit' name='submit'>Sign Up</button>
 					</form>
 				</section>
+				<?php if (isset($_GET['msg'])) {
+					echo(msg_handler($_GET['msg']));
+				} ?>
 			</div>
 			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em;'>
 				<p id='login-text'>Have an account? <span id='signup-text' onclick="location.href = 'login.php'">Log in<span></p>

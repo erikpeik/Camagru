@@ -18,27 +18,27 @@ class SignupContr extends Signup {
 	public function signup_user() {
 		include_once '../includes/auth.php';
 		if ($this->empty_input()) {
-			header('location: ../signup.php?error=empty_input');
+			header('location: ../signup.php?msg=empty_input');
 			exit();
 		}
 		if ($this->invalid_uid() == false) {
-			header('location: ../signup.php?error=invalid_uid');
+			header('location: ../signup.php?msg=invalid_uid');
 			exit();
 		}
 		if ($this->invalid_email() == false) {
-			header('location: ../signup.php?error=invalid_email');
+			header('location: ../signup.php?msg=invalid_email');
 			exit();
 		}
 		if ($this->pwd_match() == false) {
-			header('location: ../signup.php?error=pwd_match');
+			header('location: ../signup.php?msg=pwd_match');
 			exit();
 		}
 		if ($this->invalid_password() == false) {
-			header('location: ../signup.php?error=invalid_password');
+			header('location: ../signup.php?msg=invalid_password');
 			exit();
 		}
 		if ($this->uid_taken()) {
-			header('location: ../signup.php?error=uid_taken');
+			header('location: ../signup.php?msg=uid_taken');
 			exit();
 		}
 		$activation_code = strval(mt_rand(100000, 999999));

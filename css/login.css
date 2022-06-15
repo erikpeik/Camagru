@@ -10,7 +10,7 @@
 	border-radius: 1px;
 	margin: auto;
 	margin-top: 2em;
-	padding-bottom: 2em;
+	padding-bottom: 1em;
 	width: 22em;
 }
 
@@ -139,4 +139,21 @@ input:-webkit-autofill {
 
 .auth-container input::placeholder{
 	color: rgb(199, 199, 199);
+}
+
+.message-box {
+	width: 268px;
+/*	border: 1px solid rgb(186, 218, 255);
+	border-radius: 5px;
+	background-color: rgb(232, 243, 255); */
+	margin: 10px auto 5px auto;
+	padding: 5px;
+	text-align: center;
+}
+
+.message-box p {
+	color: rgb(255, 0, 0);
+/*	text-shadow: 0 0 2px rgba(0, 0, 0, 0.25); */
+	font-size: 14px;
+	/* font-weight: 700; */
 }

@@ -6,7 +6,7 @@ class Signup extends Dbh {
 		WHERE users_uid = ? OR users_email = ?;');
 		if (!$statement->execute(array($uid, $email))) {
 			$statement = null;
-			header('location: ../signup.php?error=statement_failed');
+			header('location: ../signup.php?msg=statement_failed');
 			exit();
 		}
 		return (($statement->rowCount() > 0));
@@ -22,7 +22,7 @@ class Signup extends Dbh {
 		if (!$statement->execute(array($name, $uid, $hashed_pwd, $email,
 			hash('whirlpool', $activation_code), date('Y-m-d H:i:s', time() + $expiry)))) {
 			$statement = null;
-			header('location: ../signup.php?error=statement_failed');
+			header('location: ../signup.php?msg=statement_failed');
 			exit();
 		}
 		$this->send_activation_email($email, $name, $activation_code);

@@ -6,12 +6,12 @@ class Login extends Dbh {
 		WHERE users_uid = ? OR users_email = ?;');
 		if (!$statement->execute(array($uid, $uid))) {
 			$statement = null;
-			header('location: ../login.php?error=statement_failed');
+			header('location: ../login.php?msg=statement_failed');
 			exit();
 		}
 		if ($statement->rowCount() == 0) {
 			$statement = null;
-			header('location: ../login.php?error=user_not_found');
+			header('location: ../login.php?msg=user_not_found');
 			exit();
 		}
 		return $statement;
@@ -22,12 +22,12 @@ class Login extends Dbh {
 		WHERE users_uid = ? OR users_email = ? AND USERS_PWD = ?;');
 		if (!$statement->execute(array($uid, $uid, $pwd))) {
 			$statement = null;
-			header('location: ../login.php?error=statement_failed');
+			header('location: ../login.php?msg=statement_failed');
 			exit();
 		}
 		if ($statement->rowCount() == 0) {
 			$statement = null;
-			header('location: ../login.php?error=user_or_password_wrong');
+			header('location: ../login.php?msg=user_or_password_wrong');
 			exit();
 		}
 		return $statement;
@@ -39,12 +39,12 @@ class Login extends Dbh {
 		$statement = $this->connect()->prepare($sql);
 		if (!$statement->execute(array($uid, $uid))) {
 			$statement = null;
-			header('location: ../login.php?error=statement_failed');
+			header('location: ../login.php?msg=statement_failed');
 			exit();
 		}
 		if ($statement->rowCount() == 0) {
 			$statement = null;
-			header('location: ../login.php?error=user_not_found');
+			header('location: ../login.php?msg=user_not_found');
 			exit();
 		}
 		$user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -57,14 +57,14 @@ class Login extends Dbh {
 		$check_pwd = (hash('whirlpool', $pwd) == $pwd_hashed[0]["users_pwd"]);
 		if ($check_pwd == false) {
 			$statement = null;
-			header('location: ../login.php?error=wrong_password');
+			header('location: ../login.php?msg=wrong_password');
 			exit();
 		}
 		else if ($check_pwd == true) {
 			$statement = $this->check_user_and_password($uid, hash('whirlpool', $pwd));
 			$user = $statement->fetchAll(PDO::FETCH_ASSOC);
 			if (!$this->check_if_user_active($uid)) {
-				header('location: ../login.php?error=user_not_active');
+				header('location: ../login.php?msg=user_not_active');
 				exit();
 			}
 			session_start();

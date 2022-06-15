@@ -16,15 +16,15 @@ if (isset($_GET['email']) && isset($_GET['activation_code'])) {
 	$user = find_unverified_user($_GET['activation_code'], $_GET['email'], $pdo);
 	if ($user) {
 		activate_user($user[0]['users_id'], $pdo);
-		header("Location: login.php?error=account_activated");
+		header("Location: login.php?msg=account_activated");
 	}
-	header("Location: signup.php?error=activation_link_not_valid");
+	header("Location: signup.php?msg=activation_link_not_valid");
 }
 
-include_once 'includes/error_handler.php';
+include_once 'includes/msg_handler.php';
 
-if (isset($_GET['error'])) {
-	echo(error_handler($_GET['error']));
+if (isset($_GET['msg'])) {
+	echo(msg_handler($_GET['msg']));
 }
 
 if (isset($_GET['email'])) {
