@@ -9,9 +9,11 @@
 	</head>
 	<body>
 		<?php include_once "frontend/header.php" ?>
-		<button id="start-camera">Start Camera</button>
-		<video id="video" width="640" height="480" autoplay></video>
-		<button id="click-photo">Click Photo</button>
+		<div class='camera-buttons'>
+			<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
+			<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
+		</div>
+		<video id="video" autoplay></video>
 		<canvas id="canvas" width="640" height="480"></canvas>
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>

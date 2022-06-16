@@ -1,7 +1,35 @@
 #video {
-	transform: scaleX(-1);
+	width: 80vw;
+	max-width: 640px;
+	margin-left: 50%;
+	transform: translateX(-50%) scaleX(-1);
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(219, 219, 219);
 }
-/*
-#canvas {
-	transform: scaleX(-1);
-}*/
+.camera-buttons {
+	display: inline-block;
+	width: 350px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+.camera-buttons button {
+	text-decoration: none;
+	text-align: center;
+	border: none;
+	font-size: 20px;
+	padding: 5px;
+	color:rgb(78, 78, 78);
+	background-color:rgb(255, 255, 255);
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 5px 5px;
+	margin: 10px;
+	transition: all 0.5s;
+	transition-timing-function: ease;
+	margin-top: 10px
+}
+
+.camera-buttons button:hover {
+	box-shadow: 0 0 10px rgba(141, 141, 141, 0.2);
+	color: rgb(57, 57, 57);
+}
