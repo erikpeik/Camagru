@@ -18,7 +18,6 @@
 				users_uid TINYTEXT not null,
 				users_pwd LONGTEXT not null,
 				users_email TINYTEXT not null,
-				is_admin TINYINT(1) not null DEFAULT 0,
 				active TINYINT(1) DEFAULT 0,
 				activation_code VARCHAR(255) not null,
 				activation_expiry DATETIME not null,
@@ -35,7 +34,8 @@
 		$sql = "CREATE TABLE IF NOT EXISTS `images` (
 			`image_id` int(11) AUTO_INCREMENT PRIMARY KEY not null,
 			`users_id` int(11) not null,
-			`image` LONGBLOB not null
+			`image` LONGBLOB not null,
+			`posted_at` TIMESTAMP not null DEFAULT current_timestamp()
 		);";
 		$db->exec($sql);
 	}

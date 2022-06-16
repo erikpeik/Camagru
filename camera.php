@@ -13,8 +13,17 @@
 			<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 			<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 		</div>
-		<video id="video" autoplay></video>
-		<canvas id="canvas" width="640" height="480"></canvas>
+
+		<div id="video-div">
+			<video id="video" autoplay></video>
+			<img style='position: absolute; top: 0; left: 0;' src="images/stickers/42.png">
+		</div>
+		<canvas id="canvas"></canvas>
+		<!-- <ul>
+			<li>
+				<img src="images/stickers/42.png">
+			</li>
+		</ul> -->
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>
