@@ -13,7 +13,8 @@ camera_button.addEventListener('click', async function() {
 		audio: false,
 		video: {
 			width: { ideal: 640 },
-			height: { ideal: 480}
+			height: { ideal: 480},
+			facingMode: "user"
 		}
 	}
 	let stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -22,8 +23,17 @@ camera_button.addEventListener('click', async function() {
 
 	globalThis.stream_width = stream_settings.width;
 	globalThis.stream_height = stream_settings.height;
-	ctx.canvas.width = stream_settings.width;
-	ctx.canvas.height = stream_settings.height;
+	if (window.innerHeight > window.innerWidth) {
+		ctx.canvas.width = stream_settings.height;
+		ctx.canvas.height = stream_settings.width;
+		ctx.translate(stream_height, 0);
+		ctx.scale(-1, 1);
+	} else {
+		ctx.canvas.width = stream_settings.width;
+		ctx.canvas.height = stream_settings.height;
+		ctx.translate(stream_width, 0);
+		ctx.scale(-1, 1);
+	}
 
 	console.log('Width: ' + stream_width + 'px');
 	console.log('Height: ' + stream_height + 'px');
@@ -35,9 +45,11 @@ click_button.addEventListener('click', function() {
 	console.log('Width: ' + stream_width + 'px');
 	console.log('Height: ' + stream_height + 'px');
 
-	ctx.translate(canvas.width, 0);
-	ctx.scale(-1, 1)
-	ctx.drawImage(video, 0, 0, stream_width, stream_height);
+	if (window.innerHeight > window.innerWidth) {
+		ctx.drawImage(video, 0, 0, stream_height, stream_width);
+	} else {
+		ctx.drawImage(video, 0, 0, stream_width, stream_height);
+	}
 	let image_data_url = canvas.toDataURL('image/jpeg');
 
 	// data url of the image

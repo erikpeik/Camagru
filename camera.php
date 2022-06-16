@@ -15,7 +15,7 @@
 		</div>
 
 		<div id="video-div">
-			<video id="video" autoplay></video>
+			<video id="video" autoplay playsinline></video>
 			<img style='position: absolute; top: 0; left: 0;' src="images/stickers/42.png">
 		</div>
 		<canvas id="canvas"></canvas>
