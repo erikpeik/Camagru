@@ -35,7 +35,7 @@
 		$sql = "CREATE TABLE IF NOT EXISTS `images` (
 			`image_id` int(11) AUTO_INCREMENT PRIMARY KEY not null,
 			`users_id` int(11) not null,
-			`image` BLOB not null
+			`image` LONGBLOB not null
 		);";
 		$db->exec($sql);
 	}

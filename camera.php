@@ -10,9 +10,9 @@
 	<body>
 		<?php include_once "frontend/header.php" ?>
 		<button id="start-camera">Start Camera</button>
-		<video id="video" width="320" height="240" autoplay></video>
+		<video id="video" width="640" height="480" autoplay></video>
 		<button id="click-photo">Click Photo</button>
-		<canvas id="canvas" width="320" height="240"></canvas>
+		<canvas id="canvas" width="640" height="480"></canvas>
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>

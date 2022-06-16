@@ -25,17 +25,17 @@ if (isset($_GET['logout'])) {
 		<?php include_once "frontend/header.php";
 		include_once "config/pdo.php";
 
-		$sql = "SELECT `images`.`image` FROM `images`;";
+		$sql = "SELECT * FROM `images`;";
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute()) {
 			$statement = null;
 			header('location: ../index.php?msg=statement_failed');
 			exit();
 		}
-		$data = $statement->fetch(PDO::FETCH_ASSOC);
-		print_r($data);
-		print('<br>');
-		print('<img src="'.trim(preg_replace('/\s\s+/', ' ', $data['image'])).'"/>');
+		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($data as $image) {
+			print('<img src="'.$image['image'].'"/>');
+		}
 		?>
 
 	</body>
