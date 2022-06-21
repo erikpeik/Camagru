@@ -56,6 +56,7 @@ click_button.addEventListener('click', function() {
 	var http = new XMLHttpRequest();
 	var url = 'includes/camera-inc.php';
 	console.log(sticker.style.top);
+	console.log(sticker.src);
 	var params = 'img=' + image_data_url + '&sticker=' + sticker.src
 	+ '&left=' + sticker.style.left + '&top=' + sticker.style.top;
 	http.open('POST', url, true);
