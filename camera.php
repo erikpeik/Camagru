@@ -16,14 +16,9 @@
 
 		<div id="video-div">
 			<video id="video" autoplay playsinline></video>
-			<img style='position: absolute; top: 0; left: 0;' src="images/stickers/42.png">
+			<img id="sticker" style='top: 0; left: 0;' src="images/stickers/42.png">
 		</div>
-		<canvas id="canvas"></canvas>
-		<!-- <ul>
-			<li>
-				<img src="images/stickers/42.png">
-			</li>
-		</ul> -->
+		<canvas id="canvas"></canvas>	
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>

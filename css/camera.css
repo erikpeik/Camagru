@@ -1,16 +1,17 @@
 #video-div {
+	vertical-align: bottom;
+	display: none;
 	position: relative;
-	top: 0;
-	left: 0;
 	width: 80vw;
-	padding: 3px 3px 0 3px;
 	max-width: 640px;
 	margin-left: 50%;
 	transform: translateX(-50%);
 	background-color: rgb(255, 255, 255);
 	border: 1px solid rgb(219, 219, 219);
 }
+
 #video {
+	vertical-align: bottom;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -21,8 +22,9 @@
 	margin-left: 50%;
 	transform: translateX(-50%) scaleX(-1);
 }
+
 .camera-buttons {
-	display: inline-block;
+	/* display: inline-block; */
 	width: 350px;
 	margin-left: 50%;
 	transform: translateX(-50%);
@@ -47,4 +49,8 @@
 .camera-buttons button:hover {
 	box-shadow: 0 0 10px rgba(141, 141, 141, 0.2);
 	color: rgb(57, 57, 57);
+}
+
+#sticker {
+	position: absolute;
 }
