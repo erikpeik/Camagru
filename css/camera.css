@@ -2,8 +2,7 @@
 	vertical-align: bottom;
 	display: none;
 	position: relative;
-	width: 80vw;
-	max-width: 640px;
+	/* width: 80vw; */
 	margin-left: 50%;
 	transform: translateX(-50%);
 	background-color: rgb(255, 255, 255);

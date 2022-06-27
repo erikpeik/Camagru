@@ -26,6 +26,7 @@ camera_button.addEventListener('click', async function() {
 	if (window.matchMedia("(orientation: portrait)").matches) {
 		console.log("Portrait");
 		ctx.canvas.width = stream_settings.height;
+		video_div.style.width = "480px";
 		ctx.canvas.height = stream_settings.width;
 		ctx.translate(stream_height, 0);
 		ctx.scale(-1, 1);
@@ -33,6 +34,7 @@ camera_button.addEventListener('click', async function() {
 		// Landscape
 		console.log("Landscape");
 		ctx.canvas.width = stream_settings.width;
+		video_div.style.width = "640px";
 		ctx.canvas.height = stream_settings.height;
 		ctx.translate(stream_width, 0);
 		ctx.scale(-1, 1);
