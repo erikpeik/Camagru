@@ -13,55 +13,58 @@ camera_button.addEventListener('click', async function() {
 	let constraints = {
 		audio: false,
 		video: {
-			width: { ideal: 640 },
-			height: { ideal: 480},
 			facingMode: "user"
 		}
 	}
 	let stream = await navigator.mediaDevices.getUserMedia(constraints);
-
 	let stream_settings = stream.getVideoTracks()[0].getSettings();
 
 	globalThis.stream_width = stream_settings.width;
 	globalThis.stream_height = stream_settings.height;
-	if (window.innerHeight > window.innerWidth) {
-	//	video_div.style.height = stream_settings.height + 'px';
-	//	video_div.style.aspectRatio = 4 / 3;
-		ctx.canvas.width = stream_settings.height;
-		ctx.canvas.height = stream_settings.width;
-		ctx.translate(stream_height, 0);
-		ctx.scale(-1, 1);
-	} else {
-	//	video_div.style.height = stream_settings.height + 'px';
-	//	video_div.style.aspectRatio = 4 /;
+	console.log(stream_settings);
+	// if (window.innerHeight > window.innerWidth) {
+	// 	// Vertical
+	// 	console.log("Vertical");
+	// 	ctx.canvas.width = stream_settings.height;
+	// 	ctx.canvas.height = stream_settings.width;
+	// 	ctx.translate(stream_height, 0);
+	// 	ctx.scale(-1, 1);
+	// } else {
+		// Horizontal
+		console.log("Horizontal");
 		ctx.canvas.width = stream_settings.width;
 		ctx.canvas.height = stream_settings.height;
 		ctx.translate(stream_width, 0);
 		ctx.scale(-1, 1);
-	}
+	// }
 
 	video.srcObject = stream;
 	video_div.style.display = 'block';
 });
 
 click_button.addEventListener('click', function() {
-	if (window.innerHeight > window.innerWidth) {
+	// if (window.innerHeight > window.innerWidth) {
 		ctx.drawImage(video, 0, 0, stream_height, stream_width);
-	} else {
+	// } else {
 		ctx.drawImage(video, 0, 0, stream_width, stream_height);
-	}
+	// }
 	let image_data_url = canvas.toDataURL('image/jpeg');
 
 	// data url of the image
 	var http = new XMLHttpRequest();
 	var url = 'includes/camera-inc.php';
-	console.log(sticker.style.top);
-	console.log(sticker.src);
+//	console.log(sticker.style.top);
+	console.log(sticker.style.left);
 	var params = 'img=' + image_data_url + '&sticker=' + sticker.src
-	+ '&left=' + sticker.style.left + '&top=' + sticker.style.top;
+	+ '&left=' + sticker.style.left + '&top=' + sticker.style.top
+	+ '&width=' + sticker.offsetWidth + '&height=' + sticker.offsetHeight;
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.onload = function() {
+		console.log(this.response);
+	}
 	http.send(params);
+
 });
 
 dragElement(document.getElementById("sticker"));
@@ -100,7 +103,7 @@ function dragElement(element) {
 			left_pos = 0;
 		}
 		if (left_pos > video_div.offsetWidth - sticker.offsetWidth) {
-			left_pos =video_div.offsetWidth - sticker.offsetWidth;
+			left_pos = video_div.offsetWidth - sticker.offsetWidth;
 		}
 		if (top_pos < 0) {
 			top_pos = 0;
