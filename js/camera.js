@@ -21,22 +21,22 @@ camera_button.addEventListener('click', async function() {
 
 	globalThis.stream_width = stream_settings.width;
 	globalThis.stream_height = stream_settings.height;
-	console.log(stream_settings);
-	// if (window.innerHeight > window.innerWidth) {
-	// 	// Vertical
-	// 	console.log("Vertical");
-	// 	ctx.canvas.width = stream_settings.height;
-	// 	ctx.canvas.height = stream_settings.width;
-	// 	ctx.translate(stream_height, 0);
-	// 	ctx.scale(-1, 1);
-	// } else {
-		// Horizontal
-		console.log("Horizontal");
+	console.log(stream_settings.width, stream_settings.height);
+	//if (window.innerHeight > window.innerWidth) {
+	if (window.matchMedia("(orientation: portrait)").matches) {
+		console.log("Portrait");
+		ctx.canvas.width = stream_settings.height;
+		ctx.canvas.height = stream_settings.width;
+		ctx.translate(stream_height, 0);
+		ctx.scale(-1, 1);
+	} else {
+		// Landscape
+		console.log("Landscape");
 		ctx.canvas.width = stream_settings.width;
 		ctx.canvas.height = stream_settings.height;
 		ctx.translate(stream_width, 0);
 		ctx.scale(-1, 1);
-	// }
+	}
 
 	video.srcObject = stream;
 	video_div.style.display = 'block';
@@ -44,10 +44,11 @@ camera_button.addEventListener('click', async function() {
 
 click_button.addEventListener('click', function() {
 	// if (window.innerHeight > window.innerWidth) {
+	if (window.matchMedia("(orientation: portrait)").matches) {
 		ctx.drawImage(video, 0, 0, stream_height, stream_width);
-	// } else {
+	} else {
 		ctx.drawImage(video, 0, 0, stream_width, stream_height);
-	// }
+	}
 	let image_data_url = canvas.toDataURL('image/jpeg');
 
 	// data url of the image
