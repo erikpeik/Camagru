@@ -39,6 +39,6 @@ if (isset($_POST['img']) && isset($_POST['sticker'])) {
 		header('location: ../camera.php?msg=error');
 		exit();
 	}
-// 	print ($image);
+ 	print (base64_encode($data));
 }
 

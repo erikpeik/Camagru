@@ -5,6 +5,7 @@ let canvas = document.querySelector("#canvas");
 let ctx = canvas.getContext('2d');
 let video_div = document.querySelector('#video-div');
 let sticker = document.querySelector("#sticker");
+let final = document.querySelector("#final-image");
 
 var stream_width;
 var stream_height;
@@ -63,6 +64,7 @@ click_button.addEventListener('click', function() {
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onload = function() {
 		console.log(this.response);
+		final.innerHTML += '<img src="data:image/jpg;charset=utf8;base64,' + this.response + '" />';
 	}
 	http.send(params);
 });

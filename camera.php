@@ -18,7 +18,16 @@
 			<video id="video" autoplay playsinline></video>
 			<img id="sticker" style='top: 0; left: 0;' src="images/stickers/42.png">
 		</div>
-		<canvas id="canvas"></canvas>	
+		<canvas id="canvas"></canvas>
+		<div id="final-image"></div>
+		<form id='image-form'>
+			<h1>Submit Image</h1>
+			<label for='title'>Title</label><br>
+			<input type='text' id='field' name='title'>
+			<label for='description'>Description</label><br />
+			<textarea id='field' name='description'></textarea><br />
+			<button type='submit' id='submit-image'>Submit</submit>
+		</form>
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>

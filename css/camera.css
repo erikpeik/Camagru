@@ -53,3 +53,35 @@
 #sticker {
 	position: absolute;
 }
+
+#canvas {
+	display: none;
+}
+
+#image-form {
+	border-radius: 4px 4px;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #dbdbdb;
+	width: 640px;
+	color: #333;
+}
+
+
+#field {
+	border: 1px solid #dbdbdb;
+	padding: 5px;
+	border-radius: 4px 4px;
+	font-size: 20px;
+	outline: 0;
+	margin: 6px 0 0 7px;
+	width: 95%;
+	text-align: right;
+	background-color: rgb(250, 250, 250);
+	resize: vertical;
+}
+
+#image-form h1 {
+	color: rgb(40, 40, 40);
+	font-size: 25px;
+	margin: 10px;
+}
