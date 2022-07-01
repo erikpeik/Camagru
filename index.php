@@ -34,7 +34,7 @@ if (isset($_GET['logout'])) {
 		}
 		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($data as $image) {
-			print('<img src="'.$image['image'].'"/>');
+			print('<img src="data:image/jpg;charset=utf8;base64,'.base64_encode($image['image']).'"/>');
 		}
 		?>
 

@@ -30,15 +30,15 @@ if (isset($_POST['img']) && isset($_POST['sticker'])) {
 	imagepng($image);
 	$data = ob_get_clean();
 	$success = file_put_contents($file, $data);
-
-//	$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
-//			VALUES (NULL, ?, ?);";
-// 	$statement = $pdo->prepare($sql);
-// 	if (!$statement->execute(array($_SESSION["user_id"], $image))) {
-// 		$statement = null;
-// 		header('location: ../camera.php?msg=error');
-// 		exit();
-// 	}
+//	$image = base64_encode($data);
+	$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
+			VALUES (NULL, ?, ?);";
+ 	$statement = $pdo->prepare($sql);
+	if (!$statement->execute(array($_SESSION["user_id"], $data))) {
+		$statement = null;
+		header('location: ../camera.php?msg=error');
+		exit();
+	}
 // 	print ($image);
 }
 

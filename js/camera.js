@@ -56,8 +56,6 @@ click_button.addEventListener('click', function() {
 	// data url of the image
 	var http = new XMLHttpRequest();
 	var url = 'includes/camera-inc.php';
-//	console.log(sticker.style.top);
-	console.log(sticker.style.left);
 	var params = 'img=' + image_data_url + '&sticker=' + sticker.src
 	+ '&left=' + sticker.style.left + '&top=' + sticker.style.top
 	+ '&width=' + sticker.offsetWidth + '&height=' + sticker.offsetHeight;
@@ -67,7 +65,6 @@ click_button.addEventListener('click', function() {
 		console.log(this.response);
 	}
 	http.send(params);
-
 });
 
 dragElement(document.getElementById("sticker"));
