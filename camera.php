@@ -20,13 +20,16 @@
 		</div>
 		<canvas id="canvas"></canvas>
 		<div id="final-image"></div>
-		<form id='image-form'>
+		<form id='image-form' action='includes/store-image.php' method='post'>
 			<h1>Submit Image</h1>
 			<label for='title'>Title</label><br>
-			<input type='text' id='field' name='title'>
+			<input type='text' id='title-field' name='title' maxlength="62" required>
 			<label for='description'>Description</label><br />
-			<textarea id='field' name='description'></textarea><br />
-			<button type='submit' id='submit-image'>Submit</submit>
+			<textarea id='description-field' name='description' maxlength="280" required></textarea><br />
+			<div id="buttons">
+				<button type='submit' name='submit' value='cancel' id='cancel-image'>Cancel</button>
+				<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
+			</div>
 		</form>
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>

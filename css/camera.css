@@ -67,15 +67,27 @@
 }
 
 
-#field {
+#title-field {
 	border: 1px solid #dbdbdb;
 	padding: 5px;
 	border-radius: 4px 4px;
-	font-size: 20px;
+	font-size: 18px;
 	outline: 0;
 	margin: 6px 0 0 7px;
 	width: 95%;
-	text-align: right;
+	background-color: rgb(250, 250, 250);
+	resize: vertical;
+}
+
+#description-field {
+	border: 1px solid #dbdbdb;
+	padding: 5px;
+	border-radius: 4px 4px;
+	font-size: 16px;
+	outline: 0;
+	margin: 6px 0 0 7px;
+	width: 95%;
+	height: 100px;
 	background-color: rgb(250, 250, 250);
 	resize: vertical;
 }
@@ -84,4 +96,50 @@
 	color: rgb(40, 40, 40);
 	font-size: 25px;
 	margin: 10px;
+}
+
+#image-form label {
+	margin-left: 5px;
+}
+
+#submit-image {
+	-webkit-appearance: none;
+	padding: 8px 15px 8px 15px;
+	margin: 0;
+	background-color: rgb(67, 148, 239);
+	border: none;
+	border-radius: 4px 4px;
+	color: white;
+	font-weight: 700;
+	transition: all 0.3s;
+}
+
+#submit-image:hover {
+	cursor: pointer;
+	background-color: rgb(57, 138, 231);
+}
+
+#cancel-image {
+	-webkit-appearance: none;
+	padding: 8px 15px 8px 15px;
+	margin: 0;
+	background-color: #f44336;
+	border: none;
+	border-radius: 4px 4px;
+	color: white;
+	font-weight: 700;
+	transition: all 0.3s;
+}
+
+#cancel-image:hover {
+	cursor: pointer;
+	background-color: #d63327;
+}
+
+#buttons {
+	width: fit-content;
+	overflow: hidden;
+	clear: both;
+	text-align: rigth;
+	margin: 5px 25px 5px auto;
 }

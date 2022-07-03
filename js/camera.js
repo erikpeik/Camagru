@@ -64,7 +64,12 @@ click_button.addEventListener('click', function() {
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onload = function() {
 		console.log(this.response);
-		final.innerHTML += '<img src="data:image/jpg;charset=utf8;base64,' + this.response + '" />';
+		final.innerHTML += '<img id="final" src="data:image/jpg;charset=utf8;base64,' + this.response + '" />';
+		var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "image");
+		input.setAttribute("value", this.response)
+		document.getElementById("image-form").appendChild(input)
 	}
 	http.send(params);
 });

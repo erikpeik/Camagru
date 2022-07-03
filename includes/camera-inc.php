@@ -31,14 +31,14 @@ if (isset($_POST['img']) && isset($_POST['sticker'])) {
 	$data = ob_get_clean();
 	$success = file_put_contents($file, $data);
 //	$image = base64_encode($data);
-	$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
-			VALUES (NULL, ?, ?);";
- 	$statement = $pdo->prepare($sql);
-	if (!$statement->execute(array($_SESSION["user_id"], $data))) {
-		$statement = null;
-		header('location: ../camera.php?msg=error');
-		exit();
-	}
+	// $sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
+	// 		VALUES (NULL, ?, ?);";
+ 	// $statement = $pdo->prepare($sql);
+	// if (!$statement->execute(array($_SESSION["user_id"], $data))) {
+	// 	$statement = null;
+	// 	header('location: ../camera.php?msg=error');
+	// 	exit();
+	// }
  	print (base64_encode($data));
 }
 
