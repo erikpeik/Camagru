@@ -9,28 +9,29 @@
 	</head>
 	<body>
 		<?php include_once "frontend/header.php" ?>
-		<div class='camera-buttons'>
-			<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
-			<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
-		</div>
-
-		<div id="video-div">
-			<video id="video" autoplay playsinline></video>
-			<img id="sticker" style='top: 0; left: 0;' src="images/stickers/42.png">
-		</div>
-		<canvas id="canvas"></canvas>
-		<div id="final-image"></div>
-		<form id='image-form' action='includes/store-image.php' method='post'>
-			<h1>Submit Image</h1>
-			<label for='title'>Title</label><br>
-			<input type='text' id='title-field' name='title' maxlength="62" required>
-			<label for='description'>Description</label><br />
-			<textarea id='description-field' name='description' maxlength="255" required></textarea><br />
-			<div id="buttons">
-				<button type='button' onClick="location.href = 'camera.php'" id='cancel-image'>Cancel</button>
-				<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
+		<main>
+			<div class='camera-buttons'>
+				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
+				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 			</div>
-		</form>
+
+			<div id="video-div">
+				<video id="video" autoplay playsinline></video>
+				<img id="sticker" style='top: 0; left: 0;' src="images/stickers/42.png">
+			</div>
+			<canvas id="canvas"></canvas>
+			<div id="final-image"></div>
+			<form id='image-form' action='includes/store-image.php' method='post'>
+				<h1>New Post</h1>
+				<!-- <label for='description'>Description</label><br /> -->
+				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
+				<div id="buttons">
+					<button type='button' onClick="location.href = 'camera.php'" id='cancel-image'>Cancel</button>
+					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
+				</div>
+			</form>
+		</main>
+		<?php include 'frontend/footer.html'; ?>
 	</body>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>

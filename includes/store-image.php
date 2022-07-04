@@ -3,19 +3,17 @@
 include_once '../config/pdo.php';
 session_start();
 
-if (isset($_POST['title']) && isset($_POST['description'])
-&& isset($_POST['submit']) && isset($_POST['image'])) {
-	$title = $_POST['title'];
-	$desc = $_POST['description'];
+if (isset($_POST['caption']) && isset($_POST['submit']) && isset($_POST['image'])) {
+	$caption = $_POST['caption'];
 	$submit = $_POST['submit'];
 //	print($_POST['image']);
 	if ($submit == 'submit') {
 		$image = base64_decode($_POST['image']);
 		try {
-			$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`, `title`, `description`)
-			VALUES (NULL, ?, ?, ?, ?);";
+			$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`, `caption`)
+			VALUES (NULL, ?, ?, ?);";
 			$statement = $pdo->prepare($sql);
-			if (!$statement->execute(array($_SESSION["user_id"], $image, htmlspecialchars($title), htmlspecialchars($desc)))) {
+			if (!$statement->execute(array($_SESSION["user_id"], $image, htmlspecialchars($caption)))) {
 				$statement = null;
 				header('location: ../camera.php?msg=error');
 				exit();

@@ -10,6 +10,9 @@ let final = document.querySelector("#final-image");
 var stream_width;
 var stream_height;
 
+var stream;
+
+
 camera_button.addEventListener('click', async function() {
 	let constraints = {
 		audio: false,
@@ -17,7 +20,7 @@ camera_button.addEventListener('click', async function() {
 			facingMode: "user"
 		}
 	}
-	let stream = await navigator.mediaDevices.getUserMedia(constraints);
+	globalThis.stream = await navigator.mediaDevices.getUserMedia(constraints);
 	let stream_settings = stream.getVideoTracks()[0].getSettings();
 
 	globalThis.stream_width = stream_settings.width;
@@ -80,7 +83,7 @@ click_button.addEventListener('click', function() {
 	video_div.style.display = "none";
 	document.querySelector('.camera-buttons').style.display = 'none';
 	document.querySelector('#image-form').style.display = 'block';
-	stream.getTracks()[0].stop();
+	globalThis.stream.getTracks()[0].stop();
 });
 
 dragElement(document.getElementById("sticker"));
