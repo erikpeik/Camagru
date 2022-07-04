@@ -34,7 +34,14 @@ if (isset($_GET['logout'])) {
 		}
 		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($data as $image) {
-			print('<img src="data:image/jpg;charset=utf8;base64,'.base64_encode($image['image']).'"/>');
+			?>
+			<div class="image-div">
+				<div id='top-bar'>
+					<h1><?= $_SESSION['user_uid'] ?></h1>
+			</div>
+				<img id='image-settings' src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>"/>
+			</div>
+			<?php
 		}
 		?>
 

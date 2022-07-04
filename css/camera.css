@@ -24,12 +24,13 @@
 
 .camera-buttons {
 	/* display: inline-block; */
-	width: 350px;
+	width: 180px;
 	margin-left: 50%;
 	transform: translateX(-50%);
 }
 
 .camera-buttons button {
+	display: inline-block;
 	text-decoration: none;
 	text-align: center;
 	border: none;
@@ -64,6 +65,8 @@
 	border: 1px solid #dbdbdb;
 	width: 640px;
 	color: #333;
+	margin: 5px auto 0;
+	display: none;
 }
 
 
@@ -142,4 +145,22 @@
 	clear: both;
 	text-align: rigth;
 	margin: 5px 25px 5px auto;
+}
+
+#click-photo {
+	display: none;
+}
+
+#final {
+	width: 90vw;
+	max-width: 640px;
+	vertical-align:	bottom;
+}
+
+#final-image {
+	width: fit-content;
+	margin: 35px auto 0;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(219, 219, 219);
+	display: block;
 }

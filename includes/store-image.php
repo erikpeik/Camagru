@@ -12,17 +12,17 @@ if (isset($_POST['title']) && isset($_POST['description'])
 	if ($submit == 'submit') {
 		$image = base64_decode($_POST['image']);
 		try {
-			$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
-			VALUES (NULL, ?, ?);";
+			$sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`, `title`, `description`)
+			VALUES (NULL, ?, ?, ?, ?);";
 			$statement = $pdo->prepare($sql);
-			if (!$statement->execute(array($_SESSION["user_id"], $image))) {
+			if (!$statement->execute(array($_SESSION["user_id"], $image, htmlspecialchars($title), htmlspecialchars($desc)))) {
 				$statement = null;
 				header('location: ../camera.php?msg=error');
 				exit();
 			}
 			print("Image added to database");
 		}
-		catch (PDOExeption $e) {
+		catch (PDOException $e) {
 			print("Error!!: " . $e->getMessage() . "<br/>");
 		}
 		header('location: ../camera.php?msg=image_added');

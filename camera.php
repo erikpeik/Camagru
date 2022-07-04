@@ -25,9 +25,9 @@
 			<label for='title'>Title</label><br>
 			<input type='text' id='title-field' name='title' maxlength="62" required>
 			<label for='description'>Description</label><br />
-			<textarea id='description-field' name='description' maxlength="280" required></textarea><br />
+			<textarea id='description-field' name='description' maxlength="255" required></textarea><br />
 			<div id="buttons">
-				<button type='submit' name='submit' value='cancel' id='cancel-image'>Cancel</button>
+				<button type='button' onClick="location.href = 'camera.php'" id='cancel-image'>Cancel</button>
 				<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
 			</div>
 		</form>

@@ -24,7 +24,8 @@ camera_button.addEventListener('click', async function() {
 	globalThis.stream_height = stream_settings.height;
 	console.log(stream_settings.width, stream_settings.height);
 	//if (window.innerHeight > window.innerWidth) {
-	if (window.matchMedia("(orientation: portrait)").matches) {
+	if (window.matchMedia("(orientation: portrait)").matches
+	&& window.matchMedia("(hover: none)").matches) {
 		console.log("Portrait");
 		ctx.canvas.width = stream_settings.height;
 		video_div.style.width = "480px";
@@ -43,11 +44,15 @@ camera_button.addEventListener('click', async function() {
 
 	video.srcObject = stream;
 	video_div.style.display = 'block';
+
+	document.querySelector('.camera-buttons').style.width = "350px";
+	document.querySelector('#click-photo').style.display = "inline-block";
+
 });
 
 click_button.addEventListener('click', function() {
-	// if (window.innerHeight > window.innerWidth) {
-	if (window.matchMedia("(orientation: portrait)").matches) {
+	if (window.matchMedia("(orientation: portrait)").matches
+	&& window.matchMedia("(hover: none)").matches) {
 		ctx.drawImage(video, 0, 0, stream_height, stream_width);
 	} else {
 		ctx.drawImage(video, 0, 0, stream_width, stream_height);
@@ -72,6 +77,10 @@ click_button.addEventListener('click', function() {
 		document.getElementById("image-form").appendChild(input)
 	}
 	http.send(params);
+	video_div.style.display = "none";
+	document.querySelector('.camera-buttons').style.display = 'none';
+	document.querySelector('#image-form').style.display = 'block';
+	stream.getTracks()[0].stop();
 });
 
 dragElement(document.getElementById("sticker"));

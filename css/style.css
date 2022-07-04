@@ -8,3 +8,28 @@ body {
 	box-sizing: border-box;
 	font-family: 'Segoe UI','Roboto',Helvetica,Arial,sans-serif;
 }
+
+.image-div {
+	background-color: rgb(255,255,255);
+	margin: 10px auto 0;
+	width: fit-content;
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 5px 5px;
+}
+
+#image-settings {
+	width: 90vw;
+	max-width: 640px;
+	vertical-align:	bottom;
+}
+
+#top-bar {
+	height: 48px;
+}
+
+#top-bar h1 {
+	font-size: 18px;
+	vertical-align: middle;
+	line-height: 48px;
+	padding-left: 10px;
+}

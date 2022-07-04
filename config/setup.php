@@ -35,6 +35,8 @@
 			`image_id` int(11) AUTO_INCREMENT PRIMARY KEY not null,
 			`users_id` int(11) not null,
 			`image` LONGBLOB not null,
+			`title` VARCHAR(62) not null,
+			`description` VARCHAR(255) not null,
 			`posted_at` TIMESTAMP not null DEFAULT current_timestamp()
 		);";
 		$db->exec($sql);
