@@ -1,7 +1,19 @@
+<?php
+session_start();
+ob_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php include_once 'frontend/head.html'; ?>
+		<?php 
+		    include_once 'frontend/head.html';
+		 
+		?>
 		<title>Camera • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/camera.css">

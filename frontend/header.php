@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+ob_start();
+?>
 
 <link rel="stylesheet" href="css/header.css">
 <header>
