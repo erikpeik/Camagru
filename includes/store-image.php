@@ -2,6 +2,7 @@
 
 include_once '../config/pdo.php';
 session_start();
+ob_start();
 
 if (isset($_POST['caption']) && isset($_POST['submit']) && isset($_POST['image'])) {
 	$caption = $_POST['caption'];
