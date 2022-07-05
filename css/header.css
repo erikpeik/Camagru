@@ -10,6 +10,9 @@ li {
 	padding: 10px;
 	background-color: rgb(255, 255, 255);
 	border-bottom: 1px solid #dbdbdb;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 .nav-links li {
@@ -61,4 +64,8 @@ li {
 	font-style: italic;
 	text-align: center;
 	padding-right: 5px;
+}
+
+header {
+	position: fixed;
 }

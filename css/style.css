@@ -77,4 +77,9 @@ footer {
 
 main {
 	padding-bottom: 100px;
+	padding-top: 60px;
+}
+
+#name-left {
+	margin-left: 10px;
 }
