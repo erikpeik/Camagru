@@ -25,20 +25,9 @@ if (isset($_POST['img']) && isset($_POST['sticker'])) {
 	$left = str_replace("px", '', $_POST['left']);
 	imagecopy($image, $sticker, $left, $top, 0, 0, $_POST['width'], $_POST['height']);
 
-	$file = "../textpicture.jpeg";
 	ob_start();
 	imagepng($image);
 	$data = ob_get_clean();
-	$success = file_put_contents($file, $data);
-//	$image = base64_encode($data);
-	// $sql = "INSERT INTO `images` (`image_id`, `users_id`, `image`)
-	// 		VALUES (NULL, ?, ?);";
- 	// $statement = $pdo->prepare($sql);
-	// if (!$statement->execute(array($_SESSION["user_id"], $data))) {
-	// 	$statement = null;
-	// 	header('location: ../camera.php?msg=error');
-	// 	exit();
-	// }
  	print (base64_encode($data));
 }
 
