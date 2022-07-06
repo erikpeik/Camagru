@@ -47,10 +47,10 @@
 
 	try {
 		$sql = "CREATE TABLE IF NOT EXISTS `likes` (
-			`like_id` int(11) AUTO_INCREMENT PRIMARY KEY not null,
+			-- `like_id` int(11) AUTO_INCREMENT PRIMARY KEY not null,
 			`users_id` int(11) not null,
 			`image_id` int(11) not null,
-			`type` int(2) not null,
+			-- `type` int(2) not null,
 			`posted_at` TIMESTAMP not null DEFAULT current_timestamp()ON UPDATE current_timestamp()
 		);";
 		$db->exec($sql);

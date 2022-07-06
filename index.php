@@ -44,16 +44,49 @@ if (isset($_GET['logout'])) {
 					</div>
 					<img id='image-settings' src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>"/>
 					<div id='like-row'>
-						<i class="fa-regular fa-heart"></i>
+
+						<?php
+							$sql = "SELECT COUNT(*) as `count` FROM `likes` WHERE `users_id` = ? AND `image_id` = ?";
+							$statement = $pdo->prepare($sql);
+							if (!$statement->execute(array($_SESSION["user_id"], $image['image_id']))) {
+								$statement = null;
+								header('location: ../index.php?msg=error');
+								exit();
+							}
+							$data = $statement->fetch(PDO::FETCH_ASSOC);
+							$like_count = $data['count'];
+						?>
+
+						<span onclick="add_like(<?=$image['image_id'];?>)">
+						<?php if ($like_count == 0) { ?>
+							<i id="like_button_<?= $image['image_id'] ?>" class="fa-regular fa-heart"></i>
+							<?php } else { ?>
+							<i id="like_button_<?= $image['image_id'] ?>" style="color: #ED4956;" class="fa-solid fa-heart"></i>
+							<?php } ?>
+						</span>
 						<i class="fa-regular fa-comment"></i>
 					</div>
-					<p id='like-count'>0 likes</p>
+					<p id='like-text'><span id='like_count_<?= $image['image_id']; ?>'>
+					<?php
+						$sql = "SELECT COUNT(*) as `count` FROM `likes` WHERE `image_id` = ?";
+						$statement = $pdo->prepare($sql);
+						if (!$statement->execute(array($image['image_id']))) {
+							$statement = null;
+							header('location: ../index.php?msg=error');
+							exit();
+						}
+						$data = $statement->fetch(PDO::FETCH_ASSOC);
+						echo $data['count'];
+					?>
+					</span> likes</p>
 					<b id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
 				</div>
 				<?php
+				$i++;
 			}
 			?>
 		</main>
+		<script src='js/like.js'></script>
 		<?php
 		include 'frontend/footer.html';
 		?>
