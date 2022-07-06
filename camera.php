@@ -10,9 +10,9 @@ if (!isset($_SESSION["user_id"])) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php 
+		<?php
 		    include_once 'frontend/head.html';
-		 
+
 		?>
 		<title>Camera • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
@@ -35,7 +35,6 @@ if (!isset($_SESSION["user_id"])) {
 			<div id="final-image"></div>
 			<form id='image-form' action='includes/store-image.php' method='post'>
 				<h1>New Post</h1>
-				<!-- <label for='description'>Description</label><br /> -->
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
 				<div id="buttons">
 					<button type='button' onClick="location.href = 'camera.php'" id='cancel-image'>Cancel</button>

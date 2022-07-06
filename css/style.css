@@ -28,7 +28,7 @@ body {
 
 #image-settings {
 	width: 90vw;
-	max-width: 640px;
+	max-width: 638px;
 	vertical-align:	bottom;
 }
 
@@ -55,10 +55,23 @@ body {
 }
 
 #like-text {
-
+	background-color: white;
+	border: none;
+	display: block;
 	font-weight: 600;
 	margin-left: 10px;
 	margin-bottom: 10px;
+	font-size: 1em;
+	transition: all 0.3s;
+	transition-timing-function: ease-out;
+}
+
+#like-text:hover {
+	cursor: pointer;
+}
+
+#like-text:active {
+	color: rgb(60, 60, 60);
 }
 
 footer {
