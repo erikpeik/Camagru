@@ -96,3 +96,28 @@ main {
 #name-left {
 	margin-left: 10px;
 }
+
+
+#like-names {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 5px 5px;
+}
+
+#likes-bar {
+	width: 380px;
+	border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+#likes-bar h1 {
+	font-size: 18px;
+	vertical-align: middle;
+	line-height: 36px;
+	text-align: center;
+	font-weight: 600;
+}

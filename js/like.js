@@ -26,3 +26,7 @@ function add_like(image_id) {
 	var params = 'image_id=' + image_id;
 	xhr.send(params);
 }
+
+function show_likes(image_id) {
+	
+}

@@ -26,6 +26,11 @@ if (isset($_GET['logout'])) {
 	<body>
 		<?php include_once "frontend/header.php"; ?>
 		<main>
+			<div id="like-names">
+				<div id='likes-bar'>
+					<h1>Likes</h1>
+				</div>
+			</div>
 			<?php
 			$data = fetch_all_image_data($pdo);
 			foreach ($data as $image) {
@@ -48,7 +53,7 @@ if (isset($_GET['logout'])) {
 						</span>
 						<i class="fa-regular fa-comment"></i>
 					</div>
-					<button id='like-text'><span id='like_count_<?= $image['image_id']; ?>'>
+					<button id='like-text' onclick="show_likes(<?= $image['image_id']; ?>)"><span id='like_count_<?= $image['image_id']; ?>'>
 					<?php
 						$data = get_image_likes($pdo, $image['image_id']);
 						echo $data['count'];
