@@ -15,7 +15,7 @@ function add_like(image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
-		console.log('Result: ' + xhr.response);
+		// console.log('Result: ' + xhr.response);
 		if (xhr.response == 0) {
 			like_count.innerHTML = like_count_value + 1;
 			like_button.style.color = "#ED4956";
@@ -38,20 +38,24 @@ function show_likes(image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
-		// console.log(xhr.response);
 		var data = JSON.parse(xhr.response);
-		console.log(data);
 		like_users.innerHTML = "";
-		var ul = document.createElement("ul");
-		for (var i = 0; i < data.length; i++) {
-			var li = document.createElement("li");
-			li.innerHTML = data[i].users_name;
-			ul.appendChild(li);
+		if (data.length > 0) {
+			var ul = document.createElement("ul");
+			if (data.length > 6) {
+				ul.style.height = "180px";
+				ul.style.marginBottom = "10px";
+				ul.style.overflowY = "scroll";
+			}
+			for (var i = 0; i < data.length; i++) {
+				var li = document.createElement("li");
+				li.innerHTML = data[i].users_name;
+				ul.appendChild(li);
+			}
+			like_users.appendChild(ul);
+			like_names.style.display = "block";
+			dim_background.style.display = "block";
 		}
-		like_users.appendChild(ul);
-		// like_users.innerHTML = xhr.response;
-		like_names.style.display = "block";
-		dim_background.style.display = "block";
 	}
 	var params = 'image_id=' + image_id;
 	xhr.send(params);

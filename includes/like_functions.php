@@ -29,9 +29,11 @@ function get_image_likes($pdo, $image_id) {
 }
 
 function fetch_all_image_data($pdo) {
-	$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid` FROM `images`
+	$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`
+			FROM `images`
 			LEFT JOIN `users`
-			ON `images`.`users_id` = `users`.`users_id`;";
+			ON `images`.`users_id` = `users`.`users_id`
+			ORDER BY `images`.`image_id` DESC;";
 	$statement = $pdo->prepare($sql);
 	if (!$statement->execute()) {
 		$statement = null;
