@@ -5,6 +5,7 @@ ob_start();
 include 'config/setup.php';
 include_once "config/pdo.php";
 include_once 'includes/like_functions.php';
+include_once 'includes/comment_functions.php';
 
 if (!isset($_SESSION["user_id"])) {
 	header("Location: login.php");
@@ -55,7 +56,7 @@ if (isset($_GET['logout'])) {
 							<i id="like_button_<?= $image['image_id'] ?>" style="color: #ED4956;" class="fa-solid fa-heart"></i>
 							<?php } ?>
 						</span>
-						<span id='hover-button'>
+						<span id='hover-button' onclick="focus_comment(<?=$image['image_id'];?>)">
 							<i class="fa-regular fa-comment"></i>
 						</span>
 					</div>
@@ -66,10 +67,21 @@ if (isset($_GET['logout'])) {
 					?>
 					</span> likes</button>
 					<b id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
-					<div id='comments' >
+					<?php
+					$comment_count = get_comment_amount($pdo, $image['image_id']);
+					if ($comment_count > 0) {
+						// $fetch_comments = fetch_image_comments($pdo, $image['image_id'])?>
+					<p class='comment-amount' onclick="get_comments(<?= $image['image_id'] ?>)">View all<span id='comment_amount_<?= $image['image_id'] ?>'>
+								<?= $comment_count ?>
+						</span> comments</p>
+						<?php } ?>
+					<div id='comments_<?= $image['image_id'] ?>'></div>
+
+					<div id='send-comment'>
 							<form method='post' action=''>
 								<div class='input-container'>
-									<textarea placeholder='Add a comment...' name='comment' oninput="auto_grow(this.form)" required></textarea>
+									<textarea id='comment_<?= $image['image_id'] ?>'
+									placeholder='Add a comment...' name='comment' oninput="auto_grow(this.form)" required></textarea>
 									<input type='submit' value='Post' onClick="add_comment(this.form, <?=$image['image_id'];?>); return false;">
 								</div>
 							</form>

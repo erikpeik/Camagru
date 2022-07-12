@@ -131,7 +131,7 @@
 	cursor: pointer;
 }
 
-#comments {
+#send-comment {
 	border-top: 1px solid rgb(219, 219, 219);
 }
 
@@ -162,10 +162,6 @@
 	outline: none;
 }
 
-/* .input-container textarea::placeholder {
-	line-height: 40px;
-} */
-
 .input-container input[type=submit] {
 	display: inline-block;
 	vertical-align: middle;
@@ -176,4 +172,9 @@
 	color: rgb(4, 150, 248);
 	border: none;
 	cursor: pointer;
+}
+
+.comment-amount {
+	color: gray;
+	cursor: pointer
 }

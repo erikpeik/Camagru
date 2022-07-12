@@ -1,3 +1,8 @@
+function focus_comment(image_id) {
+	var textarea = document.getElementById('comment_' + image_id);
+	textarea.focus();
+}
+
 function add_comment(form, image_id) {
 	var comment = form['comment'].value;
 
@@ -12,6 +17,12 @@ function add_comment(form, image_id) {
 	}
 	var params = 'image_id=' + image_id + '&comment=' + comment;
 	xhr.send(params);
+}
+
+function get_comments(image_id) {
+	var div = document.getElementById('comments_' + image_id);
+	var ul = document.createElement("ul");
+
 }
 
 function auto_grow(form) {
