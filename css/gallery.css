@@ -1,0 +1,179 @@
+.image-div {
+	background-color: rgb(255,255,255);
+	margin: 10px auto 0;
+	width: 90vw;
+	max-width: 640px;
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 10px 10px;
+
+}
+
+.image-div p{
+	word-wrap: break-word;
+	margin: 10px;
+}
+
+#image-settings {
+	width: 90vw;
+	max-width: 638px;
+	vertical-align:	bottom;
+}
+
+#top-bar {
+	height: 48px;
+}
+
+#top-bar h1 {
+	font-size: 18px;
+	vertical-align: middle;
+	line-height: 48px;
+	padding-left: 10px;
+}
+
+#like-row {
+	height: 40px;
+}
+
+#like-row i {
+	font-size: 26px;
+	vertical-align: middle;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#like-text {
+	background-color: white;
+	border: none;
+	display: block;
+	font-weight: 600;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	font-size: 1em;
+	transition: all 0.3s;
+	transition-timing-function: ease-out;
+}
+
+#like-text:hover {
+	cursor: pointer;
+}
+
+#like-text:active {
+	color: rgb(60, 60, 60);
+}
+
+#name-left {
+	margin-left: 10px;
+}
+
+#like-names {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 10px 10px;
+	width: 400px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.236);
+	z-index: 100;
+}
+
+#likes-bar {
+	border-bottom: 1px solid rgb(219, 219, 219);
+	width: 100%;
+	height: 36px;
+}
+
+#likes-bar h1 {
+	font-size: 16px;
+	vertical-align: middle;
+	line-height: 36px;
+	text-align: center;
+	font-weight: 600;
+}
+
+#cross {
+	position: absolute;
+	top: 8px;
+	right: 15px;
+	font-size: 22px;
+}
+
+#cross:hover {
+	cursor: pointer;
+}
+
+#like-users li {
+	display: block;
+	padding: 5px;
+}
+
+#like-users p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+#dim-background {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 99;
+}
+
+#hover-button:hover {
+	cursor: pointer;
+}
+
+#comments {
+	border-top: 1px solid rgb(219, 219, 219);
+}
+
+.input-container {
+	margin: 17px 0 17px 5%;
+}
+
+.input-container textarea {
+	display: inline-block;
+	vertical-align: middle;
+	width: 90%;
+	height: 20px;
+	font-size: 14px;
+	border: none;
+	resize: none;
+	overflow: hidden;
+	max-height: 80px;
+	vertical-align: middle;
+}
+
+@media (max-width: 520px) {
+	.input-container textarea {
+		width: 85%;
+	}
+}
+
+.input-container textarea:focus {
+	outline: none;
+}
+
+/* .input-container textarea::placeholder {
+	line-height: 40px;
+} */
+
+.input-container input[type=submit] {
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	font-size: 16px;
+	font-weight: 600;
+	background-color: white;
+	color: rgb(4, 150, 248);
+	border: none;
+	cursor: pointer;
+}

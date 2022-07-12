@@ -25,11 +25,11 @@ camera_button.addEventListener('click', async function() {
 
 	globalThis.stream_width = stream_settings.width;
 	globalThis.stream_height = stream_settings.height;
-	console.log(stream_settings.width, stream_settings.height);
+	// console.log(stream_settings.width, stream_settings.height);
 	//if (window.innerHeight > window.innerWidth) {
 	if (window.matchMedia("(orientation: portrait)").matches
 	&& window.matchMedia("(hover: none)").matches) {
-		console.log("Portrait");
+		// console.log("Portrait");
 		ctx.canvas.width = stream_settings.height;
 		video_div.style.width = "480px";
 		ctx.canvas.height = stream_settings.width;
@@ -37,7 +37,7 @@ camera_button.addEventListener('click', async function() {
 		ctx.scale(-1, 1);
 	} else {
 		// Landscape
-		console.log("Landscape");
+		// console.log("Landscape");
 		ctx.canvas.width = stream_settings.width;
 		video_div.style.width = "640px";
 		ctx.canvas.height = stream_settings.height;
@@ -71,7 +71,7 @@ click_button.addEventListener('click', function() {
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onload = function() {
-		console.log(this.response);
+		// console.log(this.response);
 		final.innerHTML += '<img id="final" src="data:image/jpg;charset=utf8;base64,' + this.response + '" />';
 		var input = document.createElement("input");
 		input.setAttribute("type", "hidden");

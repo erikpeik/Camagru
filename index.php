@@ -21,7 +21,9 @@ if (isset($_GET['logout'])) {
 		<?php include_once 'frontend/head.html'; ?>
 		<title>Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/gallery.css">
 		<link rel="icon" type="image/x-icon" href="images/favicon.png">
+		<script src='js/comment.js'></script>
 	</head>
 	<body>
 		<?php include_once "frontend/header.php"; ?>
@@ -46,14 +48,16 @@ if (isset($_GET['logout'])) {
 						<?php
 							$like_count = check_if_user_liked_picture($pdo, $image['image_id']);
 						?>
-						<span onclick="add_like(<?=$image['image_id'];?>)">
+						<span id='hover-button' onclick="add_like(<?=$image['image_id'];?>)">
 						<?php if ($like_count == 0) { ?>
 							<i id="like_button_<?= $image['image_id'] ?>" class="fa-regular fa-heart"></i>
 							<?php } else { ?>
 							<i id="like_button_<?= $image['image_id'] ?>" style="color: #ED4956;" class="fa-solid fa-heart"></i>
 							<?php } ?>
 						</span>
-						<i class="fa-regular fa-comment"></i>
+						<span id='hover-button'>
+							<i class="fa-regular fa-comment"></i>
+						</span>
 					</div>
 					<button id='like-text' onclick="show_likes(<?= $image['image_id']; ?>)"><span id='like_count_<?= $image['image_id']; ?>'>
 					<?php
@@ -62,6 +66,14 @@ if (isset($_GET['logout'])) {
 					?>
 					</span> likes</button>
 					<b id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
+					<div id='comments' >
+							<form method='post' action=''>
+								<div class='input-container'>
+									<textarea placeholder='Add a comment...' name='comment' oninput="auto_grow(this.form)" required></textarea>
+									<input type='submit' value='Post' onClick="add_comment(this.form, <?=$image['image_id'];?>); return false;">
+								</div>
+							</form>
+					</div>
 				</div>
 				<?php
 				$i++;
@@ -69,6 +81,7 @@ if (isset($_GET['logout'])) {
 			?>
 		</main>
 		<script src='js/like.js'></script>
+		<script src='js/comment.js'></script>
 		<?php
 		include 'frontend/footer.html';
 		?>
