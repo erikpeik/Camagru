@@ -28,9 +28,11 @@ if (isset($_GET['logout'])) {
 		<main>
 			<div id="like-names">
 				<div id='likes-bar'>
-					<h1>Likes</h1>
+					<h1>Likes</h1> <i id='cross' class="fa-solid fa-xmark"></i>
 				</div>
+				<div id='like-users'></div>
 			</div>
+			<div id='dim-background'></div>
 			<?php
 			$data = fetch_all_image_data($pdo);
 			foreach ($data as $image) {
