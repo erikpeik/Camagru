@@ -5,6 +5,7 @@ function focus_comment(image_id) {
 
 function add_comment(form, image_id) {
 	var comment = form['comment'].value;
+	var comment_ammount = document.getElementById('comment_amount_' + image_id);
 
 	form['comment'].value = "";
 	var xhr = new XMLHttpRequest();
@@ -13,6 +14,7 @@ function add_comment(form, image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
+		comment_ammount.innerHTML = parseInt(comment_ammount.innerHTML) + 1;
 		get_comments(image_id);
 	}
 	var params = 'image_id=' + image_id + '&comment=' + comment;

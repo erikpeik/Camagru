@@ -69,11 +69,11 @@ if (isset($_GET['logout'])) {
 					<b id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
 					<?php
 					$comment_count = get_comment_amount($pdo, $image['image_id']);
-					if ($comment_count > 0) { ?>
-					<button class='comment-amount' onclick="get_comments(<?= $image['image_id'] ?>)">View all<span id='comment_amount_<?= $image['image_id'] ?>'>
+					?>
+					<button class='comment-amount' onclick="get_comments(<?= $image['image_id'] ?>)">View all <span id='comment_amount_<?= $image['image_id'] ?>'>
 								<?= $comment_count ?>
 						</span> comments</button>
-						<?php } ?>
+
 					<div id='comments_<?= $image['image_id'] ?>'></div>
 
 					<div id='send-comment'>
