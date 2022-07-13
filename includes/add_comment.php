@@ -16,7 +16,7 @@ if (isset($_POST['comment']) && isset($_POST['image_id'])) {
 		$sql = "INSERT INTO `comments` (`users_id`, `image_id`, `comment`)
 		VALUES (?, ?, ?);";
 		$statement = $pdo->prepare($sql);
-		if (!$statement->execute(array($user_id, $image_id, $comment))) {
+		if (!$statement->execute(array($user_id, $image_id, htmlspecialchars($comment)))) {
 			$statement = null;
 			header('location: ../index.php?msg=error');
 			exit();
