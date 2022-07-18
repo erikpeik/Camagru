@@ -6,6 +6,7 @@ include 'config/setup.php';
 include_once "config/pdo.php";
 include_once 'includes/like_functions.php';
 include_once 'includes/comment_functions.php';
+include_once 'includes/time_elapsed_string.php';
 
 if (!isset($_SESSION["user_id"])) {
 	header("Location: login.php");
@@ -75,7 +76,9 @@ if (isset($_GET['logout'])) {
 						</span> comments</button>
 
 					<div id='comments_<?= $image['image_id'] ?>'></div>
-
+					<h5 id='time-ago'>
+						<?= time_elapsed_string($image['posted_at']);?>
+					</h5>
 					<div id='send-comment'>
 							<form method='post' action=''>
 								<div class='input-container'>
