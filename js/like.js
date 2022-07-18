@@ -1,7 +1,8 @@
 let like_button = document.getElementById("like_button");
-let like_names = document.getElementById("like-names");
 let close_likes = document.getElementById("cross");
-let like_users = document.getElementById("like-users");
+let overlay_box = document.getElementById("overlay_box");
+let overlay_content = document.getElementById("overlay_content");
+let overlay_header = document.getElementById("overlay_header")
 let dim_background = document.getElementById("dim-background");
 
 function add_like(image_id) {
@@ -39,7 +40,6 @@ function show_likes(image_id) {
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
 		var data = JSON.parse(xhr.response);
-		like_users.innerHTML = "";
 		if (data.length > 0) {
 			var ul = document.createElement("ul");
 			if (data.length > 6) {
@@ -52,8 +52,9 @@ function show_likes(image_id) {
 				li.innerHTML = data[i].users_name;
 				ul.appendChild(li);
 			}
-			like_users.appendChild(ul);
-			like_names.style.display = "block";
+			overlay_content.appendChild(ul);
+			overlay_header.innerHTML = "Likes";
+			overlay_box.style.display = "block";
 			dim_background.style.display = "block";
 		}
 	}
@@ -61,8 +62,13 @@ function show_likes(image_id) {
 	xhr.send(params);
 }
 
+function close_overlay() {
+	overlay_box.style.display = "none";
+	dim_background.style.display = "none";
+	overlay_header.innerHTML = "";
+	overlay_content.innerHTML = "";
+}
 
 close_likes.onclick = function() {
-	like_names.style.display = "none";
-	dim_background.style.display = "none";
+	close_overlay();
 }

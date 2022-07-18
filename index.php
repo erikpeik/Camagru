@@ -26,15 +26,16 @@ if (isset($_GET['logout'])) {
 		<link rel="stylesheet" href="css/gallery.css">
 		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 		<script src='js/comment.js'></script>
+		<script src='js/image.js'></script>
 	</head>
 	<body>
 		<?php include_once "frontend/header.php"; ?>
 		<main>
-			<div id="like-names">
-				<div id='likes-bar'>
-					<h1>Likes</h1> <i id='cross' class="fa-solid fa-xmark"></i>
+			<div id="overlay_box">
+				<div id='overlay_bar'>
+					<h1 id='overlay_header'></h1> <i id='cross' class="fa-solid fa-xmark"></i>
 				</div>
-				<div id='like-users'></div>
+				<div id='overlay_content'></div>
 			</div>
 			<div id='dim-background'></div>
 			<?php
@@ -43,7 +44,12 @@ if (isset($_GET['logout'])) {
 				?>
 				<div class="image-div">
 					<div id='top-bar'>
-						<h1><?= $image['users_uid'] ?></h1>
+						<p><?= $image['users_uid'] ?></p>
+						<?php if ($image['users_id'] == $_SESSION['user_id']) { ?>
+						<button onclick="remove_image(<?= $image['image_id'];?>)">
+							Remove <i class="fa-solid fa-trash-alt"></i>
+						</button>
+						<?php } ?>
 					</div>
 					<img id='image-settings' src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>"/>
 					<div id='like-row'>

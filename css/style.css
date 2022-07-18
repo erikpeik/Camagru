@@ -28,4 +28,5 @@ footer {
 main {
 	padding-bottom: 100px;
 	padding-top: 60px;
+	z-index: 1;
 }
