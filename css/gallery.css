@@ -243,11 +243,10 @@
 	transition: all 0.3s;
 }
 
-/* .cancel_button:hover {
-	background-color: initial;
-	background-position: 0 0;
-	color: #FF4742;
-} */
+.cancel_button:hover {
+	background-color: #FF4742;
+	border-color: #d43934;
+}
 
 .confirm_button {
 	background-color: #4CAF50;

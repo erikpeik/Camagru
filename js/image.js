@@ -1,3 +1,5 @@
+
+
 function remove_image(image_id) {
 	dim_background.style.display = "block";
 	overlay_box.style.display = "block";
@@ -14,23 +16,23 @@ function remove_image(image_id) {
 	cancel_button.onclick = function() {
 		close_overlay();
 	}
+	confirm_button.onclick = function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'includes/remove_image.php', true);
+		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		xhr.onload = function() {
+			 console.log('Result: ' + xhr.response);
+			// if (xhr.response == 0) {
+			// 	document.getElementById("image_" + image_id).remove();
+			// }
+		}
+		var params = 'image_id=' + image_id;
+		xhr.send(params);
+	}
 	div.appendChild(cancel_button);
 	div.appendChild(confirm_button);
 
+	overlay_content.innerHTML = "";
 	overlay_content.appendChild(div);
-
-
-	// var xhr = new XMLHttpRequest();
-
-	// xhr.open('POST', 'includes/remove-image.php', true);
-	// xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	// xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-	// xhr.onload = function() {
-	// 	// console.log('Result: ' + xhr.response);
-	// 	if (xhr.response == 0) {
-	// 		document.getElementById("image_" + image_id).remove();
-	// 	}
-	// }
-	// var params = 'image_id=' + image_id;
-	// xhr.send(params);
 }
