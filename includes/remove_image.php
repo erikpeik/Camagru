@@ -11,24 +11,58 @@ if (isset($_POST['image_id']) && isset($_SESSION['user_id'])) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute(array($image_id, $user_id))) {
 			$statement = null;
-			//header('location: ../index.php?msg=error');
-			print("statement error");
+			print("Statement failed");
 			return(0);
 		}
 		$result = $statement->fetch(PDO::FETCH_ASSOC);
-		print_r($result);
 	}
 	catch (PDOException $e) {
 		print("Error!: " . $e->getMessage() . "<br/>");
 	}
 	if ($result['count'] > 0) {
-		$sql = "DELETE FROM likes WHERE image_id = ? AND users_id = ?;";
+		// Deleting image
+		try {
+		$sql = "DELETE FROM images WHERE image_id = ? AND users_id = ?;";
 		$statement = $pdo->prepare($sql);
-		if ($statement->execute(array($image_id, $user_id))) {
-			print("success");
+		if (!$statement->execute(array($image_id, $user_id))) {
+			$statement = null;
+			print("Statement failed");
+			return(0);
 		}
-		else {
-			print("error");
+		$statement = null;
+		}
+		catch (PDOException $e) {
+			print("Error!: " . $e->getMessage() . "<br/>");
+		}
+
+		// Deleting likes of that image
+		try {
+			$sql = "DELETE FROM likes WHERE image_id = ?;";
+			$statement = $pdo->prepare($sql);
+			if (!$statement->execute(array($image_id))) {
+				$statement = null;
+				print("Statement failed");
+				return(0);
+			}
+			$statement = null;
+		}
+		catch (PDOException $e) {
+			print("Error!: " . $e->getMessage() . "<br/>");
+		}
+
+		// Deleting comments of that image
+		try {
+			$sql = "DELETE FROM comments WHERE image_id = ?;";
+			$statement = $pdo->prepare($sql);
+			if (!$statement->execute(array($image_id))) {
+				$statement = null;
+				print("Statement failed");
+				return(0);
+			}
+			$statement = null;
+		}
+		catch (PDOException $e) {
+			print("Error!: " . $e->getMessage() . "<br/>");
 		}
 	}
 }

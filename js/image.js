@@ -22,10 +22,7 @@ function remove_image(image_id) {
 		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		xhr.onload = function() {
-			 console.log('Result: ' + xhr.response);
-			// if (xhr.response == 0) {
-			// 	document.getElementById("image_" + image_id).remove();
-			// }
+			document.location.reload(true);
 		}
 		var params = 'image_id=' + image_id;
 		xhr.send(params);
