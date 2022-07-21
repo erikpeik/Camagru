@@ -28,8 +28,7 @@ function get_image_likes($pdo, $image_id) {
 	return $data;
 }
 
-function fetch_page($pdo, $page) {
-	$row_count = 5;
+function fetch_page($pdo, $page, $row_count) {
 	$offset = ($page - 1) * $row_count;
 	try {
 		$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`

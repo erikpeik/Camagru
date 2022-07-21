@@ -44,11 +44,17 @@ if (isset($_GET['logout'])) {
 			} else {
 				$page = 1;
 			}
+			$per_page = 3;
 			$image_count = image_count($pdo);
-			$data = fetch_page($pdo, $page);
+			$page_count = ceil($image_count / $per_page);
+			if ($page > $page_count) {
+				header("Location: index.php?page=$page_count");
+			}
+			$data = fetch_page($pdo, $page, $per_page);
 			foreach ($data as $image) {
 				require('frontend/image_div.php');
 			}
+			require('frontend/pagination.php');
 			?>
 		</main>
 		<script src='js/like.js'></script>

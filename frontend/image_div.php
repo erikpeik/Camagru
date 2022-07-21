@@ -38,7 +38,7 @@
 		</span> comments</button>
 
 	<div id='comments_<?= $image['image_id'] ?>'></div>
-	<h5 id='time-ago'>
+	<h5 id='time-ago' title="<?=$image['posted_at']?>">
 		<?= time_elapsed_string($image['posted_at']);?>
 	</h5>
 	<div id='send-comment'>
