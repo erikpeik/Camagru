@@ -28,18 +28,45 @@ function get_image_likes($pdo, $image_id) {
 	return $data;
 }
 
-function fetch_all_image_data($pdo) {
-	$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`
-			FROM `images`
-			LEFT JOIN `users`
-			ON `images`.`users_id` = `users`.`users_id`
-			ORDER BY `images`.`image_id` DESC;";
-	$statement = $pdo->prepare($sql);
-	if (!$statement->execute()) {
-		$statement = null;
-		header('location: ../index.php?msg=statement_failed');
-		exit();
+function fetch_page($pdo, $page) {
+	$row_count = 5;
+	$offset = ($page - 1) * $row_count;
+	try {
+		$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`
+				FROM `images`
+				LEFT JOIN `users`
+				ON `images`.`users_id` = `users`.`users_id`
+				ORDER BY `images`.`image_id` DESC
+				LIMIT :row_count OFFSET :offset;";
+		$statement = $pdo->prepare($sql);
+		$statement->bindValue(':row_count', $row_count, PDO::PARAM_INT);
+		$statement->bindValue(':offset', $offset, PDO::PARAM_INT);
+		if (!$statement->execute()) {
+			$statement = null;
+			header('location: ../index.php?msg=error');
+			exit();
+		}
+		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
 	}
-	$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+	catch (PDOException $e) {
+		echo "Error: " . $e->getMessage();
+	}
 	return $data;
+}
+
+function image_count($pdo) {
+	try {
+		$sql = "SELECT COUNT(*) as `count` FROM `images`";
+		$statement = $pdo->prepare($sql);
+		if (!$statement->execute()) {
+			$statement = null;
+			header('location: ../index.php?msg=error');
+			exit();
+		}
+		$data = $statement->fetch(PDO::FETCH_ASSOC);
+	}
+	catch (PDOException $e) {
+		echo "Error: " . $e->getMessage();
+	}
+	return $data['count'];
 }
