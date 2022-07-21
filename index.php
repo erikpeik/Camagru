@@ -44,7 +44,7 @@ if (isset($_GET['logout'])) {
 			} else {
 				$page = 1;
 			}
-			$per_page = 3;
+			$per_page = 5;
 			$image_count = image_count($pdo);
 			$page_count = ceil($image_count / $per_page);
 			if ($page > $page_count) {
