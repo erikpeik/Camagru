@@ -29,13 +29,24 @@
 		echo $data['count'];
 	?>
 	</span> likes</button>
-	<b id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
+	<p id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
 	<?php
 	$comment_count = get_comment_amount($pdo, $image['image_id']);
-	?>
-	<button class='comment-amount' onclick="get_comments(<?= $image['image_id'] ?>)">View all <span id='comment_amount_<?= $image['image_id'] ?>'>
-				<?= $comment_count ?>
-		</span> comments</button>
+	if ($comment_count == 1) {
+		$comment_text = "View 1 comment";
+	} else {
+		$comment_text = "View all " . $comment_count . " comments";
+	}
+
+	if ($comment_count > 0) {?>
+	<button class='comment-amount' id='comment_box_<?=$image['image_id']?>'
+	onclick="get_comments(<?= $image['image_id'] ?>, <?= $_SESSION['user_id'] ?>)">
+	<?= $comment_text ?></button>
+	<?php } else { ?>
+	<button style="display: none;" class='comment-amount' id='comment_box_<?=$image['image_id']?>'
+	onclick="get_comments(<?= $image['image_id'] ?>, <?= $_SESSION['user_id'] ?>)">
+	</button>
+	<?php } ?>
 
 	<div id='comments_<?= $image['image_id'] ?>'></div>
 	<h5 id='time-ago' title="<?=$image['posted_at']?>">
