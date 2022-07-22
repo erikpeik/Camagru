@@ -5,7 +5,8 @@ require_once '../config/pdo.php';
 if (isset($_POST['image_id'])) {
 	// Get all the comments for the image_id
 	$image_id = $_POST['image_id'];
-	$sql = "SELECT u.`users_name`, u.`users_uid`, c.`comment`, c.`posted_at`
+	$sql = "SELECT u.`users_name`, u.`users_uid`, c.`comment`, c.`posted_at`,
+			c.`comment_id`, c.`image_id`, c.`users_id`
 			FROM `comments` as c
 			INNER JOIN `users` as u
 			ON u.`users_id` = c.`users_id`

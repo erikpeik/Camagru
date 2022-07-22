@@ -29,6 +29,7 @@ li {
 }
 
 .logo {
+	cursor: pointer;
 	height: 2em;
 }
 

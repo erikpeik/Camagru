@@ -40,12 +40,10 @@
 
 	if ($comment_count > 0) {?>
 	<button class='comment-amount' id='comment_box_<?=$image['image_id']?>'
-	onclick="get_comments(<?= $image['image_id'] ?>, <?= $_SESSION['user_id'] ?>)">
-	<?= $comment_text ?></button>
+	onclick="get_comments(<?=$image['image_id']?>)"><?=$comment_text?></button>
 	<?php } else { ?>
 	<button style="display: none;" class='comment-amount' id='comment_box_<?=$image['image_id']?>'
-	onclick="get_comments(<?= $image['image_id'] ?>, <?= $_SESSION['user_id'] ?>)">
-	</button>
+	onclick="get_comments(<?= $image['image_id'] ?>)"></button>
 	<?php } ?>
 
 	<div id='comments_<?= $image['image_id'] ?>'></div>

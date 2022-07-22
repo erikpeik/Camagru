@@ -208,7 +208,31 @@
 }
 
 .comment {
+	position: relative;
 	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.comment p {
+	margin: 10px 0 10px 10px;
+	display: inline-block;
+	overflow: hidden;
+	width: 90%;
+}
+
+.comment button {
+	float: right;
+	font-size: 22px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid rgb(219, 219, 219);
 }
 
 #time-ago {
