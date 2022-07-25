@@ -3,10 +3,6 @@
 session_start();
 include_once '../config/pdo.php';
 
-print_r($_POST);
-print("<br/>");
-print($_POST['image_id'] . " : " . $_POST['comment_id'] . " : " . $_SESSION['user_id'] . "<br/>");
-
 if (isset($_POST['image_id']) && isset($_POST['comment_id']) && isset($_SESSION['user_id'])) {
 	$image_id = $_POST['image_id'];
 	$user_id = $_SESSION['user_id'];

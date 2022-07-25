@@ -27,6 +27,7 @@ if (isset($_GET['logout'])) {
 		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 		<script src='js/comment.js'></script>
 		<script src='js/image.js'></script>
+		<?php require('js/does_it_match.php'); ?>
 	</head>
 	<body>
 		<?php include_once "frontend/header.php"; ?>

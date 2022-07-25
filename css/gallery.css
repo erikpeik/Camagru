@@ -223,13 +223,13 @@
 
 .comment button {
 	float: right;
-	font-size: 22px;
+	font-size: 18px;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 10px;
 	border: none;
-	padding: 5px;
+	padding: 3px;
 	border-radius: 5px;
 	cursor: pointer;
 	border: 1px solid rgb(219, 219, 219);

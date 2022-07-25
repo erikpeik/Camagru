@@ -16,7 +16,7 @@ function update_comment_count(image_id) {
 	xhr.send(params);
 }
 
-function remove_command(comment_id, image_id) {
+function delete_comment(comment_id, image_id) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/delete_comment.php', true);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -47,8 +47,6 @@ function update_comment_amount(comment_amount, image_id) {
 
 function add_comment(form, image_id) {
 	var comment = form['comment'].value;
-
-
 	form['comment'].value = "";
 	var xhr = new XMLHttpRequest();
 
@@ -87,16 +85,17 @@ function get_comments(image_id) {
 			for (var i = 0; i < data.length; i++) {
 				var comment = data[i];
 				var div = document.createElement("div");
-				var p = document.createElement("p");
-				p.innerHTML = comment.users_name + ": " + comment.comment;
-				var button = document.createElement("button");
-				button.innerHTML = '<i class="fa fa-trash-o"></i>';
-				button.onclick = function() {
-					remove_command(comment.comment_id, comment.image_id);
+				var match = does_users_id_match(comment.users_id);
+				if (match == true) {
+					div.innerHTML = '<p>' + comment.users_name + ': ' +
+				 	comment.comment + '</p>' + '<button onclick="delete_comment(' +
+					comment.comment_id + ', ' + comment.image_id + ')">' +
+					'<i class="fa fa-trash-o"></i></button>';
+				} else {
+					div.innerHTML = '<p>' + comment.users_name + ': ' +
+				 	comment.comment + '</p>';
 				}
 				div.className = "comment";
-				div.appendChild(p);
-				div.append(button);
 				comments.appendChild(div);
 			}
 		}
