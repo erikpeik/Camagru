@@ -240,6 +240,7 @@
 	font-size: 12px;
 	font-weight: 400;
 	padding: 5px 0 5px 10px;
+	cursor: default;
 }
 
 .confirm_buttons {

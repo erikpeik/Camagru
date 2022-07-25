@@ -3,6 +3,19 @@ function focus_comment(image_id) {
 	textarea.focus();
 }
 
+function update_comment_count(image_id) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'includes/get_comment_amount.php', true);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	xhr.onload = function() {
+		var comment_amount = parseInt(xhr.responseText);
+		update_comment_amount(comment_amount, image_id);
+	}
+	var params = 'image_id=' + image_id;
+	xhr.send(params);
+}
+
 function remove_command(comment_id, image_id) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/delete_comment.php', true);
@@ -10,14 +23,31 @@ function remove_command(comment_id, image_id) {
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
 		get_comments(image_id);
+		update_comment_count(image_id);
 	}
 	var params = 'comment_id=' + comment_id + '&image_id=' + image_id;
 	xhr.send(params);
 }
 
+function update_comment_amount(comment_amount, image_id) {
+	var comment_box = document.getElementById('comment_box_' + image_id);
+
+	comment_box.style.removeProperty("display");
+	if (comment_amount == 1) {
+		comment_box.innerHTML = "View " + comment_amount + " comment";
+	}
+	else if (comment_amount > 1) {
+		comment_box.innerHTML = "View all " + comment_amount + " comments";
+	}
+	else {
+		comment_box.style.display = "none";
+		comment_box.innerHTML = "";
+	}
+}
+
 function add_comment(form, image_id) {
 	var comment = form['comment'].value;
-	var comment_box = document.getElementById('comment_box_' + image_id);
+
 
 	form['comment'].value = "";
 	var xhr = new XMLHttpRequest();
@@ -32,18 +62,8 @@ function add_comment(form, image_id) {
 		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		xhr.onload = function() {
 			var comment_amount = parseInt(xhr.responseText);
-			console.log("Amount: " + comment_amount);
-			comment_box.style.removeProperty("display");
-			if (comment_amount == 1) {
-				comment_box.innerHTML = "View " + comment_amount + " comment";
-			}
-			else if (comment_amount > 1) {
-				comment_box.innerHTML = "View all " + comment_amount + " comments";
-			}
-			else {
-				comment_box.innerHTML = "";
-			}
-		get_comments(image_id);
+			update_comment_amount(comment_amount, image_id);
+			get_comments(image_id);
 		}
 		var params = 'image_id=' + image_id;
 		xhr.send(params);
@@ -71,8 +91,6 @@ function get_comments(image_id) {
 				p.innerHTML = comment.users_name + ": " + comment.comment;
 				var button = document.createElement("button");
 				button.innerHTML = '<i class="fa fa-trash-o"></i>';
-				console.log(comment);
-				// button.addEventListener("click", remove_command(comment.comment_id, comment.image_id));
 				button.onclick = function() {
 					remove_command(comment.comment_id, comment.image_id);
 				}

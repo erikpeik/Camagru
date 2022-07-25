@@ -16,7 +16,6 @@ function add_like(image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
-		// console.log('Result: ' + xhr.response);
 		if (xhr.response == 0) {
 			like_count.innerHTML = like_count_value + 1;
 			like_button.style.color = "#ED4956";

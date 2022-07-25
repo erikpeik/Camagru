@@ -1,5 +1,3 @@
-
-
 function remove_image(image_id) {
 	dim_background.style.display = "block";
 	overlay_box.style.display = "block";
