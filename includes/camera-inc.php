@@ -31,7 +31,6 @@ if (isset($_POST['img']) && isset($_POST['stickers'])) {
 			print("image creating error: $nbr");
 			exit();
 		}
-		imagepng($sticker, "test.png");
 		if (!isset($_POST["sticker_$nbr"])) {
 			print("sticker error: $nbr");
 			exit();
