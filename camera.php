@@ -25,13 +25,25 @@ if (!isset($_SESSION["user_id"])) {
 				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 			</div>
-
-			<div id="video-div">
-				<video id="video" autoplay playsinline></video>
-				<img id="sticker" style='top: 0; left: 0;' src="images/stickers/42.png">
+			<div class='container'>
+				<div id='stickers'>
+					<ul>
+						<?php for ($i = 1; $i <= 7; $i++) { ?>
+						<li>
+							<img src="images/stickers/<?=$i?>.png" onclick="add_sticker(<?=$i?>)">
+						</li>
+						<?php } ?>
+					</ul>
+				</div>
+				<div id="video-div" style="width: 640px; height: 480px;">
+					<div id="final-image"></div>
+					<video id="video" autoplay playsinline></video>
+					<div id="add_stickers"></div>
+				</div>
+				<div id='drafts'></div>
 			</div>
 			<canvas id="canvas"></canvas>
-			<div id="final-image"></div>
+
 			<form id='image-form' action='includes/store-image.php' method='post'>
 				<h1>New Post</h1>
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />

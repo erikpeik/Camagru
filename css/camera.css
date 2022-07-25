@@ -2,9 +2,7 @@
 	vertical-align: bottom;
 	display: none;
 	position: relative;
-	/* width: 80vw; */
-	margin-left: 50%;
-	transform: translateX(-50%);
+	width: 640px;
 	background-color: rgb(255, 255, 255);
 	border: 1px solid rgb(219, 219, 219);
 }
@@ -51,7 +49,7 @@
 	color: rgb(57, 57, 57);
 }
 
-#sticker {
+.sticker {
 	position: absolute;
 }
 
@@ -143,7 +141,7 @@
 	width: fit-content;
 	overflow: hidden;
 	clear: both;
-	text-align: rigth;
+	text-align: right;
 	margin: 5px 25px 5px auto;
 }
 
@@ -152,15 +150,39 @@
 }
 
 #final {
+	display: inline-block;
 	width: 90vw;
 	max-width: 640px;
 	vertical-align:	bottom;
 }
 
-#final-image {
+/* #final-image {
 	width: fit-content;
 	margin: 35px auto 0;
 	background-color: rgb(255, 255, 255);
 	border: 1px solid rgb(219, 219, 219);
 	display: block;
+} */
+
+.container {
+	width: 1040px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+#stickers {
+	display: inline-block;
+	width: 200px;
+	height: 480px;
+	overflow-x: auto;
+	display: none;
+}
+
+#stickers img {
+	width: 80%;
+	margin-left: 20px;
+}
+
+#add_stickers img {
+	width: 200px;
 }
