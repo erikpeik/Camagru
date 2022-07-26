@@ -24,6 +24,19 @@ if (!isset($_SESSION["user_id"])) {
 	<body>
 		<?php include_once "frontend/header.php" ?>
 		<main>
+			<?php if (!isset($_COOKIE['usage'])) { ?>
+			<div class='information'>
+				<div class='info_header'>
+					<h3>Usage</h1></h3><i id='cross' class="fa-solid fa-xmark"></i>
+				</div>
+				<div>
+					Start your camera by pressing <b>Start Camera</b>. Choose your stickers.<br>
+					Take picture by pressing <b>Take Picture</b>.
+					You can retry taking the picture by pressing <b>Cancel</b> or write your caption and press <b>Submit</b>.<br>
+					By pressing <b>Submit</b> the image will be uploaded to the database and you are ready to go!
+				</div>
+			</div>
+			<?php } ?>
 			<div class='camera-buttons'>
 				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
@@ -45,7 +58,6 @@ if (!isset($_SESSION["user_id"])) {
 				<div id='drafts'></div>
 			</div>
 			<canvas id="canvas"></canvas>
-
 			<form id='image-form' method='post'>
 				<h1>New Post</h1>
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />

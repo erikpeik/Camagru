@@ -179,3 +179,14 @@ image_form.addEventListener('submit', function(e) {
 	xhr.send(params);
 	e.preventDefault();
 });
+
+document.querySelector("#cross").addEventListener("click", function() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'includes/cookie_usage.php', true);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	xhr.onload = function() {
+		document.querySelector(".information").style.display = "none";
+	}
+	xhr.send();
+});
