@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 ob_start();
 
 function get_comment_amount($pdo, $image_id) {

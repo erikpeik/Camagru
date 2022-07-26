@@ -1,5 +1,4 @@
 <?php
-session_start();
 ob_start();
 
 include_once 'includes/auth-inc.php';
