@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 ob_start();
 
 function check_if_user_liked_picture($pdo, $image_id) {

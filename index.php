@@ -1,6 +1,10 @@
 <?php
 ob_start();
 
+if (!isset($_SESSION)) {
+	session_start();
+}
+
 include 'config/setup.php';
 include_once "config/pdo.php";
 include_once 'includes/like_functions.php';

@@ -2,12 +2,6 @@
 
 include_once '../config/pdo.php';
 
-ob_start();
-if (!isset($_SESSION["user_id"])) {
-	header("Location: login.php");
-}
-ob_get_clean();
-
 if (isset($_POST['img']) && isset($_POST['stickers'])) {
 	$image = $_POST['img'];
 	$image = preg_replace("/data:image\/jpeg;base64,/", '', $image);

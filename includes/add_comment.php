@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 require_once '../config/pdo.php';
 
 if (isset($_POST['comment']) && isset($_POST['image_id'])) {

@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
+
 include_once '../config/pdo.php';
 
 if (isset($_POST['image_id']) && isset($_SESSION['user_id'])) {

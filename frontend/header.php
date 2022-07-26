@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+	session_start();
+}
+?>
+
 <link rel="stylesheet" href="css/header.css">
 <header>
 	<nav class="navbar">
