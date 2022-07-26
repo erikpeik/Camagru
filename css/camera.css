@@ -21,7 +21,6 @@
 }
 
 .camera-buttons {
-	/* display: inline-block; */
 	width: 180px;
 	margin-left: 50%;
 	transform: translateX(-50%);
@@ -197,4 +196,8 @@
 	background-color: rgb(250, 250, 250);
 	border: 1px solid #dbdbdb;
 	transform: translateY(2px);
+}
+
+#drafts img {
+	width: 100%;
 }

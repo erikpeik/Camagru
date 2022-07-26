@@ -39,7 +39,6 @@ if (!isset($_SESSION["user_id"])) {
 					</ul>
 				</div>
 				<div id="video-div" style="width: 640px; height: 480px;">
-					<div id="final-image"></div>
 					<video id="video" autoplay playsinline></video>
 					<div id="add_stickers"></div>
 				</div>
@@ -47,16 +46,17 @@ if (!isset($_SESSION["user_id"])) {
 			</div>
 			<canvas id="canvas"></canvas>
 
-			<form id='image-form' action='includes/store-image.php' method='post'>
+			<form id='image-form' method='post'>
 				<h1>New Post</h1>
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
 				<div id="buttons">
-					<button type='button' onClick="location.href = 'camera.php'" id='cancel-image'>Cancel</button>
+					<button type='button' id='cancel-image'>Cancel</button>
 					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
 				</div>
 			</form>
 		</main>
 		<?php include 'frontend/footer.html'; ?>
 	</body>
+	<script type="text/javascript" src="js/dragElement.js"></script>
 	<script type="text/javascript" src="js/camera.js"></script>
 </html>
