@@ -165,17 +165,19 @@
 } */
 
 .container {
-	width: 1040px;
+	width: 1048px;
 	margin-left: 50%;
 	transform: translateX(-50%);
 }
 
 #stickers {
-	display: inline-block;
 	width: 200px;
-	height: 480px;
+	height: 478px;
 	overflow-x: auto;
 	display: none;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #dbdbdb;
+	transform: translateY(2px);
 }
 
 #stickers img {
@@ -185,4 +187,14 @@
 
 #add_stickers img {
 	width: 200px;
+}
+
+#drafts {
+	width: 200px;
+	height: 478px;
+	overflow-x: auto;
+	display: none;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #dbdbdb;
+	transform: translateY(2px);
 }

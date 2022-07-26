@@ -7,6 +7,7 @@ let video_div = document.querySelector('#video-div');
 let sticker_div = document.getElementById("add_stickers");
 let sticker_bar = document.getElementById("stickers");
 let final = document.querySelector("#final-image");
+let drafts = document.querySelector("#drafts");
 
 var stream_width;
 var stream_height;
@@ -52,6 +53,7 @@ camera_button.addEventListener('click', async function() {
 	document.querySelector('.camera-buttons').style.width = "350px";
 	document.querySelector('#click-photo').style.display = "inline-block";
 	sticker_bar.style.display = 'inline-block';
+	drafts.style.display = 'inline-block';
 });
 
 click_button.addEventListener('click', function() {
@@ -65,6 +67,10 @@ click_button.addEventListener('click', function() {
 
 	var sticker_res = "";
 	var check = sticker_div.getElementsByClassName('sticker');
+	if (check.length < 1) {
+		alert("Before taking picture please add a sticker");
+		return ;
+	}
 	for (i = 0; i < check.length; i++) {
 		if (i != 0) {
 			sticker_res += ",";
@@ -75,7 +81,7 @@ click_button.addEventListener('click', function() {
 
 	// data url of the image
 	var http = new XMLHttpRequest();
-	var params = 'img=' + image_data_url + '&stickers=' + sticker_res;
+
 	for (i = 0; i < check.length; i++) {
 		var char = check[i].id.charAt(check[i].id.length - 1);
 		sticker_res += char;
@@ -90,17 +96,18 @@ click_button.addEventListener('click', function() {
 		img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
 		img.id = "final";
 		video_div.append(img);
-	//	final.innerHTML += '<img id="final" src="data:image/jpg;charset=utf8;base64,' + this.response + '" />';
 		var input = document.createElement("input");
 		input.setAttribute("type", "hidden");
 		input.setAttribute("name", "image");
 		input.setAttribute("value", this.response)
 		document.getElementById("image-form").appendChild(input)
 	}
+	var params = 'img=' + image_data_url + '&stickers=' + sticker_res;
 	http.send(params);
 	video.style.display = "none";
 	sticker_div.style.display = "none";
 	sticker_bar.style.display = 'none';
+	drafts.style.display = 'none';
 	video_div.style.marginLeft = "200px";
 	document.querySelector('.camera-buttons').style.display = 'none';
 	document.querySelector('#image-form').style.display = 'block';
