@@ -9,6 +9,7 @@ let sticker_bar = document.getElementById("stickers");
 let drafts = document.querySelector("#drafts");
 let image_form = document.querySelector('#image-form');
 let cancel_image = document.querySelector("#cancel-image");
+let container = document.querySelector('.container');
 
 var stream_width;
 var stream_height;
@@ -107,10 +108,11 @@ click_button.addEventListener('click', function() {
 	sticker_div.style.display = "none";
 	sticker_bar.style.display = 'none';
 	drafts.style.display = 'none';
-	video_div.style.marginLeft = "200px";
+	// video_div.style.marginLeft = "200px";
 	document.querySelector('.camera-buttons').style.display = 'none';
 	image_form.style.display = 'block';
-	document.querySelector('.container').style.marginTop = '57px';
+	container.style.width = '640px';
+	container.style.marginTop = '57px';
 });
 
 
@@ -140,8 +142,9 @@ function back_to_camera() {
 	drafts.style.display = 'inline-block';
 	document.querySelector('.camera-buttons').style.display = 'block';
 	image_form.style.display = 'none';
-	video_div.style.marginLeft = "0px";
-	document.querySelector('.container').style.marginTop = '0px';
+	// video_div.style.marginLeft = "0px";
+	container.style.width = '';
+	container.style.marginTop = '0px';
 }
 
 cancel_image.addEventListener("click", function(e) {

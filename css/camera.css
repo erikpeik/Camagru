@@ -64,7 +64,6 @@
 	color: #333;
 	margin: 5px auto 0;
 	display: none;
-	transform: translateX(-4px);
 }
 
 
@@ -156,47 +155,76 @@
 	vertical-align:	bottom;
 }
 
-.container {
-	width: 1050px;
-	margin-left: 50%;
-	transform: translateX(-50%);
-}
-@media only screen and (max-width: 1050px) {
-	#stickers {
+
+
+@media only screen and (min-width: 640px) and (max-width: 1049px) {
+	#cam_texts {
+		display: none;
+	}
+	.container {
 		width: 640px;
-		height: 200px;
-		overflow-x: auto;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#stickers {
+		width: 638px;
+		height: 140px;
+		overflow: auto;
 		display: none;
 		background-color: rgb(250, 250, 250);
 		border: 1px solid #dbdbdb;
 		transform: translateY(2px);
+	}
+
+	#stickers ul {
+		display: table-cell;
+	}
+
+	#stickers li {
+		display: table-cell;
 	}
 
 	#stickers img {
-		height: 160px;
-		margin-left: 20px;
+		object-fit: scale-down;
+		float: left;
+		display: inline;
+		width: fit-content;
+		max-width: 200px;
+		height: 130px;
+		max-height: 200px;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 
 	#drafts {
-		width: 200px;
-		height: 478px;
-		overflow-x: auto;
 		display: none;
-		background-color: rgb(250, 250, 250);
-		border: 1px solid #dbdbdb;
-		transform: translateY(2px);
 	}
 
 	#drafts img {
-		width: 100%;
+		display: none;
 	}
 }
 
 @media only screen and (min-width: 1050px) {
+	#cam_texts {
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-size: 18px;
+		color: rgb(78, 78, 78);
+	}
+
+	.container {
+		width: 1050px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
 	#stickers {
 		width: 200px;
 		height: 478px;
-		overflow-x: auto;
+		overflow-y: auto;
 		display: none;
 		background-color: rgb(250, 250, 250);
 		border: 1px solid #dbdbdb;
@@ -205,9 +233,9 @@
 
 	#stickers img {
 		width: 160px;
+		height: fit-content;
 		margin-left: 20px;
 	}
-
 
 	#drafts {
 		width: 200px;

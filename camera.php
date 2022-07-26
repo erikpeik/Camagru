@@ -43,6 +43,7 @@ if (!isset($_SESSION["user_id"])) {
 			</div>
 			<div class='container'>
 				<div id='stickers'>
+					<span id="cam_texts">Stickers</span>
 					<ul>
 						<?php for ($i = 1; $i <= 7; $i++) { ?>
 						<li>
@@ -55,7 +56,7 @@ if (!isset($_SESSION["user_id"])) {
 					<video id="video" autoplay playsinline></video>
 					<div id="add_stickers"></div>
 				</div>
-				<div id='drafts'></div>
+				<div id='drafts'><span id="cam_texts">Uploaded Images</span></div>
 			</div>
 			<canvas id="canvas"></canvas>
 			<form id='image-form' method='post'>
