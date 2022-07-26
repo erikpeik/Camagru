@@ -161,38 +161,71 @@
 	margin-left: 50%;
 	transform: translateX(-50%);
 }
+@media only screen and (max-width: 1050px) {
+	#stickers {
+		width: 640px;
+		height: 200px;
+		overflow-x: auto;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
 
-#stickers {
-	width: 200px;
-	height: 478px;
-	overflow-x: auto;
-	display: none;
-	background-color: rgb(250, 250, 250);
-	border: 1px solid #dbdbdb;
-	transform: translateY(2px);
+	#stickers img {
+		height: 160px;
+		margin-left: 20px;
+	}
+
+	#drafts {
+		width: 200px;
+		height: 478px;
+		overflow-x: auto;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#drafts img {
+		width: 100%;
+	}
 }
 
-#stickers img {
-	width: 80%;
-	margin-left: 20px;
+@media only screen and (min-width: 1050px) {
+	#stickers {
+		width: 200px;
+		height: 478px;
+		overflow-x: auto;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#stickers img {
+		width: 160px;
+		margin-left: 20px;
+	}
+
+
+	#drafts {
+		width: 200px;
+		height: 478px;
+		overflow-x: auto;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#drafts img {
+		width: 100%;
+	}
 }
 
 #add_stickers img {
 	width: 200px;
-}
-
-#drafts {
-	width: 200px;
-	height: 478px;
-	overflow-x: auto;
-	display: none;
-	background-color: rgb(250, 250, 250);
-	border: 1px solid #dbdbdb;
-	transform: translateY(2px);
-}
-
-#drafts img {
-	width: 100%;
 }
 
 .information {
