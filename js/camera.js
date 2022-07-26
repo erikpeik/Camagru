@@ -81,7 +81,7 @@ click_button.addEventListener('click', function() {
 
 	// data url of the image
 	var http = new XMLHttpRequest();
-
+	var params = 'img=' + image_data_url + '&stickers=' + sticker_res;
 	for (i = 0; i < check.length; i++) {
 		var char = check[i].id.charAt(check[i].id.length - 1);
 		sticker_res += char;
@@ -102,7 +102,6 @@ click_button.addEventListener('click', function() {
 		input.setAttribute("value", this.response)
 		document.getElementById("image-form").appendChild(input)
 	}
-	var params = 'img=' + image_data_url + '&stickers=' + sticker_res;
 	http.send(params);
 	video.style.display = "none";
 	sticker_div.style.display = "none";
