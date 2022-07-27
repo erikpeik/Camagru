@@ -8,6 +8,28 @@ function dragElement(element, nbr) {
 		element.onmousedown = dragMouseDown;
 	}
 
+	sticker.addEventListener('touchmove', function(e) {
+		var position = video.getBoundingClientRect();
+		var touch_location = e.targetTouches[0];
+
+		left_pos = touch_location.pageX - (sticker.offsetWidth / 2);
+		top_pos = touch_location.pageY - position.top - (sticker.offsetHeight / 2);
+		if (left_pos < 0) {
+			left_pos = 0;
+		}
+		if (left_pos > video.offsetWidth - sticker.offsetWidth) {
+			left_pos = video.offsetWidth - sticker.offsetWidth;
+		}
+		if (top_pos < 0) {
+			top_pos = 0;
+		}
+		if (top_pos > video.offsetHeight - sticker.offsetHeight) {
+			top_pos = video.offsetHeight - sticker.offsetHeight;
+		}
+		element.style.top = top_pos + "px";
+		element.style.left = left_pos + "px";
+	}, { passive: true} );
+
 	function dragMouseDown(e) {
 		e = e || window.event;
 		e.preventDefault();
