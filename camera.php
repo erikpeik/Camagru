@@ -52,7 +52,7 @@ if (!isset($_SESSION["user_id"])) {
 						<?php } ?>
 					</ul>
 				</div>
-				<div id="video-div" style="width: 640px; height: 480px;">
+				<div id="video-div">
 					<video id="video" autoplay playsinline></video>
 					<div id="add_stickers"></div>
 				</div>

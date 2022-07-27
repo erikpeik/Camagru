@@ -15,9 +15,8 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	margin: none;
-	margin-left: 50%;
-	transform: translateX(-50%) scaleX(-1);
+	margin: 0;
+	transform: scaleX(-1);
 }
 
 .camera-buttons {
@@ -61,6 +60,7 @@
 	background-color: rgb(250, 250, 250);
 	border: 1px solid #dbdbdb;
 	width: 640px;
+	max-width: 640px;
 	color: #333;
 	margin: 5px auto 0;
 	display: none;
@@ -150,7 +150,7 @@
 
 #final {
 	display: inline-block;
-	width: 90vw;
+	width: 100%;
 	max-width: 640px;
 	vertical-align:	bottom;
 }
@@ -159,21 +159,39 @@
 	overflow-x: hidden;
 }
 
+#add_stickers img {
+	width: 200px;
+}
 
-@media only screen and (min-width: 640px) and (max-width: 1049px) {
+@media only screen and (max-width: 639px) {
+	#image-form {
+		width: 95vw;
+	}
+
+	#add_stickers img {
+		width: calc(95vw/3.2);
+	}
+
+	#video-div {
+		width: 95vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
 	#cam_texts {
 		display: none;
 	}
 	.container {
-		width: 640px;
+		width: 95vw;
 		margin-left: 50%;
 		transform: translateX(-50%);
 	}
 
 	#stickers {
-		width: 638px;
+		width: 95vw;
 		height: 140px;
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
 		display: none;
 		background-color: rgb(250, 250, 250);
 		border: 1px solid #dbdbdb;
@@ -194,7 +212,57 @@
 		display: inline;
 		width: fit-content;
 		max-width: 200px;
-		height: 130px;
+		height: 120px;
+		max-height: 200px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	#drafts {
+		display: none;
+	}
+
+	#drafts img {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1049px) {
+	#cam_texts {
+		display: none;
+	}
+	.container {
+		width: 640px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#stickers {
+		width: 640px;
+		height: 140px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#stickers ul {
+		display: table-cell;
+	}
+
+	#stickers li {
+		display: table-cell;
+	}
+
+	#stickers img {
+		object-fit: scale-down;
+		float: left;
+		display: inline;
+		width: fit-content;
+		max-width: 200px;
+		height: 120px;
 		max-height: 200px;
 		margin-left: 10px;
 		margin-right: 10px;
@@ -253,10 +321,6 @@
 	#drafts img {
 		width: 100%;
 	}
-}
-
-#add_stickers img {
-	width: 200px;
 }
 
 .information {
