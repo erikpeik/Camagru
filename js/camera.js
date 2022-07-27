@@ -88,14 +88,15 @@ click_button.addEventListener('click', function() {
 		sticker_res += char;
 
 		var multiplier = 200 / check[i].offsetWidth;
+		console.log(multiplier);
 
 		var left = parseInt(check[i].style.left, 10);
 		var top = parseInt(check[i].style.top, 10);
 
 		params += '&sticker_' + char + '=' + left * multiplier + ',' + top * multiplier
 		+ ',' + check[i].offsetWidth * multiplier + ',' + check[i].offsetHeight * multiplier;
-		// console.log(left * multiplier + ',' + top * multiplier
-		// + ',' + check[i].offsetWidth * multiplier + ',' + check[i].offsetHeight * multiplier);
+		console.log(left * multiplier + ',' + top * multiplier
+		+ ',' + check[i].offsetWidth * multiplier + ',' + check[i].offsetHeight * multiplier);
 	}
 	http.open('POST', 'includes/camera-inc.php', true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
