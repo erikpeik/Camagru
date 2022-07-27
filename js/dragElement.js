@@ -8,6 +8,10 @@ function dragElement(element, nbr) {
 		element.onmousedown = dragMouseDown;
 	}
 
+	sticker.addEventListener("touchstart", function(e) {
+		document.body.style.overflow = "hidden";
+	}, { passive: true });
+
 	sticker.addEventListener('touchmove', function(e) {
 		var position = video.getBoundingClientRect();
 		var touch_location = e.targetTouches[0];
@@ -29,6 +33,10 @@ function dragElement(element, nbr) {
 		element.style.top = top_pos + "px";
 		element.style.left = left_pos + "px";
 	}, { passive: true} );
+
+	sticker.addEventListener('touchend', function(e) {
+		document.body.style.overflow = "";
+	})
 
 	function dragMouseDown(e) {
 		e = e || window.event;
