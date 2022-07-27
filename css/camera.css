@@ -235,7 +235,7 @@
 
 @media only screen and (max-width: 480px) {
 	#add_stickers img {
-		width: calc(95vw/2.1);
+		width: calc(95vw/2.4);
 	}
 }
 
