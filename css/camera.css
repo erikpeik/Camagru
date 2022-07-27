@@ -16,6 +16,7 @@
 	height: 100%;
 	object-fit: cover;
 	margin: 0;
+	transform: scaleX(-1);
 }
 
 .camera-buttons {
@@ -59,6 +60,7 @@
 	background-color: rgb(250, 250, 250);
 	border: 1px solid #dbdbdb;
 	width: 640px;
+	max-width: 640px;
 	color: #333;
 	margin: 5px auto 0;
 	display: none;
@@ -148,7 +150,7 @@
 
 #final {
 	display: inline-block;
-	width: 90vw;
+	width: 100%;
 	max-width: 640px;
 	vertical-align:	bottom;
 }
@@ -158,12 +160,18 @@
 }
 
 @media only screen and (max-width: 639px) {
+	#image-form {
+		width: 95vw;
+	}
+
 	#add_stickers img {
 		width: calc(95vw/3.2);
 	}
 
 	#video-div {
 		width: 95vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
 	}
 
 	#cam_texts {
