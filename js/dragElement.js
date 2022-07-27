@@ -33,14 +33,14 @@ function dragElement(element, nbr) {
 		if (left_pos < 0) {
 			left_pos = 0;
 		}
-		if (left_pos > video_div.offsetWidth - sticker.offsetWidth) {
-			left_pos = video_div.offsetWidth - sticker.offsetWidth;
+		if (left_pos > video.offsetWidth - sticker.offsetWidth) {
+			left_pos = video.offsetWidth - sticker.offsetWidth;
 		}
 		if (top_pos < 0) {
 			top_pos = 0;
 		}
-		if (top_pos > video_div.offsetHeight - sticker.offsetHeight) {
-			top_pos = video_div.offsetHeight - sticker.offsetHeight;
+		if (top_pos > video.offsetHeight - sticker.offsetHeight) {
+			top_pos = video.offsetHeight - sticker.offsetHeight;
 		}
 		element.style.top = top_pos + "px";
 		element.style.left = left_pos + "px";

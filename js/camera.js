@@ -89,19 +89,25 @@ click_button.addEventListener('click', function() {
 
 		var multiplier = 200 / check[i].offsetWidth;
 		console.log(multiplier);
-
+		console.log("Sticker width: " + check[i].offsetWidth);
+		console.log("Sticker height: " + check[i].offsetHeight);
 		var left = parseInt(check[i].style.left, 10) * multiplier;
 		left = Math.floor(left);
+		if (left > video.offsetWidth - check[i].offsetWidth) {
+			left = video.offsetWidth - check[i].offsetWidth;
+		}
 
 		var top = parseInt(check[i].style.top, 10) * multiplier;
 		top = Math.floor(top);
+		if (top > video.offsetHeight - check[i].offsetHeight) {
+			top = video.offsetHeight - check[i].offsetHeight;
+		}
 
 		var width = check[i].offsetWidth * multiplier;
 		width = Math.floor(width);
 
 		var height = check[i].offsetHeight * multiplier;
 		height = Math.floor(height);
-		// top = Math.round(top / 10) * 10;
 
 		params += '&sticker_' + char + '=' + left + ',' + top + ',' + width + ',' + height;
 		console.log(left + ',' + top + ',' + width + ',' + height);
