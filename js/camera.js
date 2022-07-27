@@ -86,13 +86,20 @@ click_button.addEventListener('click', function() {
 	for (i = 0; i < check.length; i++) {
 		var char = check[i].id.charAt(check[i].id.length - 1);
 		sticker_res += char;
-		params += '&sticker_' + char + '=' + check[i].style.left + ',' + check[i].style.top
-		+ ',' + check[i].offsetWidth + ',' + check[i].offsetHeight;
+
+		var multiplier = 200 / check[i].offsetWidth;
+
+		var left = parseInt(check[i].style.left, 10);
+		var top = parseInt(check[i].style.top, 10);
+
+		params += '&sticker_' + char + '=' + left * multiplier + ',' + top * multiplier
+		+ ',' + check[i].offsetWidth * multiplier + ',' + check[i].offsetHeight * multiplier;
+		// console.log(left * multiplier + ',' + top * multiplier
+		// + ',' + check[i].offsetWidth * multiplier + ',' + check[i].offsetHeight * multiplier);
 	}
 	http.open('POST', 'includes/camera-inc.php', true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onload = function() {
-		// console.log(this.response);
 		var img = document.createElement("img");
 		img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
 		img.id = "final";
@@ -108,14 +115,11 @@ click_button.addEventListener('click', function() {
 	sticker_div.style.display = "none";
 	sticker_bar.style.display = 'none';
 	drafts.style.display = 'none';
-	// video_div.style.marginLeft = "200px";
 	document.querySelector('.camera-buttons').style.display = 'none';
 	image_form.style.display = 'block';
 	container.style.width = '640px';
 	container.style.marginTop = '57px';
 });
-
-
 
 function add_sticker(nbr) {
 	var check = sticker_div.getElementsByClassName('sticker');
@@ -142,14 +146,12 @@ function back_to_camera() {
 	drafts.style.display = 'inline-block';
 	document.querySelector('.camera-buttons').style.display = 'block';
 	image_form.style.display = 'none';
-	// video_div.style.marginLeft = "0px";
 	container.style.width = '';
 	container.style.marginTop = '0px';
 }
 
 cancel_image.addEventListener("click", function(e) {
 	var data = this;
-	console.log(data);
 	if (document.querySelector("#final") != null) {
 		document.querySelector("#final").remove();
 	}
@@ -161,7 +163,6 @@ cancel_image.addEventListener("click", function(e) {
 
 image_form.addEventListener('submit', function(e) {
 	var data = this;
-	// console.log(data);
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/store-image.php', true);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -175,7 +176,6 @@ image_form.addEventListener('submit', function(e) {
 		data.removeChild(data['image']);
 		back_to_camera();
 	}
-	console.log(data['image'].value);
 	var params = 'image=' + String(data['image'].value) +
 	'&caption=' + data['caption'].value +
 	'&submit=' + data['submit'].value;
