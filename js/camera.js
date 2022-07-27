@@ -136,8 +136,8 @@ function add_sticker(nbr) {
 }
 
 function back_to_camera() {
-	video.style.display = "inline-block";
-	sticker_div.style.display = "inline-block";
+	video.style.display = "";
+	sticker_div.style.display = "";
 	sticker_bar.style.display = 'inline-block';
 	drafts.style.display = 'inline-block';
 	document.querySelector('.camera-buttons').style.display = 'block';
