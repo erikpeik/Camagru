@@ -34,14 +34,14 @@ camera_button.addEventListener('click', async function() {
 	&& window.matchMedia("(hover: none)").matches) {
 		// Portrait
 		ctx.canvas.width = stream_settings.height;
-		video_div.style.width = "480px";
+		video_div.setAttribute("width", "480px");
 		ctx.canvas.height = stream_settings.width;
 		ctx.translate(stream_height, 0);
 		ctx.scale(-1, 1);
 	} else {
 		// Landscape
 		ctx.canvas.width = stream_settings.width;
-		video_div.style.width = "640px";
+		video_div.setAttribute("width", "640px");
 		ctx.canvas.height = stream_settings.height;
 		ctx.translate(stream_width, 0);
 		ctx.scale(-1, 1);
