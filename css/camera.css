@@ -227,6 +227,18 @@
 	}
 }
 
+@media only screen and (min-width: 480px) and (orientation: portrait) and (hover: none) {
+	#add_stickers img {
+		width: 200px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#add_stickers img {
+		width: calc(95vw/2.1);
+	}
+}
+
 @media only screen and (min-width: 640px) and (max-width: 1049px) {
 	#cam_texts {
 		display: none;
