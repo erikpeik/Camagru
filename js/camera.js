@@ -88,20 +88,12 @@ click_button.addEventListener('click', function() {
 		sticker_res += char;
 
 		var multiplier = 200 / check[i].offsetWidth;
-		console.log(multiplier);
-		// console.log("Sticker width: " + check[i].offsetWidth);
-		// console.log("Sticker height: " + check[i].offsetHeight);
+
 		var left = parseInt(check[i].style.left, 10) * multiplier;
 		left = Math.floor(left);
-		// if (left > (video.offsetWidth * multiplier) - (check[i].offsetWidth * multiplier)) {
-		// 	left = (video.offsetWidth * multiplier) - (check[i].offsetWidth * multiplier);
-		// }
 
 		var top = parseInt(check[i].style.top, 10) * multiplier;
 		top = Math.floor(top);
-		// if (top > (video.offsetHeight * multiplier) - (check[i].offsetHeight * multiplier)) {
-		// 	top = (video.offsetHeight * multiplier) - (check[i].offsetHeight * multiplier);
-		// }
 
 		var width = check[i].offsetWidth * multiplier;
 		width = Math.floor(width);
@@ -110,7 +102,7 @@ click_button.addEventListener('click', function() {
 		height = Math.floor(height);
 
 		params += '&sticker_' + char + '=' + left + ',' + top + ',' + width + ',' + height;
-		console.log(left + ',' + top + ',' + width + ',' + height);
+		// console.log(left + ',' + top + ',' + width + ',' + height);
 	}
 	http.open('POST', 'includes/camera-inc.php', true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
