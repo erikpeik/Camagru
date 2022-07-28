@@ -41,10 +41,10 @@ if (!isset($_SESSION["user_id"])) {
 				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 			</div>
-			<div class='upload_image'>
+			<div class='upload_image' enctype="multipart/form-data">
 				<h5>Or upload image...</h5>
 				<form method="post" id='upload_form'>
-					<input type="file" name="file" id='file_input' required>
+					<input type="file" name="file" id='file_input' accept="image/png, image/jpeg" required>
 					<input type='submit' name='submit' value='Upload'>
 				</form>
 			</div>
@@ -71,7 +71,7 @@ if (!isset($_SESSION["user_id"])) {
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
 				<div id="buttons">
 					<button type='button' id='cancel-image'>Cancel</button>
-					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
+					<button type='submit' name='submit' id='submit-image'>Submit</submit>
 				</div>
 			</form>
 		</main>
