@@ -216,11 +216,14 @@ upload_form.addEventListener('submit', function(e) {
 	xhr.open('POST', 'includes/load_image.php', true);
 //	xhr.setRequestHeader('Content-type', "multipart/form-data");
 	xhr.onload = function() {
-		// var img = document.createElement("img");
-		// img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
-		// drafts.append(img);
-		// data.removeChild(data['file']);
-		// back_to_camera();
+		var data = this.response;
+		if (data.match(/Error: /) == null) {
+			alert("Image uploaded successfully");
+			console.log("data:image/jpg;charset=utf8;base64," + this.response);
+		} else {
+			alert(this.response);
+			console.log("data:image/jpg;charset=utf8;base64," + this.response);
+		}
 	}
 	// var params = 'file=' + String(data.file.value);
 	console.log(data);

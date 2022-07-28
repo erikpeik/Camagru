@@ -163,6 +163,13 @@
 	width: 200px;
 }
 
+#stickers img {
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
 @media only screen and (max-width: 639px) {
 	#image-form {
 		width: 95vw;
@@ -317,7 +324,7 @@
 	#stickers img {
 		width: 160px;
 		height: fit-content;
-		margin-left: 20px;
+		margin-left: 12px;
 	}
 
 	#drafts {
@@ -431,11 +438,9 @@
 	margin: auto;
 }
 
-
 .upload_image h5 {
 	text-align: center;
 	font-weight: 600;
 	margin: 10px 0;
 	font-size: 18px;
 }
-
