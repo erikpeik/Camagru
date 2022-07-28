@@ -41,6 +41,13 @@ if (!isset($_SESSION["user_id"])) {
 				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 			</div>
+			<div class='upload_image'>
+				<h5>Or upload image...</h5>
+				<form method="post" id='upload_form'>
+					<input type="file" name="file" id='file_input' required>
+					<input type='submit' name='submit' value='Upload'>
+				</form>
+			</div>
 			<div class='container'>
 				<div id='stickers'>
 					<span id="cam_texts">Stickers</span>

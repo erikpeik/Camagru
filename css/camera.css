@@ -376,3 +376,66 @@
 	font-size: 22px;
 	cursor: pointer;
 }
+
+.upload_image {
+	width: 90vw;
+	max-width: 640px;
+	border-top: 1px solid #cecece;
+	margin: auto;
+}
+
+#upload_form {
+	width: 100%;
+	text-align: center;
+
+}
+
+#file_input {
+	border: 1px solid #ccc;
+	display: block;
+	padding: 6px 12px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#upload_form input[type=submit] {
+	margin: 10px auto;
+	background-color: transparent;
+	border: 2px solid #1A1A1A;
+	border-radius: 5px;
+	color: #3B3B3B;
+	cursor: pointer;
+	padding: 4px 12px;
+	font-size: 16px;
+	font-weight: 600;
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+#upload_form input[type=submit]:hover {
+	color: #fff;
+	background-color: #1A1A1A;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+	transform: translateY(-2px);
+}
+
+#upload_form input[type=submit]:active {
+	box-shadow: none;
+	transform: translateY(0px);
+}
+
+#upload_form input {
+	display: block;
+	margin: auto;
+}
+
+
+.upload_image h5 {
+	text-align: center;
+	font-weight: 600;
+	margin: 10px 0;
+	font-size: 18px;
+}
+
