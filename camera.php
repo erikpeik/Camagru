@@ -71,7 +71,7 @@ if (!isset($_SESSION["user_id"])) {
 				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
 				<div id="buttons">
 					<button type='button' id='cancel-image'>Cancel</button>
-					<button type='submit' name='submit' id='submit-image'>Submit</submit>
+					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
 				</div>
 			</form>
 		</main>
