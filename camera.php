@@ -40,12 +40,13 @@ if (!isset($_SESSION["user_id"])) {
 			<div class='camera-buttons'>
 				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
+				<button id='upload-photo' style="display: none;"><i class="ti ti-upload"></i> Upload Picture</button>
 			</div>
 			<div class='upload_image' enctype="multipart/form-data">
 				<h5>Or upload image...</h5>
 				<form method="post" id='upload_form'>
 					<input type="file" name="file" id='file_input' accept="image/png, image/jpeg" required>
-					<input type='submit' name='submit' value='Upload'>
+					<!-- <input type='submit' name='submit' value='Upload'> -->
 				</form>
 			</div>
 			<div class='container'>

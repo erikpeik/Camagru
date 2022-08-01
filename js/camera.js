@@ -8,6 +8,7 @@ let sticker_div = document.getElementById("add_stickers");
 let sticker_bar = document.getElementById("stickers");
 let drafts = document.querySelector("#drafts");
 let image_form = document.querySelector('#image-form');
+let file = document.querySelector('#file_input')
 let cancel_image = document.querySelector("#cancel-image");
 let container = document.querySelector('.container');
 let upload_div = document.querySelector('.upload_image');
@@ -206,10 +207,10 @@ if (document.querySelector("#cross") != null) {
 	});
 }
 
-upload_form.addEventListener('submit', function(e) {
+upload_form.addEventListener('change', function(e) {
 	e.preventDefault();
 	var data = new FormData();
-	console.log(upload_form['file'].files[0]);
+	// console.log(upload_form['file'].files[0]);
 	data.append('file', upload_form['file'].files[0]);
 
 	if (window.matchMedia("(orientation: portrait)").matches
@@ -226,19 +227,24 @@ upload_form.addEventListener('submit', function(e) {
 	xhr.onload = function() {
 		var data = this.response;
 		if (data.match(/Error: /) == null) {
-			alert("Image uploaded successfully");
-			console.log("data:image/jpg;charset=utf8;base64," + this.response);
+			// alert("Image uploaded successfully");
+			// console.log("data:image/jpg;charset=utf8;base64," + this.response);
 			var img = document.createElement("img");
 			img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
 			img.id = "final";
 			video_div.append(img);
 			video.style.display = "none";
+			upload_div.style.display = "none";
 			video_div.style.display = "inline-block";
 			sticker_bar.style.display = "inline-block";
+			drafts.style.display = "inline-block";
+			document.querySelector('#upload-photo').style.display = "inline-block";
+			document.querySelector("#start-camera").style.display = "none";
+			document.querySelector('.camera-buttons').style.width = "185px";
 		} else {
 			alert(this.response);
 		}
 	}
-	console.log(data);
+	// console.log(data);
 	xhr.send(data);
 });
