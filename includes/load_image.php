@@ -42,7 +42,7 @@ function resize_image_crop($image, $width, $height) {
 	}
 }
 
-if (isset($_FILES['file'])) {
+if (isset($_FILES['file']) && isset($_POST['orientation'])) {
 	$image_file_type = strtolower(end(explode('.', $_FILES['file']['name'])));
 	$extensions = array('jpg', 'jpeg', 'png');
 	$errors = array();
@@ -75,8 +75,11 @@ if (isset($_FILES['file'])) {
 		exit ;
 	}
 
-	$resized = resize_image_crop($image, 640, 480);
-
+	if ($_POST['orientation'] == "landscape") {
+		$resized = resize_image_crop($image, 640, 480);
+	} else {
+		$resized = resize_image_crop($image, 480, 640);
+	}
 	ob_start();
 	imagepng($resized);
 	$data = ob_get_clean();

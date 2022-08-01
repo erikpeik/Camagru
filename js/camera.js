@@ -212,6 +212,14 @@ upload_form.addEventListener('submit', function(e) {
 	console.log(upload_form['file'].files[0]);
 	data.append('file', upload_form['file'].files[0]);
 
+	if (window.matchMedia("(orientation: portrait)").matches
+	&& window.matchMedia("(hover: none)").matches) {
+		var orientation = "portrait";
+	} else {
+		var orientation = "landscape";
+	}
+	data.append("orientation", orientation);
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/load_image.php', true);
 //	xhr.setRequestHeader('Content-type', "multipart/form-data");
@@ -220,12 +228,17 @@ upload_form.addEventListener('submit', function(e) {
 		if (data.match(/Error: /) == null) {
 			alert("Image uploaded successfully");
 			console.log("data:image/jpg;charset=utf8;base64," + this.response);
+			var img = document.createElement("img");
+			img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
+			img.id = "final";
+			video_div.append(img);
+			video.style.display = "none";
+			video_div.style.display = "inline-block";
+			sticker_bar.style.display = "inline-block";
 		} else {
 			alert(this.response);
-			console.log("data:image/jpg;charset=utf8;base64," + this.response);
 		}
 	}
-	// var params = 'file=' + String(data.file.value);
 	console.log(data);
 	xhr.send(data);
 });
