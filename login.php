@@ -17,7 +17,6 @@ if (isset($_SESSION["user_id"])) {
 		<title>Login • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/login.css">
-		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 	</head>
 	<body>
 		<div class='login-container'>

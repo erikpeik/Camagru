@@ -27,13 +27,12 @@ if (isset($_GET['logout'])) {
 		<title>Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/gallery.css">
-		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 		<script src='js/comment.js'></script>
 		<script src='js/image.js'></script>
 		<?php require('js/does_it_match.php'); ?>
 	</head>
 	<body>
-		<?php include_once "frontend/header.php"; ?>
+		<?php include "frontend/header.php"; ?>
 		<main>
 			<div id="overlay_box">
 				<div id='overlay_bar'>

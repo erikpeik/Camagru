@@ -21,7 +21,6 @@ if (!isset($_SESSION["user_id"])) {?>
 		<title>Camera • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/camera.css">
-		<link rel="icon" type="image/x-icon" href="images/favicon.png">
 	</head>
 	<body>
 		<?php include_once "frontend/header.php" ?>
