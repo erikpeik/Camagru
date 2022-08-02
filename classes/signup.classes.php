@@ -17,9 +17,14 @@ class Signup extends Dbh {
 
 		date_default_timezone_set("Europe/Helsinki");
 		$statement = $this->connect()->prepare('INSERT INTO users (users_name,
-		users_uid, users_pwd, users_email,activation_code, activation_expiry) VALUES (?, ?, ?, ?, ?, ?);');
+		users_uid, users_pwd, users_email, profile_picture, activation_code,
+		activation_expiry) VALUES (?, ?, ?, ?, ?, ?, ?);');
+
 		$hashed_pwd = hash('whirlpool', $pwd);
-		if (!$statement->execute(array($name, $uid, $hashed_pwd, $email,
+		$image = file_get_contents('../images/blank-profile-picture_500px.png');
+		$image = base64_encode($image);
+
+		if (!$statement->execute(array($name, $uid, $hashed_pwd, $email, $image,
 			hash('whirlpool', $activation_code), date('Y-m-d H:i:s', time() + $expiry)))) {
 			$statement = null;
 			header('location: ../signup?msg=statement_failed');

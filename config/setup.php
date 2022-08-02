@@ -18,6 +18,7 @@
 				`users_uid` TINYTEXT not null,
 				`users_pwd` LONGTEXT not null,
 				`users_email` TINYTEXT not null,
+				`profile_picture` LONGBLOB not null,
 				`active` TINYINT(1) DEFAULT 0,
 				`activation_code` VARCHAR(255) not null,
 				`activation_expiry` DATETIME not null,
