@@ -46,7 +46,6 @@ if (!isset($_SESSION["user_id"])) {
 				<h5>Or upload image...</h5>
 				<form method="post" id='upload_form'>
 					<input type="file" name="file" id='file_input' accept="image/png, image/jpeg" required>
-					<!-- <input type='submit' name='submit' value='Upload'> -->
 				</form>
 			</div>
 			<div class='container'>

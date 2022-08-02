@@ -444,3 +444,8 @@
 	margin: 10px 0;
 	font-size: 18px;
 }
+
+#upload {
+	width: 100%;
+	vertical-align: bottom;
+}
