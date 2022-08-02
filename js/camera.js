@@ -230,12 +230,9 @@ upload_form.addEventListener('change', function(e) {
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/load_image.php', true);
-//	xhr.setRequestHeader('Content-type', "multipart/form-data");
 	xhr.onload = function() {
 		var data = this.response;
 		if (data.match(/Error: /) == null) {
-			// alert("Image uploaded successfully");
-			// console.log("data:image/jpg;charset=utf8;base64," + this.response);
 			var img = document.createElement("img");
 			img.src = 'data:image/jpg;base64,' + this.response;
 			img.id = "upload";
@@ -252,7 +249,6 @@ upload_form.addEventListener('change', function(e) {
 			alert(this.response);
 		}
 	}
-	// console.log(data);
 	xhr.send(data);
 });
 
@@ -261,10 +257,10 @@ upload_button.addEventListener('click', function() {
 	let image_data_url = upload_img.src;
 	var sticker_res = "";
 	var check = sticker_div.getElementsByClassName('sticker');
-	if (check.length < 1) {
-		alert("Before taking picture please add a sticker");
-		return ;
-	}
+	// if (check.length < 1) {
+	// 	alert("Before taking picture please add a sticker");
+	// 	return ;
+	// }
 	for (i = 0; i < check.length; i++) {
 		if (i != 0) {
 			sticker_res += ",";

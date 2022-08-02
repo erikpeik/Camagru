@@ -14,5 +14,5 @@ if(isset($_POST["submit"])) {
 
 	$signup->login_user();
 
-	header('location: ../index.php');
+	header('location: ../.');
 }

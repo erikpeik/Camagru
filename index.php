@@ -12,12 +12,12 @@ include_once 'includes/comment_functions.php';
 include_once 'includes/time_elapsed_string.php';
 
 if (!isset($_SESSION["user_id"])) {
-	header("Location: login.php");
+	header("Location: login");
 }
 if (isset($_GET['logout'])) {
 	unset($_SESSION["user_id"]);
 	unset($_SESSION["user_uid"]);
-	header("Location: login.php");
+	header("Location: login");
 }
 ?>
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ if (isset($_GET['logout'])) {
 			$image_count = image_count($pdo);
 			$page_count = ceil($image_count / $per_page);
 			if ($page > $page_count) {
-				header("Location: index.php?page=$page_count");
+				header("Location: index?page=$page_count");
 			}
 			$data = fetch_page($pdo, $page, $per_page);
 			foreach ($data as $image) {

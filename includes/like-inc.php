@@ -16,7 +16,7 @@ if (isset($_POST["image_id"]) & isset($_SESSION["user_id"])) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute(array($user_id, $image_id))) {
 			$statement = null;
-			header('location: ../index.php?msg=error');
+			header('location: ../index?msg=error');
 			exit();
 		}
 		$data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@ if (isset($_POST["image_id"]) & isset($_SESSION["user_id"])) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute(array($user_id, $image_id))) {
 			$statement = null;
-			header('location: ../index.php?msg=error');
+			header('location: ../index?msg=error');
 			exit();
 		}
 	}

@@ -20,7 +20,7 @@ if (isset($_POST['comment']) && isset($_POST['image_id'])) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute(array($user_id, $image_id, htmlspecialchars($comment)))) {
 			$statement = null;
-			header('location: ../index.php?msg=error');
+			header('location: ../index?msg=error');
 			exit();
 		}
 		print("Comment added!");

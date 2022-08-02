@@ -6,7 +6,7 @@ function delete_user_by_id($id, $dbh, int $active = 0) {
 		$statement = $dbh->prepare($sql);
 		if (!$statement->execute(array($id, $active))) {
 			$statement = null;
-			header('location: ../login.php?msg=delete_user_failed');
+			header('location: ../login?msg=delete_user_failed');
 			exit();
 		}
 	}
@@ -22,7 +22,7 @@ function find_unverified_user($activation_code, $email, $pdo) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute(array($email))) {
 			$statement = null;
-			header('location: ../login.php?msg=statement_failed');
+			header('location: ../login?msg=statement_failed');
 			exit();
 		}
 		$user = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -72,8 +72,8 @@ if (isset($_POST['code']) && isset($_POST['email']) && isset($_POST['submit'])) 
 	$user = find_unverified_user(hash('whirlpool', $_POST['code']), $_POST['email'], $pdo);
 	if ($user) {
 		activate_user($user[0]["users_id"], $pdo);
-		header("Location: ../login.php?msg=account_activated");
+		header("Location: ../login?msg=account_activated");
 	} else {
-		header("Location: ../signup.php?msg=activation_link_not_valid");
+		header("Location: ../signup?msg=activation_link_not_valid");
 	}
 }

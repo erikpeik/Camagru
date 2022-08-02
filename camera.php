@@ -5,10 +5,12 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-if (!isset($_SESSION["user_id"])) {
-	header("Location: login.php");
-}
-?>
+if (!isset($_SESSION["user_id"])) {?>
+	<script>
+		alert('To accees the Editing features, you need to be logged in');
+		window.location.href='login';
+	</script>
+<?php } ?>
 
 <!DOCTYPE html>
 <html>

@@ -7,7 +7,7 @@ function get_comment_amount($pdo, $image_id) {
 	$statement = $pdo->prepare($sql);
 	if (!$statement->execute(array($image_id))) {
 		$statement = null;
-		header('location: ../index.php?msg=error');
+		header('location: ../index?msg=error');
 		exit();
 	}
 	$data = $statement->fetch(PDO::FETCH_ASSOC);

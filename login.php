@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_SESSION["user_id"])) {
-	header("Location: index.php");
+	header("Location: .");
 }
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION["user_id"])) {
 				</section>
 			</div>
 			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em;'>
-				<p id='login-text'>Don't have an account? <span id='signup-text' onclick="location.href = 'signup.php'">Sign up<span></p>
+				<p id='login-text'>Don't have an account? <span id='signup-text' onclick="location.href = 'signup'">Sign up<span></p>
 			</div>
 		</div>
 	</body>

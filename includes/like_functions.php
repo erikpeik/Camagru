@@ -10,7 +10,7 @@ function check_if_user_liked_picture($pdo, $image_id) {
 	$statement = $pdo->prepare($sql);
 	if (!$statement->execute(array($_SESSION["user_id"], $image_id))) {
 		$statement = null;
-		header('location: ../index.php?msg=error');
+		header('location: ../index?msg=error');
 		exit();
 	}
 	$data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +23,7 @@ function get_image_likes($pdo, $image_id) {
 	$statement = $pdo->prepare($sql);
 	if (!$statement->execute(array($image_id))) {
 		$statement = null;
-		header('location: ../index.php?msg=error');
+		header('location: ../index?msg=error');
 		exit();
 	}
 	$data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@ function fetch_page($pdo, $page, $row_count) {
 		$statement->bindValue(':offset', $offset, PDO::PARAM_INT);
 		if (!$statement->execute()) {
 			$statement = null;
-			header('location: ../index.php?msg=error');
+			header('location: ../index?msg=error');
 			exit();
 		}
 		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ function image_count($pdo) {
 		$statement = $pdo->prepare($sql);
 		if (!$statement->execute()) {
 			$statement = null;
-			header('location: ../index.php?msg=error');
+			header('location: ../index?msg=error');
 			exit();
 		}
 		$data = $statement->fetch(PDO::FETCH_ASSOC);

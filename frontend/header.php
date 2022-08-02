@@ -7,11 +7,11 @@ if (!isset($_SESSION)) {
 <link rel="stylesheet" href="css/header.css">
 <header>
 	<nav class="navbar">
-		<img class="logo" src="images/logo.svg" alt="logo" onclick="location.href = 'index.php'">
+		<img class="logo" src="images/logo.svg" alt="logo" onclick="location.href = '.'">
 		<ul class="nav-links">
-			<li id='icon' title='Camera' onclick="location.href = 'camera.php'"><i class="ti ti-camera-plus"></i></li>
+			<li id='icon' title='Camera' onclick="location.href = 'camera'"><i class="ti ti-camera-plus"></i></li>
 			<li id='icon'><i class="ti ti-user"></i></li>
-			<li id='icon' title='Logout' onclick="location.href = 'index.php?logout=true'"><i class="ti ti-door-exit"></i></li>
+			<li id='icon' title='Logout' onclick="location.href = 'index?logout=true'"><i class="ti ti-door-exit"></i></li>
 		</ul>
 	</nav>
 </header>

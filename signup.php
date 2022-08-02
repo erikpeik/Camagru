@@ -1,8 +1,12 @@
 <?php
 include_once 'includes/msg_handler.php';
 
+if (!isset($_SESSION)) {
+	session_start();
+}
+
 if (isset($_SESSION["user_id"])) {
-	header("Location: index.php");
+	header("Location: .");
 }
 
 ?>
@@ -60,7 +64,7 @@ if (isset($_SESSION["user_id"])) {
 				} ?>
 			</div>
 			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em;'>
-				<p id='login-text'>Have an account? <span id='signup-text' onclick="location.href = 'login.php'">Log in<span></p>
+				<p id='login-text'>Have an account? <span id='signup-text' onclick="location.href = 'login'">Log in<span></p>
 			</div>
 		</div>
 	</body>
