@@ -21,21 +21,15 @@ if (!isset($_SESSION["user_id"])) {?>
 		<link rel="stylesheet" href="css/account.css">
 	</head>
 	<body>
-		<?php include "frontend/header.php"; ?>
-		<main>
-			<?php
-			try {
+		<?php
+			include "frontend/header.php";
 			include_once 'config/pdo.php';
-			$sql = "SELECT `profile_picture` FROM users WHERE users_id = ?";
-			$statement = $pdo->prepare($sql);
-			$statement->execute([$_SESSION["user_id"]]);
-			$profile_picture = $statement->fetchColumn();
-			}
-			catch (PDOException $e) {
-				echo "Error: " . $e->getMessage();
-			}
-			print("<img style='border-radius: 50%;'src='data:image/jpeg;base64,$profile_picture'");
-			?>
+			include_once 'includes/get_profile_picture.php';
+		?>
+		<main>
+			<?php $profile_picture = get_profile_picture($pdo); ?>
+			<img src='<?=$profile_picture?>'>
+
 		</main>
 		<?php include "frontend/footer.html"; ?>
 	</body>
