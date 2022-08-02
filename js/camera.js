@@ -13,6 +13,7 @@ let cancel_image = document.querySelector("#cancel-image");
 let container = document.querySelector('.container');
 let upload_div = document.querySelector('.upload_image');
 let upload_form = document.querySelector('#upload_form');
+let upload_button = document.querySelector("#upload-photo");
 
 var stream_width;
 var stream_height;
@@ -151,7 +152,13 @@ function add_sticker(nbr) {
 }
 
 function back_to_camera() {
-	video.style.display = "";
+	let upload_img = document.querySelector('#upload');
+	if (upload_img != null) {
+		video.style.display = 'none'
+		upload_img.style.display = '';
+	} else {
+		video.style.display = "";
+	}
 	sticker_div.style.display = "";
 	sticker_bar.style.display = 'inline-block';
 	drafts.style.display = 'inline-block';
@@ -230,8 +237,8 @@ upload_form.addEventListener('change', function(e) {
 			// alert("Image uploaded successfully");
 			// console.log("data:image/jpg;charset=utf8;base64," + this.response);
 			var img = document.createElement("img");
-			img.src = 'data:image/jpg;charset=utf8;base64,' + this.response;
-			img.id = "final";
+			img.src = 'data:image/jpg;base64,' + this.response;
+			img.id = "upload";
 			video_div.append(img);
 			video.style.display = "none";
 			upload_div.style.display = "none";
@@ -247,4 +254,67 @@ upload_form.addEventListener('change', function(e) {
 	}
 	// console.log(data);
 	xhr.send(data);
+});
+
+upload_button.addEventListener('click', function() {
+	let upload_img = document.querySelector('#upload');
+	let image_data_url = upload_img.src;
+	var sticker_res = "";
+	var check = sticker_div.getElementsByClassName('sticker');
+	if (check.length < 1) {
+		alert("Before taking picture please add a sticker");
+		return ;
+	}
+	for (i = 0; i < check.length; i++) {
+		if (i != 0) {
+			sticker_res += ",";
+		}
+		var char = check[i].id.charAt(check[i].id.length - 1);
+		sticker_res += char;
+	}
+
+	var http = new XMLHttpRequest();
+	var params = 'img=' + image_data_url + '&stickers=' + sticker_res;
+	for (i = 0; i < check.length; i++) {
+		var char = check[i].id.charAt(check[i].id.length - 1);
+		sticker_res += char;
+
+		var multiplier = 200 / check[i].offsetWidth;
+
+		var left = parseInt(check[i].style.left, 10) * multiplier;
+		left = Math.floor(left);
+
+		var top = parseInt(check[i].style.top, 10) * multiplier;
+		top = Math.floor(top);
+
+		var width = check[i].offsetWidth * multiplier;
+		width = Math.floor(width);
+
+		var height = check[i].offsetHeight * multiplier;
+		height = Math.floor(height);
+
+		params += '&sticker_' + char + '=' + left + ',' + top + ',' + width + ',' + height;
+	}
+	http.open('POST', 'includes/camera-inc.php', true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.onload = function() {
+		var img = document.createElement("img");
+		img.src = 'data:image/jpg;base64,' + this.response;
+		img.id = "final";
+		video_div.append(img);
+		var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "image");
+		input.setAttribute("value", this.response)
+		image_form.appendChild(input)
+	}
+	http.send(params);
+	document.querySelector('#upload').style.display = "none";
+	sticker_div.style.display = "none";
+	sticker_bar.style.display = 'none';
+	drafts.style.display = 'none';
+	document.querySelector('.camera-buttons').style.display = 'none';
+	image_form.style.display = 'block';
+	container.style.width = '640px';
+	container.style.marginTop = '57px';
 });

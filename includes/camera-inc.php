@@ -4,7 +4,7 @@ include_once '../config/pdo.php';
 
 if (isset($_POST['img']) && isset($_POST['stickers'])) {
 	$image = $_POST['img'];
-	$image = preg_replace("/data:image\/jpeg;base64,/", '', $image);
+	$image = preg_replace("/data:image\/(.*);base64,/", '', $image);
 	$image = str_replace(' ', '+', $image);
 	$image = base64_decode($image);
 	$image = imagecreatefromstring($image);
