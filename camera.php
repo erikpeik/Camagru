@@ -81,4 +81,5 @@ if (!isset($_SESSION["user_id"])) {?>
 	</body>
 	<script type="text/javascript" src="js/dragElement.js"></script>
 	<script type="text/javascript" src="js/camera.js"></script>
+	<script type="text/javascript" src="js/camera_upload.js"></script>
 </html>
