@@ -1,6 +1,6 @@
 <div class="image-div" id="image_<?=$image['image_id']?>">
 	<div id='top-bar'>
-		<p><?= $image['users_uid'] ?></p>
+		<a href='profile/<?=$image['users_uid']?>'><?= $image['users_uid'] ?></a>
 		<?php if ($image['users_id'] == $_SESSION['user_id']) { ?>
 		<button onclick="remove_image(<?= $image['image_id'];?>)">
 			Remove <i class="fa-solid fa-trash-alt"></i>
