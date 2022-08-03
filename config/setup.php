@@ -22,14 +22,14 @@
 				`active` TINYINT(1) DEFAULT 0,
 				`activation_code` VARCHAR(255) not null,
 				`activation_expiry` DATETIME not null,
-				`activated_at` DATETIME DEFAULT 0,
+				`activated_at` DATETIME DEFAULT null,
 				`created_at` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
 				`updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 			);";
 		$db->exec($sql);
 	}
 	catch (PDOException $e) {
-		print("Error!: " . $e->getMessage() . "<br/>");
+		print("Error when Creating users table!: " . $e->getMessage() . "<br/>");
 	}
 
 	try {
