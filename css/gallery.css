@@ -304,6 +304,14 @@
 	text-decoration: none;
 }
 
+.pagination input {
+	float: left;
+	width: 45px;
+	height: 35px;
+	text-align: center;
+	text-decoration: none;
+}
+
 .pagination i {
 	color: black;
 	float: left;
