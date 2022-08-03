@@ -35,6 +35,7 @@ $images = get_users_images($pdo, $user_info['users_id']);
 		<?php include "frontend/header.php"; ?>
 		<main>
 			<div class="profile-container">
+				<?php if ($user_info != false) { ?>
 				<div class='user_info'>
 					<div class="profile-picture">
 						<img src="<?= 'data:image/jpeg;base64,' .$user_info['profile_picture'] ?>" alt="Profile Picture">
@@ -47,13 +48,18 @@ $images = get_users_images($pdo, $user_info['users_id']);
 							<?php } ?>
 						</div>
 						<ul id='posts_likes'>
+							<?php if ($images != false && isset($user_info['users_id'])) { ?>
 							<li><span id='bold'><?= count($images) ?></span> posts</li>
 							<li><span id='bold'><?= get_users_likes($pdo, $user_info['users_id']);?></span> likes</li>
+							<?php } ?>
 						</ul>
 						<p id='bold'><?=$user_info["users_name"]?></p>
+					</div>
 				</div>
-				<div class='image_grid'>
-					<?php foreach($images as $image) {
+					<?php
+					if ($images != false) { ?>
+						<div class='image_grid'>
+					 <?php foreach($images as $image) {
 						$likes = get_image_likes($pdo, $image['image_id']);
 						$comments = get_comment_amount($pdo, $image['image_id']); ?>
 						<div class='image_container'>
@@ -67,8 +73,17 @@ $images = get_users_images($pdo, $user_info['users_id']);
 								</div>
 							</div>
 						</div>
+					<?php }
+					} else { ?>
+						<div class='no_images'>
+							<p id="warning_text" style='font-weight: 500'>No images found</p>
+						</div>
 					<?php } ?>
 				</div>
+				<?php } else { ?>
+					<p id='warning_text'>Sorry, this page isn't available.</p>
+					<p style='text-align: center;'>The link you followed may be broken, or the page may have been removed. <a href='<?= $APP_URL ?>'>Go back to Camagru.</a></p>
+				<?php }?>
 			</div>
 		</main>
 		<?php include "frontend/footer.html"; ?>
