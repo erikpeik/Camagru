@@ -90,8 +90,8 @@ h1 {
 
 .image_container {
 	position: relative;
-	width: 100%;
-	aspect-ratio: 1;
+	width: 293px;
+	height: 293px;
 }
 
 .image_container img {
