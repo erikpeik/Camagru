@@ -16,7 +16,7 @@ if (!isset($_SESSION["user_id"])) {?>
 <html>
 	<head>
 		<?php
-			include_once 'frontend/head.html';
+			include_once 'frontend/head.php';
 		?>
 		<title>Camera • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">

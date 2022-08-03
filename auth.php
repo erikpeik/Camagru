@@ -35,7 +35,7 @@ if (isset($_GET['email'])) {
 ?>
 <html>
 	<head>
-		<?php include_once 'frontend/head.html'; ?>
+		<?php include_once 'frontend/head.php'; ?>
 		<title>Login • Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/login.css">

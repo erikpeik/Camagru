@@ -23,7 +23,7 @@ if (isset($_GET['logout'])) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php include_once 'frontend/head.html'; ?>
+		<?php include_once 'frontend/head.php'; ?>
 		<title>Camagru</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/gallery.css">
