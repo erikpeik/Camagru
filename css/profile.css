@@ -138,7 +138,7 @@ h1 {
 }
 
 .no_images {
-	width: 950px;
+	width: 90%;
 	margin: auto;
 	padding-top: 20px;
 	margin-top: 20px;
@@ -146,7 +146,10 @@ h1 {
 }
 
 #warning_text {
-	text-align: center; margin: 20px; font-weight: 600; font-size: 24px;
+	text-align: center;
+	margin: 20px;
+	font-weight: 600;
+	font-size: 24px;
 }
 
 
@@ -163,5 +166,24 @@ h1 {
 		height: 45vw;
 		max-width: 293px;
 		max-height: 293px;
+	}
+}
+
+@media only screen and (max-width: 513px) {
+	.profile-picture {
+		width: 100px;
+		height: 100px;
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.profile-info {
+		height: 100px;
+	}
+
+}
+
+@media only screen and (max-width: 358px) {
+	#settings_button {
+		display: none;
 	}
 }
