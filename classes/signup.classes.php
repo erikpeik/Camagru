@@ -13,26 +13,30 @@ class Signup extends Dbh {
 	}
 
 	protected function set_user($name, $email, $uid, $pwd, $activation_code, int $expiry = 30 * 60) {
-		include_once '../includes/auth.php';
+		// include_once '../includes/auth.php';
 
 		date_default_timezone_set("Europe/Helsinki");
-		$statement = $this->connect()->prepare('INSERT INTO users (users_name,
-		users_uid, users_pwd, users_email, profile_picture, activation_code,
-		activation_expiry) VALUES (?, ?, ?, ?, ?, ?, ?);');
+		try {
+			$statement = $this->connect()->prepare('INSERT INTO users (users_name,
+			users_uid, users_pwd, users_email, profile_picture, activation_code,
+			activation_expiry) VALUES (?, ?, ?, ?, ?, ?, ?);');
 
-		$hashed_pwd = hash('whirlpool', $pwd);
-		$image = file_get_contents('../images/blank-profile-picture_500px.png');
-		$image = base64_encode($image);
+			$hashed_pwd = hash('whirlpool', $pwd);
+			$image = file_get_contents('../images/blank-profile-picture_500px.png');
+			$image = base64_encode($image);
 
-		if (!$statement->execute(array($name, $uid, $hashed_pwd, $email, $image,
-			hash('whirlpool', $activation_code), date('Y-m-d H:i:s', time() + $expiry)))) {
+			if (!$statement->execute(array($name, $uid, $hashed_pwd, $email, $image,
+				hash('whirlpool', $activation_code), date('Y-m-d H:i:s', time() + $expiry)))) {
+				$statement = null;
+				header('location: ../signup?msg=statement_failed');
+				exit();
+			}
+			$this->send_activation_email($email, $name, $activation_code);
 			$statement = null;
-			header('location: ../signup?msg=statement_failed');
-			exit();
+			header("location: ../auth?email=$email");
+		} catch (PDOException $e) {
+			print("Error!: " . $e->getMessage() . "<br/>");
 		}
-		$this->send_activation_email($email, $name, $activation_code);
-		$statement = null;
-		header("location: ../auth?email=$email");
 	}
 
 	protected function send_activation_email($email, $name, $activation_code) {

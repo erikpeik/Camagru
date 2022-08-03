@@ -8,6 +8,8 @@ if (!isset($_SESSION)) {
 require_once "config/app.php";
 include_once 'config/pdo.php';
 include_once 'includes/profile-inc.php';
+require_once 'includes/like_functions.php';
+require_once 'includes/comment_functions.php';
 
 if (!isset($_GET['username'])) {
 	header("Location: profile/". $_SESSION["user_uid"]);
@@ -51,8 +53,20 @@ $images = get_users_images($pdo, $user_info['users_id']);
 						<p id='bold'><?=$user_info["users_name"]?></p>
 				</div>
 				<div class='image_grid'>
-					<?php foreach($images as $image) { ?>
-					<img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']); ?>"/>
+					<?php foreach($images as $image) {
+						$likes = get_image_likes($pdo, $image['image_id']);
+						$comments = get_comment_amount($pdo, $image['image_id']); ?>
+						<div class='image_container'>
+							<img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']); ?>"/>
+							<div class='image_overlay'>
+								<div class='image_stats'>
+									<ul>
+										<li><i class="fa-solid fa-heart"></i> <?= $likes['count'] ?></li>
+										<li><i class="fa-solid fa-comment"></i> <?= $comments ?></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					<?php } ?>
 				</div>
 			</div>

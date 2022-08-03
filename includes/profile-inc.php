@@ -50,8 +50,5 @@ function get_users_likes($pdo, $users_id) {
 		echo "Error: " . $e->getMessage();
 		exit ();
 	}
-	if ($fetch == false) {
-		return false;
-	}
 	return count($fetch);
 }
