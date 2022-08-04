@@ -47,16 +47,16 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 				</div>
 				<form id='change_form'>
 					<div id='input_div'>
-						<label>Name</label>
-						<input type='text' value="<?= $user_data['users_name'] ?>">
+						<label for="name">Name</label>
+						<input type='text' name="name"value="<?= $user_data['users_name'] ?>">
 					</div>
 					<div id='input_div'>
-						<label>Username</label>
-						<input type='text' value="<?= $user_data['users_uid'] ?>">
+						<label for="username">Username</label>
+						<input type='text' name="username" value="<?= $user_data['users_uid'] ?>">
 					</div>
 					<div id='input_div'>
-						<label>Email</label>
-						<input type='text' value="<?= $user_data['users_email'] ?>">
+						<label for="email">Email</label>
+						<input type='text' name="email" value="<?= $user_data['users_email'] ?>">
 					</div>
 					<button type='submit' value='submit'>Submit</button>
 					<button id='delete_account' value='delete'>Delete my account</button>
