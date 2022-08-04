@@ -29,6 +29,13 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 	<body>
 		<?php require "frontend/header.php"; ?>
 		<main>
+			<div id="overlay_box">
+				<div id='overlay_bar'>
+					<h1 id='overlay_header'></h1> <i id='cross' class="fa-solid fa-xmark"></i>
+				</div>
+				<div id='overlay_content'></div>
+			</div>
+			<div id='dim-background'></div>
 			<div class='container'>
 				<div class='name_bar'>
 					<img src="<?= 'data:image/jpeg;base64,' . $user_data['profile_picture'] ?>"
@@ -51,12 +58,13 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 						<label>Email</label>
 						<input type='text' value="<?= $user_data['users_email'] ?>">
 					</div>
-					<button type='submit'>Submit</button>
-					<button id='delete_account'>Delete my account</button>
+					<button type='submit' value='submit'>Submit</button>
+					<button id='delete_account' value='delete'>Delete my account</button>
 				</form>
 
 			</div>
 		</main>
 		<?php require "frontend/footer.html"; ?>
 	</body>
+	<script src="js/settings.js"></script>
 </html>

@@ -1,13 +1,19 @@
 <?php
 
-require_once 'resize_image_crop.php';
+if (!isset($_SESSION)) {
+	session_start();
+}
 
-if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_POST['orientation'])) {
-	$file_type = explode('.', $_FILES['file']['name']);
+require_once 'resize_image_crop.php';
+require_once '../config/pdo.php';
+
+if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_SESSION['user_id'])) {
+	$image = $_FILES['file'];
+	$file_type = explode('.', $image['name']);
 	$last_element = end($file_type);
 	$image_file_type = strtolower($last_element);
 	$extensions = array('jpg', 'jpeg', 'png');
-
+	$errors = array();
 	if (in_array($image_file_type, $extensions) === false) {
 		echo "Error: Extension not allowed, please choose a JPEG or PNG file.";
 		exit ;
@@ -36,14 +42,17 @@ if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_POST['or
 		exit ;
 	}
 
-	if ($_POST['orientation'] == "landscape") {
-		$resized = resize_image_crop($image, 640, 480);
-	} else {
-		$resized = resize_image_crop($image, 480, 640);
-	}
+	$resized = resize_image_crop($image, 500, 500);
 	ob_start();
 	imagepng($resized);
 	$data = ob_get_clean();
 
+	try {
+		$sql = "UPDATE `users` SET `profile_picture` = ? WHERE users_id = ?";
+		$statement = $pdo->prepare($sql);
+		$statement->execute(array(base64_encode($data), $_SESSION['user_id']));
+	} catch(PDOException $e) {
+		echo "Error: " . $e->getMessage();
+	}
 	print (base64_encode($data));
 }
