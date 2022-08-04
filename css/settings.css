@@ -1,0 +1,122 @@
+.container {
+	width: 90vw;
+	max-width: 950px;
+	border: 1px solid #ccc;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 4px;
+	background-color: white;
+}
+
+.name_bar {
+	width: 100%;
+}
+
+.name_bar h1 {
+	font-weight: 300;
+	font-size: 27.25px;
+	width: fit-content;
+	display: block;
+}
+
+#profile_picture {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin: 20px 5vw;
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+#text-staff {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 40px;
+}
+
+#change_picture {
+	color: rgb(0, 149, 246);
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+	border: none;
+	background: none;
+	font-size: 14px;
+}
+
+#change_form {
+	position: relative;
+	width: fit-content;
+	margin: auto;
+	padding-bottom: 20px;
+}
+
+#input_div {
+	width: fit-content;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#input_div label {
+	font-size: 16px;
+	font-weight: 600;
+	vertical-align: baseline;
+	width: 80px;
+	text-align: right;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+#input_div input {
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: rgb(38, 38, 38);
+	flex: 0 1 355px;
+	font-size: 16px;
+	height: 32px;
+	padding: 0 10px;
+	width: 500px;
+}
+
+#change_form button[type=submit] {
+	margin-left: 104px;
+	background-color: rgb(0, 149, 246);
+	border-radius: 4px;
+	border: 1px solid transparent;
+	padding: 5px 9px;
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+	display: inline-block;
+}
+
+#delete_account {
+	color: #F35369;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+	border: none;
+	background: none;
+	font-size: 14px;
+	right: 5px;
+	position: absolute;
+	line-height: 28.5px;
+}
+
+
+@media only screen and (max-width: 720px) {
+	#input_div {
+		width: 80vw;
+	}
+	#input_div input {
+		width: 80vw;
+	}
+	#input_div label {
+		text-align: left;
+	}
+	#change_form button[type=submit] {
+		margin-left: 0;
+	}
+}
