@@ -42,8 +42,10 @@ function resize_image_crop($image, $width, $height) {
 	}
 }
 
-if (isset($_FILES['file']) && isset($_POST['orientation'])) {
-	$image_file_type = strtolower(end(explode('.', $_FILES['file']['name'])));
+if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_POST['orientation'])) {
+	$file_type = explode('.', $_FILES['file']['name']);
+	$last_element = end($file_type);
+	$image_file_type = strtolower($last_element);
 	$extensions = array('jpg', 'jpeg', 'png');
 	$errors = array();
 

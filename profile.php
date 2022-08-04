@@ -14,15 +14,17 @@ require_once 'includes/comment_functions.php';
 if (!isset($_GET['username'])) {
 	header("Location: profile/". $_SESSION["user_uid"]);
 }
-$user_info = get_user_info($pdo, $_GET['username']);
-$images = get_users_images($pdo, $user_info['users_id']);
+else {
+	$user_info = get_user_info($pdo, $_GET['username']);
+	$images = get_users_images($pdo, $user_info['users_id']);
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<?php include_once "frontend/head.php"; ?>
-		<?php if ($user_info != false) { ?>
+		<?php if (isset($user_info) && $user_info != false) { ?>
 			<title><?= $user_info['users_name'] . " (@".$user_info['users_uid'] . ")" ?> • Camagru</title>
 		<?php } else { ?>
 			<title>User not found • Camagru</title>
@@ -35,7 +37,7 @@ $images = get_users_images($pdo, $user_info['users_id']);
 		<?php include "frontend/header.php"; ?>
 		<main>
 			<div class="profile-container">
-				<?php if ($user_info != false) { ?>
+				<?php if (isset($user_info) && $user_info != false) { ?>
 				<div class='user_info'>
 					<div class="profile-picture">
 						<img src="<?= 'data:image/jpeg;base64,' .$user_info['profile_picture'] ?>" alt="Profile Picture">
