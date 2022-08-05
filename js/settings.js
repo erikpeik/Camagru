@@ -5,6 +5,7 @@ let overlay_header = document.getElementById('overlay_header');
 let overlay_content = document.getElementById('overlay_content');
 let cross = document.getElementById("cross");
 let change_form = document.getElementById('change_form');
+let password_form = document.querySelector('#password_form');
 
 change_picture.addEventListener('click', function () {
 	dim_background.style.display = 'block';
@@ -88,6 +89,54 @@ change_form.addEventListener('submit', function (e) {
 			email_message.style.color = '';
 		}
 
+	}
+	xhr.send(data);
+});
+
+password_form.addEventListener('submit', function (e) {
+	e.preventDefault();
+	var xhr = new XMLHttpRequest();
+	let password_message = document.getElementById('password_message');
+	var data = new FormData(password_form);
+
+	xhr.open('POST', 'includes/change_password.php', true);
+	xhr.onload = function() {
+		var data = this.responseText;
+		if (data == '0') {
+			password_message.innerHTML = 'Some fields are missing';
+			password_message.style.color = 'red';
+		}
+		else if (data == '1') {
+			password_message.innerHTML = 'Fields cannot be empty';
+			password_message.style.color = 'red';
+		}
+		else if (data == '2') {
+			password_message.innerHTML = 'Passwords do not match';
+			password_message.style.color = 'red';
+		}
+		else if (data == '3') {
+			password_message.innerHTML = "Invalid password format. Requirements:<br />" +
+			"- Length is at least 8 character long<br />" +
+			"- At least one uppercase and lowercase letter<br />" +
+			"- One special character [!@#$%^&*]";
+			password_message.style.color = 'red';
+		}
+		else if (data == '4') {
+			password_message.innerHTML = 'Old password is incorrect';
+			password_message.style.color = 'red';
+		}
+		else if (data == '5') {
+			password_message.innerHTML = 'Password changed successfully';
+			password_message.style.color = 'green';
+		}
+		else if (data == '6') {
+			password_message.innerHTML = 'New password is the same as the old password';
+			password_message.style.color = 'red';
+		}
+		else {
+			password_message.innerHTML = '';
+			password_message.style.color = '';
+		}
 	}
 	xhr.send(data);
 });

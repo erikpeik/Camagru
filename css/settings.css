@@ -10,6 +10,7 @@
 
 .name_bar {
 	width: 100%;
+	border-bottom: 1px solid rgb(242, 242, 242);
 }
 
 .name_bar h1 {
@@ -23,8 +24,8 @@
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	margin: 20px 5vw;
-	margin-bottom: 0;
+	margin: 20px 20px;
+	margin-bottom: 10px;
 	display: inline-block;
 }
 
@@ -32,6 +33,7 @@
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 40px;
+	padding-bottom: 10px;
 }
 
 #change_picture {
@@ -44,7 +46,7 @@
 	font-size: 14px;
 }
 
-#change_form {
+.form {
 	position: relative;
 	width: fit-content;
 	margin: auto;
@@ -80,7 +82,7 @@
 	width: 500px;
 }
 
-#change_form button[type=submit] {
+.form button[type=submit] {
 	margin-left: 104px;
 	background-color: rgb(0, 149, 246);
 	border-radius: 4px;
@@ -176,9 +178,47 @@
 	color: green;
 	margin-top: 10px;
 	padding-left: 104px;
+	width: 80vw;
+	max-width: 500px;
+	margin: auto;
 }
 
-@media only screen and (max-width: 720px) {
+hr {
+	border: 0;
+	height: 1px;
+	background: rgb(242, 242, 242);
+	background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(222, 222, 222), rgb(255, 255, 255));
+}
+
+.form h3 {
+	font-weight: 400;
+	margin-top: 10px;
+	color: rgb(30, 30, 30);
+	width: fit-content;
+	margin: 10px auto 5px auto;
+}
+
+#password_form {
+	transform: translateX(-30px);
+}
+
+#password_form button[type=submit] {
+	margin-left: 160px;
+}
+
+#password_message {
+	margin-top: 10px;
+	padding-left: 160px;
+	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+	#password_form {
+		transform: translateX(0);
+	}
+}
+
+@media only screen and (max-width: 750px) {
 	#input_div {
 		width: 80vw;
 	}
@@ -188,10 +228,38 @@
 	#input_div label {
 		text-align: left;
 	}
-	#change_form button[type=submit] {
+	.form button[type=submit] {
 		margin-left: 0;
 	}
 	.message_box {
 		padding-left: 0;
+	}
+	#password_form {
+		transform: translateX(0);
+	}
+	#password_form button[type=submit] {
+		margin-left: 0;
+	}
+	#password_message {
+		padding-left: 0;
+	}
+}
+
+@media only screen and (max-width: 316px) {
+	#profile_picture {
+		margin-bottom: 0;
+	}
+	#text-staff {
+		margin-top: 0;
+		margin-left: 10px;
+	}
+}
+
+@media only screen and (max-width: 270px) {
+	#delete_text {
+		display: none;
+	}
+	#delete_icon {
+		font-size: 18px;
 	}
 }

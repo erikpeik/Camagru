@@ -45,7 +45,7 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 						<button id='change_picture'>Change profile photo</button>
 					</div>
 				</div>
-				<form id='change_form'>
+				<form id='change_form' style='margin-top: 20px;'class='form'>
 					<div id='input_div'>
 						<label for="name">Name</label>
 						<input type='text' name="name"value="<?= $user_data['users_name'] ?>">
@@ -62,9 +62,30 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 						<span id='email_message' class='message_box'></span>
 					</div>
 					<button type='submit' value='submit'>Submit</button>
-					<button id='delete_account' value='delete'>Delete my account</button>
+					<button id='delete_account' value='delete'>
+						<span id='delete_text'>Delete my account</span>
+						<span id='delete_icon' class='fa-solid fa-trash-alt'></span>
+					</button>
 				</form>
-
+				<hr>
+				<form id='password_form' class='form' method='post'>
+					<h3>Change Password</h3>
+					<input hidden autocomplete="username">
+					<div id='input_div'>
+						<label style='width: 136px;' for="old_password">Old Password</label>
+						<input type='password' name="old_password" value="" autocomplete="current-password">
+					</div>
+					<div id='input_div'>
+						<label style='width: 136px;' for="new_password">New Password</label>
+						<input type='password' name="new_password" value="" autocomplete="new-password">
+					</div>
+					<div id='input_div'>
+						<label style='width: 136px;' for="confirm_password">Confirm Password</label>
+						<input type='password' name="confirm_password" value="" autocomplete="new-password">
+					</div>
+					<span id='password_message' class='message_box'></span>
+					<button type='submit' value='submit'>Submit</button>
+				</form>
 			</div>
 		</main>
 		<?php require "frontend/footer.html"; ?>
