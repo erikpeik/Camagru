@@ -32,8 +32,8 @@ if (isset($_POST["name"]) && $user_info['users_name'] != $_POST["name"]) {
 }
 
 if (isset($_POST["username"]) && $user_info['users_uid'] != $_POST["username"] &&
-!check_username($pdo, $_POST['username']) === false) {
-	$stats .= "2";
+	check_username($pdo, $_POST['username'])) {
+	$stats .= "2,";
 } else if (isset($_POST['username']) && $user_info['users_uid'] != $_POST['username']) {
 	try {
 		$sql = "UPDATE `users` SET `users_uid` = ? WHERE `users_id` = ?";
@@ -44,7 +44,18 @@ if (isset($_POST["username"]) && $user_info['users_uid'] != $_POST["username"] &
 		exit ();
 	}
 	$_SESSION['user_uid'] = $_POST['username'];
-	$stats .= "1";
+	$stats .= "1,";
+} else {
+	$stats .= "0,";
+}
+
+if (isset($_POST["email"]) && $user_info["users_email"] != $_POST["email"]) {
+	if (email_taken($pdo, $_POST["email"])) {
+		$stats .= "2";
+	} else {
+		new_email_verification($_POST["email"], $user_info, $pdo);
+		$stats .= "1";
+	}
 } else {
 	$stats .= "0";
 }

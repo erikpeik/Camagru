@@ -49,6 +49,12 @@ function msg_handler($code) {
 		$message = "Activation link/code was not valid, or it's already activated. ".
 		"You can try Log in.";
 	}
+	else if ($code == 'name_too_long') {
+		$message = "Your name is too long. Max length is 255 characters.";
+	}
+	else if ($code == 'password_too_long') {
+		$message = "Your password is too long. Max length is 255 characters.";
+	}
 	else {
 		$message = 'Unknown error code:<br />'.$code;
 	}

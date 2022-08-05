@@ -2,7 +2,6 @@
 ob_start();
 
 include_once 'includes/auth-inc.php';
-include_once '../config/database.php';
 include_once 'config/database.php';
 
 if (isset($_GET['email']) && isset($_GET['activation_code'])) {
