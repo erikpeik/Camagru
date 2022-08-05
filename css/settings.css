@@ -105,22 +105,6 @@
 	line-height: 28.5px;
 }
 
-
-@media only screen and (max-width: 720px) {
-	#input_div {
-		width: 80vw;
-	}
-	#input_div input {
-		width: 80vw;
-	}
-	#input_div label {
-		text-align: left;
-	}
-	#change_form button[type=submit] {
-		margin-left: 0;
-	}
-}
-
 #overlay_box {
 	display: none;
 	position: fixed;
@@ -185,4 +169,29 @@
 	transform: translateX(-50%);
 	margin-left: 50%;
 	padding: 15px 0;
+}
+
+.message_box {
+	display: block;
+	color: green;
+	margin-top: 10px;
+	padding-left: 104px;
+}
+
+@media only screen and (max-width: 720px) {
+	#input_div {
+		width: 80vw;
+	}
+	#input_div input {
+		width: 80vw;
+	}
+	#input_div label {
+		text-align: left;
+	}
+	#change_form button[type=submit] {
+		margin-left: 0;
+	}
+	.message_box {
+		padding-left: 0;
+	}
 }

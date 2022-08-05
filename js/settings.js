@@ -41,12 +41,39 @@ function close_overlay() {
 
 change_form.addEventListener('submit', function (e) {
 	e.preventDefault();
+	let name_message = document.getElementById('name_message');
+	let username_message = document.getElementById('username_message');
+	let email_message = document.getElementById('email_message');
+	let username = document.getElementById('username');
+
 	var data = new FormData(change_form);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/change_settings.php', true);
 	xhr.onload = function() {
+		var result = String(xhr.responseText);
+		var splits = result.split(',');
 		console.log(xhr.response);
+		console.log(splits);
+		if (splits[0] == '1') {
+			name_message.innerHTML = 'Name changed successfully';
+
+		} else {
+			name_message.innerHTML = '';
+		}
+		if (splits[1] == '1') {
+			username_message.innerHTML = 'Username changed successfully';
+			username.innerHTML = change_form['username'].value;
+			username_message.style.color = 'green';
+		} else if (splits[1] == '2') {
+			username_message.innerHTML = 'Username already taken';
+			change_form['username'].value = username.innerHTML;
+			username_message.style.color = 'red';
+		}else {
+			username_message.innerHTML = '';
+			username_message.style.color = ''
+		}
+		console.log(change_form['username'].value);
 	}
 	xhr.send(data);
 });

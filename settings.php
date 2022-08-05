@@ -41,7 +41,7 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 					<img src="<?= 'data:image/jpeg;base64,' . $user_data['profile_picture'] ?>"
 						alt="Profile Picture" id='profile_picture'>
 					<div id ='text-staff'>
-						<h1><?=$user_data["users_uid"]?></h1>
+						<h1 id='username'><?=$user_data["users_uid"]?></h1>
 						<button id='change_picture'>Change profile photo</button>
 					</div>
 				</div>
@@ -49,14 +49,17 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 					<div id='input_div'>
 						<label for="name">Name</label>
 						<input type='text' name="name"value="<?= $user_data['users_name'] ?>">
+						<span id='name_message' class='message_box'></span>
 					</div>
 					<div id='input_div'>
 						<label for="username">Username</label>
 						<input type='text' name="username" value="<?= $user_data['users_uid'] ?>">
+						<span id='username_message' class='message_box'></span>
 					</div>
 					<div id='input_div'>
 						<label for="email">Email</label>
 						<input type='text' name="email" value="<?= $user_data['users_email'] ?>">
+						<span id='email_message' class='message_box'></span>
 					</div>
 					<button type='submit' value='submit'>Submit</button>
 					<button id='delete_account' value='delete'>Delete my account</button>

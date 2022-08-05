@@ -6,6 +6,7 @@ if (!isset($_SESSION)) {
 
 require_once '../config/pdo.php';
 require_once 'profile-inc.php';
+require_once 'settings-inc.php';
 
 if (!isset($_SESSION['user_uid'])) {
 	print("Error! User not logged in.");
@@ -30,7 +31,10 @@ if (isset($_POST["name"]) && $user_info['users_name'] != $_POST["name"]) {
 	$stats .= "0,";
 }
 
-if (isset($_POST['username']) && $user_info['users_uid'] != $_POST['username']) {
+if (isset($_POST["username"]) && $user_info['users_uid'] != $_POST["username"] &&
+!check_username($pdo, $_POST['username']) === false) {
+	$stats .= "2";
+} else if (isset($_POST['username']) && $user_info['users_uid'] != $_POST['username']) {
 	try {
 		$sql = "UPDATE `users` SET `users_uid` = ? WHERE `users_id` = ?";
 		$statement = $pdo->prepare($sql);
