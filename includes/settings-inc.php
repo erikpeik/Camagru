@@ -20,7 +20,7 @@ function new_email_verification($new_email, $user_info, $pdo) {
 		echo "Error: " . $e->getMessage();
 		exit ();
 	}
-	$link = "$APP_URL/auth?email=$new_email&activation_code=$hashed_activation";
+	$link = "$APP_URL/auth?new_email=$new_email&code=$hashed_activation";
 	$subject = "Confirm your email address for Camagru";
 	$message = file_get_contents('../mails/new_email.html');
 	// $message = "Test!";

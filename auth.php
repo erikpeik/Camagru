@@ -4,6 +4,11 @@ ob_start();
 include_once 'includes/auth-inc.php';
 include_once 'config/database.php';
 
+if (!isset($_SESSION)) {
+	session_start();
+}
+
+// Account verification
 if (isset($_GET['email']) && isset($_GET['activation_code'])) {
 	try {
 		$pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPT);
@@ -14,9 +19,38 @@ if (isset($_GET['email']) && isset($_GET['activation_code'])) {
 	$user = find_unverified_user($_GET['activation_code'], $_GET['email'], $pdo);
 	if ($user) {
 		activate_user($user[0]['users_id'], $pdo);
-		header("Location: login.php?msg=account_activated");
+		header("Location: login?msg=account_activated");
 	} else {
-		header("Location: signup.php?msg=activation_link_not_valid");
+		header("Location: signup?msg=activation_link_not_valid");
+	}
+}
+
+// Email change verification
+if (isset($_GET['new_email']) && isset($_GET['code'])) {
+	require_once 'config/pdo.php';
+
+	unset($_SESSION["user_id"]);
+	unset($_SESSION["user_uid"]);
+
+	try {
+		$sql = "SELECT * FROM `users` WHERE `activation_code` = ? AND `users_email` != ?";
+		$statement = $pdo->prepare($sql);
+		$statement->execute([$_GET['code'], $_GET['new_email']]);
+	} catch (PDOException $e) {
+		print("Error!: " . $e->getMessage() . "<br/>");
+	}
+	$user = $statement->fetch();
+	if ($user) {
+		try {
+			$sql = "UPDATE `users` SET `users_email` = ? WHERE `users_id` = ?";
+			$statement = $pdo->prepare($sql);
+			$statement->execute([$_GET['new_email'], $user['users_id']]);
+		} catch (PDOException $e) {
+			print("Error!: " . $e->getMessage() . "<br/>");
+		}
+		header("Location: login?msg=email_changed");
+	} else {
+		header("Location: login?msg=email_change_link_not_valid");
 	}
 }
 
@@ -24,10 +58,6 @@ include_once 'includes/msg_handler.php';
 
 if (isset($_GET['msg'])) {
 	echo(msg_handler($_GET['msg']));
-}
-
-if (!isset($_GET['email'])) {
-	header("Location: signup.php");
 }
 
 if (isset($_GET['email'])) {

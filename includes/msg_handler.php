@@ -55,6 +55,12 @@ function msg_handler($code) {
 	else if ($code == 'password_too_long') {
 		$message = "Your password is too long. Max length is 255 characters.";
 	}
+	else if ($code == 'email_change_link_not_valid') {
+		$message = "Email change link was not valid, or it's already changed.";
+	}
+	else if ($code == 'email_changed') {
+		$message = "<span style='color: green;'>Email changed. You can Log in now.</span>";
+	}
 	else {
 		$message = 'Unknown error code:<br />'.$code;
 	}
