@@ -28,13 +28,13 @@ function new_email_verification($new_email, $user_info, $pdo) {
 	$replace = array($user_info['users_uid'], $new_email, $link);
 	$message = str_replace($empty, $replace, $message);
 	$headers = array(
-		'From' => 'admin@erikpeik.fi',
-		'Reply-To' => 'admin@erikpeik.fi',
+		'From' => 'camagru@erikpeik.fi',
+		'Reply-To' => 'camagru@erikpeik.fi',
 		'MIME-Version' => '1.0',
 		'Content-type' => 'text/html; charset=iso-8859-1',
 		'X-Mailer' => 'PHP/'.phpversion()
 	);
-	mail($new_mail, $subject, $message, $headers);
+	mail($new_email, $subject, $message, $headers);
 }
 
 function email_taken($pdo, $email) {

@@ -50,8 +50,8 @@ class Signup extends Dbh {
 		$replace = array($name, $activation_code, $activation_link);
 		$message = str_replace($empty, $replace, $message);
 		$headers = array(
-			'From' => 'admin@erikpeik.fi',
-			'Reply-To' => 'admin@erikpeik.fi',
+			'From' => 'camagru@erikpeik.fi',
+			'Reply-To' => 'camagru@erikpeik.fi',
 			'MIME-Version' => '1.0',
 			'Content-type' => 'text/html; charset=iso-8859-1',
 			'X-Mailer' => 'PHP/'.phpversion()

@@ -26,11 +26,16 @@ if (isset($_GET['msg'])) {
 	echo(msg_handler($_GET['msg']));
 }
 
+if (!isset($_GET['email'])) {
+	header("Location: signup.php");
+}
+
 if (isset($_GET['email'])) {
 	$email = $_GET['email'];
 } else {
 	$email = "";
 }
+
 ?>
 <html>
 	<head>
