@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+			}
+			.logo {
+				max-width: 180px;
+				width: 30vw;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			.container {
+				width: 95vw;
+				max-width: 600px;
+				margin: auto;
+				color: rgb(86, 90, 92);
+			}
+			h3 {
+				font-weight: 300;
+				color: rgb(61, 61, 61);
+			}
+			.activate_button {
+				height: 2.3em;
+				/* margin: 21px auto 0 auto; */
+				background-color: rgb(72, 162, 234);
+				border: none;
+				border-radius: 4px 4px;
+				color: white;
+				font-weight: 700;
+				padding: 10px 10px 10px 10px;
+				font-style: normal;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<img class="logo" src="https://erikpeik.fi/camagru/images/logo.svg" alt="logo" class="logo">
+			</div>
+			<h3>Hi %name%!</h1><br>
+			<span>You updated your email address to <span style='color: rgb(42, 91, 131);'>%email%.</span></span><br />
+			<span>Confirm your email address to continue capturing and sharing your moments with the world.</span><br><br><br>
+			<a href="%link%" class="activate_button"><span>Confirm email address</span></a><br><br>
+		</div>
+		<br>
+	</body>
+</html>

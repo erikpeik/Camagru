@@ -43,7 +43,7 @@ class Signup extends Dbh {
 		include_once('../config/app.php');
 
 		$hashed_activation = hash('whirlpool', $activation_code);
-		$activation_link = "$APP_URL/auth.php?email=".$email."&activation_code=".$hashed_activation;
+		$activation_link = "$APP_URL/auth?email=".$email."&activation_code=".$hashed_activation;
 		$subject = 'Activate your account';
 		$message = file_get_contents('../mails/activate_mail.html');
 		$empty = array("%name%", "%code%", "%link%");
