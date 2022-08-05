@@ -75,9 +75,17 @@ change_form.addEventListener('submit', function (e) {
 		}
 
 		if (splits[2] == '1') {
-			email_message.innerHTML = 'To finish changing your email, please click the link in the email we sent you.';
+			email_message.innerHTML = 'To finish changing your email, please click the link in the email.';
+			email_message.style.color = 'green';
+		} else if (splits[2] == '2'){
+			email_message.innerHTML = 'Email is already taken';
+			email_message.style.color = 'red';
+		} else if (splits[2] == '3') {
+			email_message.innerHTML = "Email formatting is incorrect";
+			email_message.style.color = 'red';
 		} else {
 			email_message.innerHTML = '';
+			email_message.style.color = '';
 		}
 
 	}

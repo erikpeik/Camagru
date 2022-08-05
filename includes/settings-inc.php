@@ -27,3 +27,7 @@ function email_taken($pdo, $email) {
 	$result = $statement->fetchAll();
 	return (count($result) > 0);
 }
+
+function mail_format($email) {
+	return ((filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 255));
+}

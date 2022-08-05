@@ -52,6 +52,8 @@ if (isset($_POST["username"]) && $user_info['users_uid'] != $_POST["username"] &
 if (isset($_POST["email"]) && $user_info["users_email"] != $_POST["email"]) {
 	if (email_taken($pdo, $_POST["email"])) {
 		$stats .= "2";
+	} else if (mail_format($_POST["email"]) == false) {
+		$stats .= "3";
 	} else {
 		new_email_verification($_POST["email"], $user_info, $pdo);
 		$stats .= "1";
