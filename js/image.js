@@ -37,6 +37,14 @@ function share_picture($image_id) {
 	overlay_box.style.display = "block";
 	overlay_header.innerHTML = "Share this picture with your friends!";
 	var input = document.createElement("input");
+	var button = document.createElement("button");
+	button.id = "share_picture";
+	button.innerHTML = "Copy link to clipboard";
+	button.onclick = function() {
+		input.select();
+		input.setSelectionRange(0, 99999);
+		navigator.clipboard.writeText(input.value);
+	};
 	input.type = "text";
 	// set input to readonly
 	input.readOnly = true;
@@ -51,4 +59,5 @@ function share_picture($image_id) {
 	}
 	xhr.send();
 	overlay_content.appendChild(input);
+	overlay_content.appendChild(button);
 }
