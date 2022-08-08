@@ -23,7 +23,6 @@ function new_email_verification($new_email, $user_info, $pdo) {
 	$link = "$APP_URL/auth?new_email=$new_email&code=$hashed_activation";
 	$subject = "Confirm your email address for Camagru";
 	$message = file_get_contents('../mails/new_email.html');
-	// $message = "Test!";
 	$empty = array("%name%", "%email%", "%link%");
 	$replace = array($user_info['users_uid'], $new_email, $link);
 	$message = str_replace($empty, $replace, $message);
