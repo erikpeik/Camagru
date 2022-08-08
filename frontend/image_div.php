@@ -1,13 +1,17 @@
+<?php require_once 'config/app.php'; ?>
+
 <div class="image-div" id="image_<?=$image['image_id']?>">
 	<div id='top-bar'>
-		<a href='profile/<?=$image['users_uid']?>'><?= $image['users_uid'] ?></a>
+		<a href='<?=$APP_URL?>/profile/<?=$image['users_uid']?>'><?= $image['users_uid'] ?></a>
 		<?php if ($image['users_id'] == $_SESSION['user_id']) { ?>
 		<button onclick="remove_image(<?= $image['image_id'];?>)">
 			Remove <i class="fa-solid fa-trash-alt"></i>
 		</button>
 		<?php } ?>
 	</div>
-	<img id='image-settings' src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>"/>
+	<a href='<?=$APP_URL?>/picture/<?=$image['image_id']?>'>
+		<img id='image-settings' src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>"/>
+		</a>
 	<div id='like-row'>
 		<?php
 			$like_count = check_if_user_liked_picture($pdo, $image['image_id']);
@@ -22,6 +26,7 @@
 		<span id='hover-button' onclick="focus_comment(<?=$image['image_id'];?>)">
 			<i class="fa-regular fa-comment"></i>
 		</span>
+		<i class="fa-regular fa-share-from-square" onclick="share_picture(<?=$image['image_id']?>)"></i>
 	</div>
 	<button id='like-text' onclick="show_likes(<?= $image['image_id']; ?>)"><span id='like_count_<?= $image['image_id']; ?>'>
 	<?php

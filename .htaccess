@@ -3,4 +3,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^profile/([A-Za-z0-9-]+)/?$    profile.php?username=$1    [NC,L]
+RewriteRule ^picture/([A-Za-z0-9-]+)/?$    picture.php?photo=$1    [NC,L]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]

@@ -10,6 +10,7 @@ include_once 'config/pdo.php';
 include_once 'includes/profile-inc.php';
 require_once 'includes/like_functions.php';
 require_once 'includes/comment_functions.php';
+require_once 'config/app.php';
 
 if (!isset($_GET['username'])) {
 	header("Location: profile/". $_SESSION["user_uid"]);
@@ -66,6 +67,7 @@ else {
 						$comments = get_comment_amount($pdo, $image['image_id']); ?>
 						<div class='image_container'>
 							<img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']); ?>"/>
+							<a href='<?=$APP_URL?>/picture/<?=$image['image_id']?>'>
 							<div class='image_overlay'>
 								<div class='image_stats'>
 									<ul>
@@ -74,6 +76,7 @@ else {
 									</ul>
 								</div>
 							</div>
+					 	</a>
 						</div>
 					<?php }
 					} else { ?>

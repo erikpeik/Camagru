@@ -31,3 +31,24 @@ function remove_image(image_id) {
 	overlay_content.innerHTML = "";
 	overlay_content.appendChild(div);
 }
+
+function share_picture($image_id) {
+	dim_background.style.display = "block";
+	overlay_box.style.display = "block";
+	overlay_header.innerHTML = "Share this picture with your friends!";
+	var input = document.createElement("input");
+	input.type = "text";
+	// set input to readonly
+	input.readOnly = true;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'includes/get_app_url.php', true);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	xhr.onload = function() {
+		var app_url = xhr.responseText;
+		input.value = app_url + "/picture/" + $image_id;
+	}
+	xhr.send();
+	overlay_content.appendChild(input);
+}
