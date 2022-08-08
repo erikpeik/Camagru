@@ -48,3 +48,16 @@ function email_taken($pdo, $email) {
 function mail_format($email) {
 	return ((filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 255));
 }
+
+function is_email_notification_enabled($pdo, $user_id) {
+	try {
+	$sql = "SELECT `email_notification` FROM `users` WHERE `users_id` = ?";
+	$statement = $pdo->prepare($sql);
+	$statement->execute([$user_id]);
+	$result = $statement->fetch();
+	} catch(PDOException $e) {
+		echo "Error: " . $e->getMessage();
+		exit ();
+	}
+	return ($result['email_notification'] == 1);
+}

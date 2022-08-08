@@ -12,7 +12,8 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_uid"])) {?>
 	</script>
 <?php }
 
-require_once('includes/profile-inc.php');
+require_once 'includes/profile-inc.php';
+require_once 'includes/settings-inc.php';
 require_once 'config/pdo.php';
 
 $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
@@ -86,6 +87,17 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 					<span id='password_message' class='message_box'></span>
 					<button type='submit' value='submit'>Submit</button>
 				</form>
+				<hr>
+				<?php
+				$email_data = is_email_notification_enabled($pdo, $_SESSION["user_id"]);
+				?>
+				<div class='email_notifications'>
+					<label class='switch'>
+						<input type='checkbox' id='checkbox' <?php if ($email_data == true) {echo "checked"; } ?>>
+						<span class="slider round"></span>
+					</label>
+					<p id='email_notifications'>Email notifications</p>
+				</div>
 			</div>
 		</main>
 		<?php require "frontend/footer.html"; ?>

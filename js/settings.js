@@ -6,6 +6,7 @@ let overlay_content = document.getElementById('overlay_content');
 let cross = document.getElementById("cross");
 let change_form = document.getElementById('change_form');
 let password_form = document.querySelector('#password_form');
+let checkbox = document.querySelector('#checkbox');
 
 change_picture.addEventListener('click', function () {
 	dim_background.style.display = 'block';
@@ -139,4 +140,11 @@ password_form.addEventListener('submit', function (e) {
 		}
 	}
 	xhr.send(data);
+});
+
+checkbox.addEventListener('change', function() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'includes/email_notifications.php', true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.send('checked=' + event.currentTarget.checked);
 });
