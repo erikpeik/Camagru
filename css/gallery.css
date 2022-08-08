@@ -332,3 +332,20 @@
 	background-color: #ddd;
 	border-radius: 5px;
 }
+
+.no_images {
+	width: 95vw;
+	max-width: 600px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.no_images h3 {
+	margin: auto;
+	width: fit-content;
+}
+
+.no_images p {
+	margin: auto;
+	width: fit-content;
+}

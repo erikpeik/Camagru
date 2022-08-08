@@ -58,9 +58,11 @@ function activate_user(int $users_id, $pdo) {
 	return True;
 }
 
-include_once 'config/database.php';
+
 
 if (isset($_POST['code']) && isset($_POST['email']) && isset($_POST['submit'])) {
+	require_once '../config/database.php';
+
 	try {
 		$pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPT);
 	}

@@ -49,6 +49,7 @@ if (isset($_GET['logout'])) {
 			}
 			$per_page = 5;
 			$image_count = image_count($pdo);
+			if ($image_count > 0) {
 			$page_count = ceil($image_count / $per_page);
 			if ($page > $page_count) {
 				header("Location: index?page=$page_count");
@@ -58,7 +59,13 @@ if (isset($_GET['logout'])) {
 				require('frontend/image_div.php');
 			}
 			require('frontend/pagination.php');
-			?>
+			} else { ?>
+			<div class='no_images'>
+				<h3>No images to display 😢</h3>
+				<p><a href='camera'>Click here</a> to upload your first picture</p>
+			</div>
+
+			<?php } ?>
 		</main>
 		<script src='js/like.js'></script>
 		<script src='js/comment.js'></script>
