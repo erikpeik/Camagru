@@ -3,7 +3,7 @@
 	max-width: 950px;
 	border: 1px solid #ccc;
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 30px;
 	border-radius: 4px;
 	background-color: white;
 }
@@ -268,11 +268,20 @@ hr {
 }
 
 .email_notifications {
-	width: 230px;
+	width: 100%;
+	max-width: 230px;
 	margin: 10px auto;
 }
 
-.email_notifications p {
+#email_info {
+	max-width: 390px;
+	width: 90%;
+	margin: auto;
+	margin-bottom: 20px;
+	color: darkgray;
+}
+
+#email_text {
 	font-size: 18px;
 	font-weight: 500;
 	color: rgb(30, 30, 30);

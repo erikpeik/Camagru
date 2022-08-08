@@ -96,8 +96,10 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 						<input type='checkbox' id='checkbox' <?php if ($email_data == true) {echo "checked"; } ?>>
 						<span class="slider round"></span>
 					</label>
-					<p id='email_notifications'>Email notifications</p>
+					<p id='email_text'>Email notifications</p>
+
 				</div>
+				<p id='email_info'>Get an email when your image receives a new comment</p>
 			</div>
 		</main>
 		<?php require "frontend/footer.html"; ?>
