@@ -274,7 +274,7 @@ hr {
 }
 
 #email_info {
-	max-width: 390px;
+	max-width: fit-content;
 	width: 90%;
 	margin: auto;
 	margin-bottom: 20px;

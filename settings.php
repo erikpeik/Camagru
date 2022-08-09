@@ -73,15 +73,15 @@ $user_data = get_user_info($pdo, $_SESSION["user_uid"]);
 					<h3>Change Password</h3>
 					<input hidden autocomplete="username">
 					<div id='input_div'>
-						<label style='width: 136px;' for="old_password">Old Password</label>
+						<label style='width: 140px;' for="old_password">Old Password</label>
 						<input type='password' name="old_password" value="" autocomplete="current-password">
 					</div>
 					<div id='input_div'>
-						<label style='width: 136px;' for="new_password">New Password</label>
+						<label style='width: 140px;' for="new_password">New Password</label>
 						<input type='password' name="new_password" value="" autocomplete="new-password">
 					</div>
 					<div id='input_div'>
-						<label style='width: 136px;' for="confirm_password">Confirm Password</label>
+						<label style='width: 140px;' for="confirm_password">Confirm Password</label>
 						<input type='password' name="confirm_password" value="" autocomplete="new-password">
 					</div>
 					<span id='password_message' class='message_box'></span>

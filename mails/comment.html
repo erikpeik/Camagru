@@ -25,7 +25,6 @@
 			}
 			.activate_button {
 				height: 2.3em;
-				/* margin: 21px auto 0 auto; */
 				background-color: rgb(72, 162, 234);
 				border: none;
 				border-radius: 4px 4px;
@@ -48,18 +47,18 @@
 				text-decoration: none;
 			}
 		</style>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
 	</head>
 	<body>
-
 		<div class="container">
 			<div class="header">
 				<img class="logo" src="https://erikpeik.fi/camagru/images/logo.svg" alt="logo" class="logo">
 			</div>
 			<h3>Hi %name%!</h1><br>
-			<span>You have recived new comment from  <span style='color: rgb(42, 91, 131);'>%sender%.</span></span><br />
+			<span>You have recived new comment from  <a href="%profile_link%" id="link">%sender%.</a></span><br />
 			<div id="comment">%comment%</div>
 			<a href="%link%" class="activate_button"><span>Click here to see that comment</span></a><br><br>
-			or click a link below: <a href="%link&" id="link">%link%</a>
+			or click a link below: <a href="%link%" id="link">%link%</a>
 		</div>
 		<br>
 	</body>

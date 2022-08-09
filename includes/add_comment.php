@@ -26,8 +26,9 @@ function send_email_comment($pdo, $image_id, $user_id, $comment) {
 	$subject = "New comment on your image";
 	$message = file_get_contents('../mails/comment.html');
 	$link = "$APP_URL/picture/$image_id";
-	$empty = array("%name%", "%sender%", "%comment%", "%link%");
-	$replace = array($receiver_uid, $sender_uid, $comment, $link);
+	$profile_link = "$APP_URL/profile/$sender_uid";
+	$empty = array("%name%", "%sender%", "%comment%", "%link%", "%profile_link%");
+	$replace = array($receiver_uid, $sender_uid, $comment, $link, $profile_link);
 	$message = str_replace($empty, $replace, $message);
 	$headers = array(
 		'From' => 'camagru@erikpeik.fi',

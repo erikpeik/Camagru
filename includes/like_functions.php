@@ -33,7 +33,8 @@ function get_image_likes($pdo, $image_id) {
 function fetch_page($pdo, $page, $row_count) {
 	$offset = ($page - 1) * $row_count;
 	try {
-		$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`
+		$sql = "SELECT `images`.*, `users`.`users_name`, `users`.`users_uid`,
+				`users`.`profile_picture`
 				FROM `images`
 				LEFT JOIN `users`
 				ON `images`.`users_id` = `users`.`users_id`

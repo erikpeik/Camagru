@@ -38,9 +38,10 @@ if (isset($_GET['photo'])) {
 		<div id='dim-background'></div>
 		<?php if (!empty($image)) {
 			require 'frontend/image_div.php';
-		} else {
-			print("No photo selected");
-		} ?>
+		} else { ?>
+			<p id='warning_text'>Sorry, this page isn't available.</p>
+			<p style='text-align: center;'>The link you followed may be broken, or the page may have been removed. <a href='<?= $APP_URL ?>'>Go back to Camagru.</a></p>
+		<? } ?>
 		</main>
 		<?php require 'frontend/footer.html'; ?>
 	</body>
