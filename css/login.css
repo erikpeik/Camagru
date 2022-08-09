@@ -258,6 +258,29 @@ input:-webkit-autofill {
 	font-weight: 600;
 }
 
+#reset_error {
+	width: fit-content;
+	margin: auto;
+	margin-top: 10px;
+	display: block;
+	color: red;
+	font-weight: 400;
+}
+
+#ok_button {
+	display: none;
+	width: fit-content;
+	margin: auto;
+	position: relative;
+	border: none;
+	background: none;
+	color: #0095f6;
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
 @media only screen and (max-width: 380px) {
 	.box {
 		width: 95%;

@@ -6,6 +6,11 @@ if (!isset($_SESSION)) {
 
 if (isset($_SESSION["user_id"])) {
 	header("Location: .");
+	exit();
+}
+
+if (isset($_GET['email']) && isset($_GET['code'])) {
+	exit();
 }
 ?>
 
@@ -43,17 +48,17 @@ if (isset($_SESSION["user_id"])) {
 				</div>
 				<h3 id='reset_h3'>Trouble Logging In?</h3>
 				<p id='reset_text'>Enter your email or username and we'll send you a link to get back into your account.</p>
-
 				<section class='signup-form'>
-					<form>
+					<form id='reset_form' method='POST' onsubmit = 'return false;'>
 						<div class='input-container'>
 							<label for="name">Email or Username</label>
 							<input class='login_input' type='text' name='name' autocomplete="username" required>
 						</div>
-						<button class='login_button'type='submit' name='submit'>Send Reset Link</button>
+						<button class='login_button' type='submit' name='submit' value='send_reset'>Send Reset Link</button>
 					</form>
-
+					<p id='reset_error'></p>
 				<section>
+				<button id='ok_button'>OK</button>
 				<div class='or_bar'>
 						<div id='or_text'>OR</div>
 						<div id='or_line'></div>
@@ -65,4 +70,5 @@ if (isset($_SESSION["user_id"])) {
 			</div>
 		</div>
 	</body>
+	<script src='js/reset.js'></script>
 </html>

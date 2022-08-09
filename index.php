@@ -18,6 +18,7 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION["user_id"]);
 	unset($_SESSION["user_uid"]);
 	header("Location: login");
+	exit();
 }
 ?>
 <!DOCTYPE html>
