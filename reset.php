@@ -9,9 +9,7 @@ if (isset($_SESSION["user_id"])) {
 	exit();
 }
 
-if (isset($_GET['email']) && isset($_GET['code'])) {
-	exit();
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +27,9 @@ if (isset($_GET['email']) && isset($_GET['code'])) {
 				<img class="logo" src="<?=$APP_URL?>/images/logo.svg" alt="logo" onclick="location.href = '<?=$APP_URL?>'">
 			</nav>
 		</header>
+		<?php if (isset($_GET['email']) && isset($_GET['code'])) { ?>
+			
+		<?php } else { ?>
 		<div class='login-container'>
 			<div class='box' style="height: 400px;">
 				<div id='lock'>
@@ -69,6 +70,7 @@ if (isset($_GET['email']) && isset($_GET['code'])) {
 				<a id='create_account' href='login'>Back to Login</a>
 			</div>
 		</div>
+		<?php } ?>
 	</body>
 	<script src='js/reset.js'></script>
 </html>
