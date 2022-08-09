@@ -41,7 +41,7 @@ if (isset($_GET['photo'])) {
 		} else { ?>
 			<p id='warning_text'>Sorry, this page isn't available.</p>
 			<p style='text-align: center;'>The link you followed may be broken, or the page may have been removed. <a href='<?= $APP_URL ?>'>Go back to Camagru.</a></p>
-		<? } ?>
+		<?php } ?>
 		</main>
 		<?php require 'frontend/footer.html'; ?>
 	</body>

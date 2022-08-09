@@ -92,6 +92,9 @@
 
 #name-left {
 	margin-left: 10px;
+	text-decoration: none;
+	color: black;
+	font-weight: 400;
 }
 
 #overlay_box {

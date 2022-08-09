@@ -34,7 +34,8 @@
 		echo $data['count'];
 	?>
 	</span> likes</button>
-	<p id='name-left'><?= $image['users_name'] ?></b> <p><?= $image['caption'] ?></p>
+	<a id='name-left' href="<?=$APP_URL?>/profile/<?=$image['users_uid']?>"><?= $image['users_uid'] ?></a>
+	<p><?= $image['caption'] ?></p>
 	<?php
 	$comment_count = get_comment_amount($pdo, $image['image_id']);
 	if ($comment_count == 1) {

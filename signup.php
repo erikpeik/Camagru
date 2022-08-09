@@ -18,7 +18,7 @@ if (isset($_SESSION["user_id"])) {
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/login.css">
 	</head>
-	<body>
+	<body style='min-height: 0'>
 		<div class='login-container'>
 			<div class='box'>
 				<section class="signup-form">
