@@ -7,6 +7,7 @@ let cross = document.getElementById("cross");
 let change_form = document.getElementById('change_form');
 let password_form = document.querySelector('#password_form');
 let checkbox = document.querySelector('#checkbox');
+let delete_account = document.getElementById('delete_account');
 
 change_picture.addEventListener('click', function () {
 	dim_background.style.display = 'block';
@@ -145,4 +146,21 @@ checkbox.addEventListener('change', function() {
 	xhr.open('POST', 'includes/email_notifications.php', true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.send('checked=' + event.currentTarget.checked);
+});
+
+delete_account.addEventListener('click', function() {
+	let check = confirm("Are you sure you want to delete your account?");
+	if (check === true) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'includes/delete_account.php', true);
+		xhr.onload = function() {
+			if (xhr.response == '1') {
+				alert("Account deleted successfully");
+				document.location.href = "login";
+			} else {
+				alert("Error deleting account");
+			}
+		}
+		xhr.send();
+	}
 });

@@ -73,10 +73,6 @@ click_button.addEventListener('click', function() {
 
 	var sticker_res = "";
 	var check = sticker_div.getElementsByClassName('sticker');
-	if (check.length < 1) {
-		alert("Before taking picture please add a sticker");
-		return ;
-	}
 	for (i = 0; i < check.length; i++) {
 		if (i != 0) {
 			sticker_res += ",";
