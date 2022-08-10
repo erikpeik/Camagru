@@ -28,7 +28,7 @@ camera_button.addEventListener('click', async function() {
 			facingMode: "user"
 		}
 	}
-	globalThis.stream = await navigator.mediaDevices.getUserMedia(constraints);
+	globalThis.stream = await navigator.mediaDevices.getUserMedia(constraints).catch(function(err) { alert("You have to allow the browser to access the webcam!"); });
 	let stream_settings = stream.getVideoTracks()[0].getSettings();
 
 	globalThis.stream_width = stream_settings.width;
