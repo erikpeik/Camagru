@@ -7,7 +7,12 @@ ob_start();
 
 include_once '../config/pdo.php';
 
-if (isset($_POST["image_id"]) & isset($_SESSION["user_id"])) {
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == -1) {
+	print(2);
+	exit ();
+}
+
+if (isset($_POST["image_id"]) & isset($_SESSION["user_id"]) && $_SESSION["user_id"] != -1) {
 	$image_id = $_POST["image_id"];
 	$user_id = $_SESSION["user_id"];
 

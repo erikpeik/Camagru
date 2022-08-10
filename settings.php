@@ -5,12 +5,14 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_uid"])) {?>
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_uid"]) ||
+	$_SESSION['user_id'] == -1) {?>
 	<script>
 		alert('To accees the Settings, you need to be logged in');
 		window.location.href='login';
 	</script>
-<?php }
+<?php exit();
+}
 
 require_once 'includes/profile-inc.php';
 require_once 'includes/settings-inc.php';

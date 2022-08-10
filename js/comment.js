@@ -1,6 +1,8 @@
 function focus_comment(image_id) {
 	var textarea = document.getElementById('comment_' + image_id);
-	textarea.focus();
+	if (textarea != null) {
+		textarea.focus();
+	}
 }
 
 function update_comment_count(image_id) {

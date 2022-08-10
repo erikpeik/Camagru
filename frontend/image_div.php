@@ -26,7 +26,8 @@
 		<span id='hover-button' onclick="focus_comment(<?=$image['image_id'];?>)">
 			<i class="fa-regular fa-comment"></i>
 		</span>
-		<i class="fa-regular fa-share-from-square" onclick="share_picture(<?=$image['image_id']?>)"></i>
+		<i class="fa-regular fa-share-from-square" style='cursor: pointer;'
+		onclick="share_picture(<?=$image['image_id']?>)"></i>
 	</div>
 	<button id='like-text' onclick="show_likes(<?= $image['image_id']; ?>)"><span id='like_count_<?= $image['image_id']; ?>'>
 	<?php
@@ -56,6 +57,7 @@
 	<h5 id='time-ago' title="<?=$image['posted_at']?>">
 		<?= time_elapsed_string($image['posted_at']);?>
 	</h5>
+	<?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != -1) { ?>
 	<div id='send-comment'>
 			<form method='post' action=''>
 				<div class='input-container'>
@@ -65,4 +67,5 @@
 				</div>
 			</form>
 	</div>
+	<?php } ?>
 </div>

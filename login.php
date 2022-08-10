@@ -46,9 +46,15 @@ if (isset($_SESSION["user_id"])) {
 					} ?>
 				</section>
 			</div>
-			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em;'>
+			<div class='box' style='margin-top: 0.6em; padding-bottom: 1.5em; height: 110px;'>
 				<p id='login-text'>Don't have an account? <span id='signup-text' onclick="location.href = 'signup'">Sign up<span></p>
+				<div class='or_bar'>
+						<div id='or_text'>OR</div>
+						<div id='or_line'></div>
+				</div>
+				<button id='forget_password' class='login_guest'>Log In as Guest</button>
 			</div>
 		</div>
 	</body>
+	<script src='js/login.js'></script>
 </html>

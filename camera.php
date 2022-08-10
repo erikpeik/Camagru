@@ -5,12 +5,14 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-if (!isset($_SESSION["user_id"])) {?>
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
+	|| $_SESSION['user_id'] == -1) {?>
 	<script>
 		alert('To accees the Editing features, you need to be logged in');
 		window.location.href='login';
 	</script>
-<?php } ?>
+<?php exit();
+} ?>
 
 <!DOCTYPE html>
 <html>

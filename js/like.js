@@ -16,11 +16,14 @@ function add_like(image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
-		if (xhr.response == 0) {
+		if (xhr.response == '2') {
+			alert("You can like only if you are logged in");
+		}
+		else if (xhr.response == '0') {
 			like_count.innerHTML = like_count_value + 1;
 			like_button.style.color = "#ED4956";
 			like_button.className = "fa-solid fa-heart";
-		} else {
+		} else if (xhr.response == '1') {
 			like_count.innerHTML = like_count_value - 1;
 			like_button.style.color = "black";
 			like_button.className = "fa-regular fa-heart";

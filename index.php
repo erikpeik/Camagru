@@ -13,6 +13,7 @@ include_once 'includes/time_elapsed_string.php';
 
 if (!isset($_SESSION["user_id"])) {
 	header("Location: login");
+	exit();
 }
 if (isset($_GET['logout'])) {
 	unset($_SESSION["user_id"]);

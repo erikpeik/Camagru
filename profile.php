@@ -13,11 +13,20 @@ require_once 'includes/comment_functions.php';
 require_once 'config/app.php';
 
 if (!isset($_GET['username'])) {
+	if ($_SESSION['user_id'] == -1) { ?>
+		<script>
+			alert("Guests doesn't have profile page.", "index");
+			window.location.href = "<?=$APP_URL?>";
+		</script>
+		<?php exit();
+	}
 	header("Location: profile/". $_SESSION["user_uid"]);
-}
-else {
+	exit();
+} else {
 	$user_info = get_user_info($pdo, $_GET['username']);
-	$images = get_users_images($pdo, $user_info['users_id']);
+	if ($user_info) {
+		$images = get_users_images($pdo, $user_info['users_id']);
+	}
 }
 ?>
 

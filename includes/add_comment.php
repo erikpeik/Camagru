@@ -41,7 +41,8 @@ function send_email_comment($pdo, $image_id, $user_id, $comment) {
 	}
 }
 
-if (isset($_POST['comment']) && isset($_POST['image_id'])) {
+if (isset($_POST['comment']) && isset($_POST['image_id'])
+	&& isset($_SESSION['user_id']) && $_SESSION['user_id'] != -1) {
 	$comment = $_POST['comment'];
 	$image_id = $_POST['image_id'];
 	$user_id = $_SESSION["user_id"];
