@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 if (!isset($_SESSION)) {
 	session_start();
@@ -8,7 +9,6 @@ if (isset($_SESSION["user_id"])) {
 	header("Location: .");
 	exit();
 }
-
 
 ?>
 
@@ -27,9 +27,50 @@ if (isset($_SESSION["user_id"])) {
 				<img class="logo" src="<?=$APP_URL?>/images/logo.svg" alt="logo" onclick="location.href = '<?=$APP_URL?>'">
 			</nav>
 		</header>
-		<?php if (isset($_GET['email']) && isset($_GET['code'])) { ?>
-			
-		<?php } else { ?>
+		<main>
+		<?php if (isset($_GET['email']) && isset($_GET['code'])) {
+			require_once 'config/pdo.php';
+			$email = $_GET['email'];
+			$code = $_GET['code'];
+			$sql = "SELECT * FROM `users` WHERE `users_email` = ? AND `activation_code` = ?";
+			$statement = $pdo->prepare($sql);
+			$statement->execute([$email, $code]);
+			$user = $statement->fetch();
+			if ($user) { ?>
+				<div class="login-container" style="margin-top: 60px;">
+					<div class="box" style="padding-bottom: 2em">
+						<img class="login_logo" src="images/logo.svg" alt="logo">
+						<h3 id="reset_h3">Create A Strong Password</h3>
+						<p id="reset_text" style="margin-bottom: 40px;">
+							Your password must be at least 8 characters
+							and should include a combination of numbers,
+							letters and special characters (!@#$%^&*).
+						</p>
+						<form id="reset_password_form" action="reset.php"
+						method="post" onsubmit="return false;">
+							<div class="input-container">
+								<label for="password">New Password</label>
+								<input type="password" name="password" required
+								pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*">
+							</div>
+							<div class="input-container">
+								<label for="confirm_password">Confirm Password</label>
+								<input type="password" name="confirm_password" required
+								pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*">
+							</div>
+							<input type="text" name="email" value="<?=$email?>" hidden>
+							<input type="text" name="code" value="<?=$code?>" hidden>
+							<input class="login_button" type="submit" name="reset" value="Reset">
+						</form>
+						<p id='reset_error'></p>
+					</div>
+				</div>
+				<script src="js/reset_password.js"></script>
+		<?php } else {
+			header("Location: login?msg=invalid_code");
+			exit();
+		}
+		} else { ?>
 		<div class='login-container'>
 			<div class='box' style="height: 400px;">
 				<div id='lock'>
@@ -70,7 +111,8 @@ if (isset($_SESSION["user_id"])) {
 				<a id='create_account' href='login'>Back to Login</a>
 			</div>
 		</div>
-		<?php } ?>
+		<script src='js/reset.js'></script>
+	<?php } ?>
+		</main>
 	</body>
-	<script src='js/reset.js'></script>
 </html>

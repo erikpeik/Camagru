@@ -55,8 +55,6 @@ change_form.addEventListener('submit', function (e) {
 	xhr.onload = function() {
 		var result = String(xhr.responseText);
 		var splits = result.split(',');
-		console.log(xhr.response);
-		console.log(splits);
 		if (splits[0] == '1') {
 			name_message.innerHTML = 'Name changed successfully';
 		} else {

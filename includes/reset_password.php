@@ -1,67 +1,58 @@
 <?php
 
-function send_password_change_email($pdo, $row) {
-	require_once '../config/app.php';
+if (isset($_POST['password']) && isset($_POST['confirm_password']) &&
+	isset($_POST['email']) && isset($_POST['code']) && isset($_POST['submit'])) {
+	require_once "../config/pdo.php";
 
-	if (!isset($row['users_email']) || !isset($row['users_uid'])) {
-		return false;
+	$password = $_POST['password'];
+	$confirm_password = $_POST['confirm_password'];
+	$submit = $_POST['submit'];
+	$email = $_POST['email'];
+	$code = $_POST['code'];
+
+	if (empty($password) || empty($confirm_password) || empty($email) ||
+		empty($code) || $submit != "Reset") {
+		echo "1"; // Fields are empty
 	}
-
-	$email = $row['users_email'];
-	$uid = $row['users_uid'];
-	$subject = "Password Change";
-	// make random code
-	$code = hash('whirlpool', $email);
-	$link = "$APP_URL/reset?email=$email&code=$code";
-	try {
-		$sql = "UPDATE `users` SET `activation_code` = ? WHERE `users_id` = ?";
-		$statement = $pdo->prepare($sql);
-		$statement->execute([$code, $uid]);
-	} catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-		exit ();
+	else if ($password != $confirm_password) {
+		echo "2"; // Passwords do not match
 	}
-	$message = file_get_contents('../mails/password_change.html');
-	$empty = array("%name%", "%link%");
-	$replace = array($uid, $link);
-	$message = str_replace($empty, $replace, $message);
-	$headers = array(
-		'From' => 'camagru@erikpeik.fi',
-		'Reply-To' => 'camagru@erikpeik.fi',
-		'MIME-Version' => '1.0',
-		'Content-type' => 'text/html; charset=iso-8859-1',
-		'X-Mailer' => 'PHP/'.phpversion()
-	);
-	mail($email, $subject, $message, $headers);
-	return true;
-}
-
-if (isset($_POST['name']) && isset($_POST['submit']) && $_POST['submit'] == 'send_reset') {
-	require_once '../config/pdo.php';
-
-	if (empty($_POST['name'])) {
-		echo "Error: You need to fill in all fields";
-		exit();
+	else if (!preg_match("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/", $password)) {
+		echo "3"; // Password is invalid
 	}
-	$name = $_POST['name'];
-	try {
-		$sql = "SELECT `users_email`, `users_uid` FROM `users`
-		WHERE (`users_uid` = ? OR `users_email` = ?) AND `active` = 1;";
-		$statement = $pdo->prepare($sql);
-		$statement->execute([$name, $name]);
-		$row = $statement->fetch();
-	} catch (PDOException $e) {
-		echo "Error: " . $e->getMessage();
-		exit();
+	else {
+		try {
+			$sql = "SELECT * FROM `users`
+					WHERE `users_email` = ? AND `activation_code` = ?";
+			$statement = $pdo->prepare($sql);
+			$statement->execute([$email, $code]);
+			$user = $statement->fetch();
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			exit ();
+		}
+		if ($user) {
+			if ($user['users_pwd'] == hash('whirlpool', $password)) {
+				echo "6"; // New password is the same as the old password
+				exit();
+			}
+			try {
+				$sql = "UPDATE `users`
+						SET `users_pwd` = ?, `activation_code` = ?
+						WHERE `users_email` = ?";
+				$statement = $pdo->prepare($sql);
+				$hashed_password = hash('whirlpool', $password);
+				$change_code = bin2hex(random_bytes(18));
+				$statement->execute([$hashed_password, $change_code, $email]);
+			} catch (PDOException $e) {
+				echo "Error: " . $e->getMessage();
+				exit ();
+			}
+			echo "4"; // Password changed successfully
+		} else {
+			echo "5"; // Email or code is incorrect
+		}
 	}
-	if (!$row) {
-		echo "Error: User not found, or isn't activated";
-		exit();
-	} else {
-
-		send_password_change_email($pdo, $row);
-	}
-
 } else {
-	echo "Error: You need to fill in all fields";
+	echo "0"; // Fields are missing
 }

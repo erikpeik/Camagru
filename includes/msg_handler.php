@@ -61,6 +61,12 @@ function msg_handler($code) {
 	else if ($code == 'email_changed') {
 		$message = "<span style='color: green;'>Email changed. You can Log in now.</span>";
 	}
+	else if ($code == 'invalid_code') {
+		$message = "Invalid password reset code.";
+	}
+	else if ($code == "password_changed") {
+		$message = "<span style='color: green;'>Password changed. You can Log in now.</span>";
+	}
 	else {
 		$message = 'Unknown error code:<br />'.$code;
 	}

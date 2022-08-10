@@ -20,7 +20,7 @@ if (isset($_SESSION["user_id"])) {
 	</head>
 	<body style='min-height: 0'>
 		<div class='login-container'>
-			<div class='box' style='height: 280px'>
+			<div class='box'>
 				<section class="signup-form">
 					<img class="login_logo" src="images/logo.svg" alt="logo">
 					<form action="includes/login-inc.php" method='post'>
@@ -40,6 +40,7 @@ if (isset($_SESSION["user_id"])) {
 						<button class='login_button'type='submit' name='submit'>Log In</button>
 					</form>
 					<a href='reset' id='forget_password'>Forgot Password?</a>
+					<div style="height: 35px"></div>
 					<?php if (isset($_GET['msg'])) {
 						echo(msg_handler($_GET['msg']));
 					} ?>
