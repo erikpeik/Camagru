@@ -26,9 +26,7 @@ if (isset($_SESSION["user_id"])) {
 					<form action="includes/login-inc.php" method='post'>
 						<div class='input-container'>
 							<label for="name">Username, or email</label>
-							<input class='login_input' type='text' name='name' autocomplete="username"
-							pattern="[a-zA-Z0-9_@.]{4,20}"
-							title="Invalid username. Lenght is between 4-20 and contains only letters, number and underscore _" required>
+							<input class='login_input' type='text' name='name' autocomplete="username" required>
 						</div>
 						<div class='input-container'>
 							<label for="name">Password</label>
