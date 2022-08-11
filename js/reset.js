@@ -10,7 +10,6 @@ if (reset_form != null) {
 			xhr.open('POST', 'includes/password_reset_mail.php', true);
 			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xhr.onload = function() {
-				console.log(xhr.response);
 				var data = xhr.response;
 				var res = data.match(/Error: /);
 				if (res != null) {

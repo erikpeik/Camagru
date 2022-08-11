@@ -252,7 +252,6 @@ function share_picture($image_id) {
 		navigator.clipboard.writeText(input.value);
 	};
 	input.type = "text";
-	// set input to readonly
 	input.readOnly = true;
 
 	var xhr = new XMLHttpRequest();

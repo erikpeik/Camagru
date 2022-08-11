@@ -20,7 +20,6 @@ change_picture.addEventListener('click', function () {
 	file.accept = "image/png, image/jpeg"
 	file.onchange = function () {
 		var data = new FormData();
-		console.log(file.files[0]);
 		data.append('file', file.files[0]);
 
 		var xhr = new XMLHttpRequest();

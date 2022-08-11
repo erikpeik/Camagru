@@ -8,7 +8,6 @@ if (reset_password_form != null) {
 		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		xhr.onload = function () {
 			let message = document.getElementById('reset_error');
-			console.log(xhr.response);
 			var data = xhr.response;
 			if (data == '0') {
 				message.innerHTML = 'Some fields are missing';

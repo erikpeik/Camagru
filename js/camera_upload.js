@@ -1,7 +1,6 @@
 upload_form.addEventListener('change', function(e) {
 	e.preventDefault();
 	var data = new FormData();
-	// console.log(upload_form['file'].files[0]);
 	data.append('file', upload_form['file'].files[0]);
 
 	if (window.matchMedia("(orientation: portrait)").matches

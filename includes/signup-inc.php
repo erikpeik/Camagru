@@ -16,6 +16,4 @@ if(isset($_POST["submit"])) {
 	$signup = new SignupContr($name, $email, $uid, $pwd, $pwd_repeat);
 
 	$signup->signup_user();
-
-#	header('location: ../index.php');
 }
