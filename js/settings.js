@@ -57,8 +57,17 @@ change_form.addEventListener('submit', function (e) {
 		var splits = result.split(',');
 		if (splits[0] == '1') {
 			name_message.innerHTML = 'Name changed successfully';
-		} else {
+			name_message.style.color = 'green';
+		} else if (splits[0] == '2') {
+			name_message.innerHTML = 'Invalid name. It must not contain numbers or special characters';
+			name_message.style.color = 'red';
+		} else if (splits[0] == '3') {
+			name_message.innerHTML = 'Full name is too long';
+			name_message.style.color = 'red';
+		}
+		else {
 			name_message.innerHTML = '';
+			name_message.style.color = '';
 		}
 
 		if (splits[1] == '1') {

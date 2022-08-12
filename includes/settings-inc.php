@@ -1,5 +1,13 @@
 <?php
 
+function check_full_name($full_name) {
+	return preg_match("/^([a-zA-Z' -]+)$/", $full_name);
+}
+
+function name_too_long($full_name) {
+	return (strlen($full_name) <= 255);
+}
+
 function check_username($pdo, $username) {
 	$sql = "SELECT * FROM `users` WHERE `users_uid` = ?";
 	$statement = $pdo->prepare($sql);

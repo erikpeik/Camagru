@@ -18,15 +18,21 @@ $users_images = get_users_images($pdo, $user_info['users_id']);
 $stats = "";
 
 if (isset($_POST["name"]) && $user_info['users_name'] != $_POST["name"]) {
-	try {
-		$sql = "UPDATE `users` SET `users_name` = ? WHERE `users_id` = ?";
-		$statement = $pdo->prepare($sql);
-		$statement->execute([$_POST["name"], $user_info['users_id']]);
-	} catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-		exit ();
+	if (check_full_name($_POST["name"]) == false) {
+		$stats .= "2,";
+	} else if (name_too_long($_POST['name']) == false) {
+		$stats .= '3,';
+	} else {
+		try {
+			$sql = "UPDATE `users` SET `users_name` = ? WHERE `users_id` = ?";
+			$statement = $pdo->prepare($sql);
+			$statement->execute([$_POST["name"], $user_info['users_id']]);
+		} catch(PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			exit ();
+		}
+		$stats .= "1,";
 	}
-	$stats .= "1,";
 } else {
 	$stats .= "0,";
 }

@@ -51,7 +51,7 @@ function show_likes(image_id) {
 			}
 			for (var i = 0; i < data.length; i++) {
 				var li = document.createElement("li");
-				li.innerHTML = data[i].users_name;
+				li.innerHTML = data[i].users_uid;
 				ul.appendChild(li);
 			}
 			overlay_content.appendChild(ul);
