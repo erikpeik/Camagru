@@ -33,7 +33,8 @@ if (isset($_SESSION["user_id"])) {
 						</div>
 						<div class='input-container'>
 							<label for="name">Full Name</label>
-							<input type='text' name='name' autocomplete="fname" required>
+							<input type='text' name='name' autocomplete="fname" required
+							pattern="^([a-zA-Z' -]+)$" title="Only letters and spaces">
 						</div>
 						<div class='input-container'>
 							<label for="name">Username</label>

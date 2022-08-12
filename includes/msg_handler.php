@@ -67,6 +67,12 @@ function msg_handler($code) {
 	else if ($code == "password_changed") {
 		$message = "<span style='color: green;'>Password changed. You can Log in now.</span>";
 	}
+	else if ($code == 'invalid_name') {
+		$message = "Invalid name. It must not contain numbers or special characters";
+	}
+	else if ($code == 'email_too_long') {
+		$message = "Your email is too long. Max length is 255 characters.";
+	}
 	else {
 		$message = 'Unknown error code:<br />'.$code;
 	}

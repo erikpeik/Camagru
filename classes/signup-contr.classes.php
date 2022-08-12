@@ -20,8 +20,12 @@ class SignupContr extends Signup {
 			header('location: ../signup?msg=empty_input');
 			exit();
 		}
-		if ($this->invalid_name() == false) {
+		if ($this->name_too_long() == false) {
 			header('location: ../signup?msg=name_too_long');
+			exit();
+		}
+		if ($this->invalid_name() == false) {
+			header('location: ../signup?msg=invalid_name');
 			exit();
 		}
 		if ($this->invalid_uid() == false) {
@@ -30,6 +34,10 @@ class SignupContr extends Signup {
 		}
 		if ($this->invalid_email() == false) {
 			header('location: ../signup?msg=invalid_email');
+			exit();
+		}
+		if ($this->email_too_long() == false) {
+			header('location: ../signup?msg=email_too_long');
 			exit();
 		}
 		if ($this->pwd_match() == false) {
@@ -57,8 +65,12 @@ class SignupContr extends Signup {
 		|| empty($this->uid) || empty($this->pwd) || empty($this->pwd_repeat)));
 	}
 
-	private function invalid_name() {
+	private function name_too_long() {
 		return (strlen($this->name) <= 255);
+	}
+
+	private function invalid_name() {
+		return (preg_match("/^([a-zA-Z' -]+)$/", $this->name));
 	}
 
 	private function invalid_uid() {
@@ -67,6 +79,10 @@ class SignupContr extends Signup {
 
 	private function invalid_email() {
 		return (filter_var($this->email, FILTER_VALIDATE_EMAIL) && strlen($this->email) <= 255);
+	}
+
+	private function email_too_long() {
+		return (strlen($this->email) <= 255);
 	}
 
 	private function pwd_match() {
