@@ -48,14 +48,17 @@ if (isset($_SESSION["user_id"])) {
 						</p>
 						<form id="reset_password_form" action="reset.php"
 						method="post" onsubmit="return false;">
+							<input hidden autocomplete="username">
 							<div class="input-container">
 								<label for="password">New Password</label>
 								<input type="password" name="password" required
+								autocomplete="new-password"
 								pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*">
 							</div>
 							<div class="input-container">
 								<label for="confirm_password">Confirm Password</label>
 								<input type="password" name="confirm_password" required
+								autocomplete="new-password"
 								pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*">
 							</div>
 							<input type="text" name="email" value="<?=$email?>" hidden>
