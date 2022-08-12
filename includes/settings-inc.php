@@ -8,6 +8,10 @@ function name_too_long($full_name) {
 	return (strlen($full_name) <= 255);
 }
 
+function invalid_username($username) {
+	return preg_match("/^[a-z0-9_]{4,20}$/i", $username);
+}
+
 function check_username($pdo, $username) {
 	$sql = "SELECT * FROM `users` WHERE `users_uid` = ?";
 	$statement = $pdo->prepare($sql);

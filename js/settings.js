@@ -78,7 +78,13 @@ change_form.addEventListener('submit', function (e) {
 			username_message.innerHTML = 'Username already taken';
 			change_form['username'].value = username.innerHTML;
 			username_message.style.color = 'red';
-		} else {
+		} else if (splits[1] == '3') {
+			username_message.innerHTML = "Invalid username. Requirements:<br />" +
+			"- Length is between 4-20<br />" +
+			"- Contains only letters, numbers and underscore _";
+			username_message.style.color = 'red';
+		}
+		else {
 			username_message.innerHTML = '';
 			username_message.style.color = ''
 		}
