@@ -1,11 +1,15 @@
 <?php
 
+function invalid_password($password) {
+	return (preg_match("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/", $password));
+}
+
 if (isset($_POST['password']) && isset($_POST['confirm_password']) &&
 	isset($_POST['email']) && isset($_POST['code']) && isset($_POST['submit'])) {
 	require_once "../config/pdo.php";
 
-	$password = $_POST['password'];
-	$confirm_password = $_POST['confirm_password'];
+	$password = base64_decode($_POST['password']);
+	$confirm_password = base64_decode($_POST['confirm_password']);
 	$submit = $_POST['submit'];
 	$email = $_POST['email'];
 	$code = $_POST['code'];
@@ -17,7 +21,7 @@ if (isset($_POST['password']) && isset($_POST['confirm_password']) &&
 	else if ($password != $confirm_password) {
 		echo "2"; // Passwords do not match
 	}
-	else if (!preg_match("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/", $password)) {
+	else if (!invalid_password($password)) {
 		echo "3"; // Password is invalid
 	}
 	else {

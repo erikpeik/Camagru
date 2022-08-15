@@ -44,8 +44,8 @@ if (reset_password_form != null) {
 				message.style.color = '';
 			}
 		}
-		var params = 'password=' + reset_password_form.password.value +
-			'&confirm_password=' + reset_password_form.confirm_password.value +
+		var params = 'password=' + btoa(reset_password_form.password.value) +
+			'&confirm_password=' + btoa(reset_password_form.confirm_password.value) +
 			'&email=' + reset_password_form.email.value +
 			'&code=' + reset_password_form.code.value +
 			'&submit=' + reset_password_form.reset.value;
