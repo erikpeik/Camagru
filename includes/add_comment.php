@@ -14,14 +14,17 @@ function send_email_comment($pdo, $image_id, $user_id, $comment) {
 	$result = $statement->fetch();
 	$sender_uid = $result['users_uid'];
 
-	$sql = "SELECT `users_email`, `users_uid` FROM `users`
-	INNER JOIN `images` ON `users`.`users_id` = `images`.`users_id`
-	WHERE `image_id` = ?";
+	$sql = "SELECT `users_email`, `users_uid`, `email_notification`
+			FROM `users`
+			INNER JOIN `images`
+			ON `users`.`users_id` = `images`.`users_id`
+			WHERE `image_id` = ?";
 	$statement = $pdo->prepare($sql);
 	$statement->execute([$image_id]);
 	$result = $statement->fetch();
 	$receiver_email = $result['users_email'];
 	$receiver_uid = $result['users_uid'];
+	$email_notification = $result['email_notification'];
 	if ($receiver_uid != $sender_uid) {
 		$subject = "New comment on your image";
 		$message = file_get_contents('../mails/comment.html');
@@ -37,7 +40,9 @@ function send_email_comment($pdo, $image_id, $user_id, $comment) {
 			'Content-type' => 'text/html; charset=iso-8859-1',
 			'X-Mailer' => 'PHP/'.phpversion()
 		);
-		mail($receiver_email, $subject, $message, $headers);
+		if ($email_notification == 1) {
+			mail($receiver_email, $subject, $message, $headers);
+		}
 	}
 }
 

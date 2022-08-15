@@ -27,7 +27,6 @@ if (isset($_SESSION["user_id"])) {
 						<div class='input-container'>
 							<label for="name">Username, or email</label>
 							<input class='login_input' type='text' name='name'
-							pattern="^([a-zA-Z' -]+)$" title="Only letters and spaces"
 							autocomplete="username" required>
 						</div>
 						<div class='input-container'>
