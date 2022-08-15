@@ -7,6 +7,7 @@ let video_div = document.querySelector('#video-div');
 let sticker_div = document.getElementById("add_stickers");
 let sticker_bar = document.getElementById("stickers");
 let drafts = document.querySelector("#drafts");
+let draft_list = document.querySelector('#draft_list')
 let image_form = document.querySelector('#image-form');
 let file = document.querySelector('#file_input')
 let cancel_image = document.querySelector("#cancel-image");
@@ -28,7 +29,8 @@ camera_button.addEventListener('click', async function() {
 			facingMode: "user"
 		}
 	}
-	globalThis.stream = await navigator.mediaDevices.getUserMedia(constraints).catch(function(err) { alert("You have to allow the browser to access the webcam!"); });
+	globalThis.stream = await navigator.mediaDevices.getUserMedia(constraints).catch(function(err) {
+		alert("You have to allow the browser to access the webcam!"); });
 	let stream_settings = stream.getVideoTracks()[0].getSettings();
 
 	globalThis.stream_width = stream_settings.width;
@@ -54,11 +56,17 @@ camera_button.addEventListener('click', async function() {
 	video.srcObject = stream;
 	video_div.style.display = 'inline-block';
 
-	document.querySelector('.camera-buttons').style.width = "350px";
 	document.querySelector('#click-photo').style.display = "inline-block";
-	upload_div.style.display = "none";
 	sticker_bar.style.display = 'inline-block';
 	drafts.style.display = 'inline-block';
+
+	sticker_div.innerHTML = '';
+	upload_button.style.display = 'none';
+	video.style.display = "block";
+	let upload_image = document.querySelector('#upload');
+	if (upload_image != null) {
+		upload_image.remove();
+	}
 });
 
 // Take Picture
@@ -118,6 +126,8 @@ click_button.addEventListener('click', function() {
 		image_form.appendChild(input)
 	}
 	http.send(params);
+
+	upload_div.style.display = 'none';
 	video.style.display = "none";
 	sticker_div.style.display = "none";
 	sticker_bar.style.display = 'none';
@@ -161,6 +171,7 @@ function back_to_camera() {
 	image_form.style.display = 'none';
 	container.style.width = '';
 	container.style.marginTop = '0px';
+	upload_div.style.display = '';
 }
 
 cancel_image.addEventListener("click", function(e) {
@@ -180,9 +191,11 @@ image_form.addEventListener('submit', function(e) {
 	xhr.open('POST', 'includes/store-image.php', true);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.onload = function() {
+		var li = document.createElement("li");
 		var img = document.createElement("img");
 		img.src = 'data:image/jpg;charset=utf8;base64,' + data['image'].value;
-		drafts.append(img);
+		li.appendChild(img);
+		draft_list.append(li);
 		if (document.querySelector("#final") != null) {
 			document.querySelector("#final").remove();
 		}

@@ -20,26 +20,25 @@
 }
 
 .camera-buttons {
-	width: 180px;
-	margin-left: 50%;
-	transform: translateX(-50%);
+	width: fit-content;
+	margin: auto;
 }
 
 .camera-buttons button {
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
-	border: none;
 	font-size: 20px;
-	padding: 5px;
-	color:rgb(78, 78, 78);
-	background-color:rgb(255, 255, 255);
+	padding: min(5px, 1vw);
+	width: 40vw;
+	max-width: 168px;
+	background-color: rgb(255, 255, 255);
 	border: 1px solid rgb(219, 219, 219);
 	border-radius: 5px 5px;
-	margin: 10px;
+	margin: min(10px, 1vw);
 	transition: all 0.5s;
 	transition-timing-function: ease;
-	margin-top: 10px
+	margin-top: 10px;
 }
 
 .camera-buttons button:hover {
@@ -169,178 +168,6 @@
 	-o-user-drag: none;
 }
 
-@media only screen and (max-width: 639px) {
-	#image-form {
-		width: 95vw;
-	}
-
-	#add_stickers img {
-		width: calc(95vw/3.2);
-	}
-
-	#video-div {
-		width: 95vw;
-		margin-left: 50%;
-		transform: translateX(-50%);
-	}
-
-	#cam_texts {
-		display: none;
-	}
-	.container {
-		width: 95vw;
-		margin-left: 50%;
-		transform: translateX(-50%);
-	}
-
-	#stickers {
-		width: 95vw;
-		height: 140px;
-		overflow-x: auto;
-		overflow-y: hidden;
-		display: none;
-		background-color: rgb(250, 250, 250);
-		border: 1px solid #dbdbdb;
-		transform: translateY(2px);
-	}
-
-	#stickers ul {
-		display: table-cell;
-	}
-
-	#stickers li {
-		display: table-cell;
-	}
-
-	#stickers img {
-		object-fit: scale-down;
-		float: left;
-		display: inline;
-		width: fit-content;
-		max-width: 200px;
-		height: 120px;
-		max-height: 200px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	#drafts {
-		display: none;
-	}
-
-	#drafts img {
-		display: none;
-	}
-}
-
-@media only screen and (min-width: 480px) and (orientation: portrait) and (hover: none) {
-	#add_stickers img {
-		width: 200px;
-	}
-}
-
-@media only screen and (max-width: 480px) {
-	#add_stickers img {
-		width: calc(95vw/2.4);
-	}
-}
-
-@media only screen and (min-width: 640px) and (max-width: 1049px) {
-	#cam_texts {
-		display: none;
-	}
-	.container {
-		width: 640px;
-		margin-left: 50%;
-		transform: translateX(-50%);
-	}
-
-	#stickers {
-		width: 640px;
-		height: 140px;
-		overflow-x: auto;
-		overflow-y: hidden;
-		display: none;
-		background-color: rgb(250, 250, 250);
-		border: 1px solid #dbdbdb;
-		transform: translateY(2px);
-	}
-
-	#stickers ul {
-		display: table-cell;
-	}
-
-	#stickers li {
-		display: table-cell;
-	}
-
-	#stickers img {
-		object-fit: scale-down;
-		float: left;
-		display: inline;
-		width: fit-content;
-		max-width: 200px;
-		height: 120px;
-		max-height: 200px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	#drafts {
-		display: none;
-	}
-
-	#drafts img {
-		display: none;
-	}
-}
-
-@media only screen and (min-width: 1050px) {
-	#cam_texts {
-		display: block;
-		width: 100%;
-		text-align: center;
-		font-size: 18px;
-		color: rgb(78, 78, 78);
-	}
-
-	.container {
-		width: 1050px;
-		margin-left: 50%;
-		transform: translateX(-50%);
-	}
-
-	#stickers {
-		width: 200px;
-		height: 478px;
-		overflow-y: auto;
-		display: none;
-		background-color: rgb(250, 250, 250);
-		border: 1px solid #dbdbdb;
-		transform: translateY(2px);
-	}
-
-	#stickers img {
-		width: 160px;
-		height: fit-content;
-		margin-left: 12px;
-	}
-
-	#drafts {
-		width: 200px;
-		height: 478px;
-		overflow-x: auto;
-		display: none;
-		background-color: rgb(250, 250, 250);
-		border: 1px solid #dbdbdb;
-		transform: translateY(2px);
-	}
-
-	#drafts img {
-		width: 100%;
-	}
-}
-
 .information {
 	margin: 0 auto;
 	width: 90%;
@@ -388,6 +215,7 @@
 	max-width: 640px;
 	border-top: 1px solid #cecece;
 	margin: auto;
+	margin-top: 5px;
 }
 
 #upload_form {
@@ -435,6 +263,8 @@
 #upload_form input {
 	display: block;
 	margin: auto;
+	max-width: 300px;
+	width: 89vw;
 }
 
 .upload_image h5 {
@@ -447,4 +277,191 @@
 #upload {
 	width: 100%;
 	vertical-align: bottom;
+}
+
+#cam_texts {
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	color: rgb(78, 78, 78);
+}
+
+.container {
+	width: 1050px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+#stickers {
+	width: 200px;
+	height: 478px;
+	overflow-y: auto;
+	display: none;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #dbdbdb;
+	transform: translateY(2px);
+}
+
+#stickers img {
+	width: 160px;
+	height: fit-content;
+	margin-left: 12px;
+}
+
+#drafts {
+	width: 200px;
+	height: 478px;
+	overflow-y: auto;
+	display: none;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #dbdbdb;
+	transform: translateY(2px);
+}
+
+#drafts img {
+	width: 100%;
+}
+
+@media only screen and (max-width: 1049px) {
+	#cam_texts {
+		display: none;
+	}
+	.container {
+		width: 640px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#stickers {
+		width: 640px;
+		height: 140px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#stickers ul, #draft_list ul {
+		display: table-cell;
+	}
+
+	#stickers li, #draft_list li {
+		display: table-cell;
+	}
+
+	#stickers img {
+		object-fit: scale-down;
+		float: left;
+		display: inline;
+		width: fit-content;
+		max-width: 200px;
+		height: 120px;
+		max-height: 200px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	#drafts {
+		width: 640px;
+		height: 140px;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#drafts img {
+		object-fit: scale-down;
+		float: left;
+		display: inline;
+		width: fit-content;
+		height: 123px;
+		max-height: 200px;
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+
+}
+
+@media only screen and (max-width: 639px) {
+	#image-form {
+		width: 95vw;
+	}
+
+	#add_stickers img {
+		width: calc(95vw/3.2);
+	}
+
+	#video-div {
+		width: 95vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#cam_texts {
+		display: none;
+	}
+	.container {
+		width: 95vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#stickers {
+		width: 95vw;
+		height: 100px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		display: none;
+		background-color: rgb(250, 250, 250);
+		border: 1px solid #dbdbdb;
+		transform: translateY(2px);
+	}
+
+	#stickers ul {
+		display: table-cell;
+	}
+
+	#stickers li {
+		display: table-cell;
+	}
+
+	#stickers img {
+		object-fit: scale-down;
+		float: left;
+		display: inline;
+		width: fit-content;
+		max-width: 200px;
+		height: 80px;
+		max-height: 200px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	#drafts {
+		object-fit: scale-down;
+		width: 95vw;
+		height: 100px;
+	}
+
+	#drafts img {
+		height: 80px;
+	}
+}
+
+@media only screen and (min-width: 480px) and (orientation: portrait) and (hover: none) {
+	#add_stickers img {
+		width: 200px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#add_stickers img {
+		width: calc(95vw/2.4);
+	}
 }

@@ -45,12 +45,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
 				<button id='upload-photo' style="display: none;"><i class="ti ti-upload"></i> Upload Picture</button>
 			</div>
-			<div class='upload_image' enctype="multipart/form-data">
-				<h5>Or upload image...</h5>
-				<form method="post" id='upload_form'>
-					<input type="file" name="file" id='file_input' accept="image/png, image/jpeg" required>
-				</form>
-			</div>
+
 			<div class='container'>
 				<div id='stickers'>
 					<span id="cam_texts">Stickers</span>
@@ -66,7 +61,10 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 					<video id="video" autoplay playsinline></video>
 					<div id="add_stickers"></div>
 				</div>
-				<div id='drafts'><span id="cam_texts">Uploaded Images</span></div>
+				<div id='drafts'>
+					<span id="cam_texts">Uploaded Images</span>
+					<ul id='draft_list'></ul>
+				</div>
 			</div>
 			<canvas id="canvas"></canvas>
 			<form id='image-form' method='post'>
@@ -77,6 +75,12 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
 				</div>
 			</form>
+			<div class='upload_image' enctype="multipart/form-data">
+				<h5>Or upload image...</h5>
+				<form method="post" id='upload_form'>
+					<input type="file" name="file" id='file_input' accept="image/png, image/jpeg" required>
+				</form>
+			</div>
 		</main>
 		<?php include 'frontend/footer.html'; ?>
 	</body>

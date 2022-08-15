@@ -11,6 +11,17 @@ upload_form.addEventListener('change', function(e) {
 	}
 	data.append("orientation", orientation);
 
+	let upload_image = document.querySelector('#upload');
+	if (upload_image != null) {
+		upload_image.remove();
+	}
+
+	if (globalThis.stream != null) {
+		globalThis.stream.getTracks().forEach(function(track) {
+			track.stop();
+		});
+	}
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'includes/load_image.php', true);
 	xhr.onload = function() {
@@ -21,13 +32,12 @@ upload_form.addEventListener('change', function(e) {
 			img.id = "upload";
 			video_div.append(img);
 			video.style.display = "none";
-			upload_div.style.display = "none";
+			click_button.style.display = "none";
+			sticker_div.innerHTML = '';
 			video_div.style.display = "inline-block";
 			sticker_bar.style.display = "inline-block";
 			drafts.style.display = "inline-block";
 			document.querySelector('#upload-photo').style.display = "inline-block";
-			document.querySelector("#start-camera").style.display = "none";
-			document.querySelector('.camera-buttons').style.width = "190px";
 		} else {
 			alert(this.response);
 		}
@@ -85,6 +95,8 @@ upload_button.addEventListener('click', function() {
 		image_form.appendChild(input)
 	}
 	http.send(params);
+
+	upload_div.style.display = 'none';
 	document.querySelector('#upload').style.display = "none";
 	sticker_div.style.display = "none";
 	sticker_bar.style.display = 'none';
