@@ -5,6 +5,10 @@ body {
 	overflow-x: hidden;
 }
 
+button {
+	color: black;
+}
+
 * {
 	margin: 0;
 	padding: 0;
