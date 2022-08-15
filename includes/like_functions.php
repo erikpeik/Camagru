@@ -6,16 +6,20 @@ if (!isset($_SESSION)) {
 ob_start();
 
 function check_if_user_liked_picture($pdo, $image_id) {
-	$sql = "SELECT COUNT(*) as `count` FROM `likes` WHERE `users_id` = ? AND `image_id` = ?";
-	$statement = $pdo->prepare($sql);
-	if (!$statement->execute(array($_SESSION["user_id"], $image_id))) {
-		$statement = null;
-		header('location: ../index?msg=error');
-		exit();
+	if (isset($_SESSION['user_id'])) {
+		$sql = "SELECT COUNT(*) as `count` FROM `likes` WHERE `users_id` = ? AND `image_id` = ?";
+		$statement = $pdo->prepare($sql);
+		if (!$statement->execute(array($_SESSION["user_id"], $image_id))) {
+			$statement = null;
+			header('location: ../index?msg=error');
+			exit();
+		}
+		$data = $statement->fetch(PDO::FETCH_ASSOC);
+		$like_count = $data['count'];
+		return $like_count;
+	} else {
+		return 0;
 	}
-	$data = $statement->fetch(PDO::FETCH_ASSOC);
-	$like_count = $data['count'];
-	return $like_count;
 }
 
 function get_image_likes($pdo, $image_id) {

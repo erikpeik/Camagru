@@ -7,6 +7,11 @@ ob_start();
 
 include_once '../config/pdo.php';
 
+if (!isset($_SESSION['user_id'])) {
+	print(2);
+	exit();
+}
+
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == -1) {
 	print(2);
 	exit ();

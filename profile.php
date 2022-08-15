@@ -20,8 +20,10 @@ if (!isset($_GET['username'])) {
 		</script>
 		<?php exit();
 	}
-	header("Location: profile/". $_SESSION["user_uid"]);
-	exit();
+	if (isset($_SESSION['user_id'])) {
+		header("Location: profile/". $_SESSION["user_uid"]);
+		exit();
+	}
 } else {
 	$user_info = get_user_info($pdo, $_GET['username']);
 	if ($user_info) {
@@ -55,7 +57,8 @@ if (!isset($_GET['username'])) {
 					<div class="profile-info">
 						<div id='username_bar'>
 							<h1><?=$user_info["users_uid"]?></h1>
-							<?php if ($user_info["users_uid"] == $_SESSION["user_uid"]) { ?>
+							<?php if (isset($user_info) && isset($_SESSION['user_uid'])
+								&& $user_info["users_uid"] == $_SESSION["user_uid"]) { ?>
 							<button id='settings_button'>Edit profile</button>
 							<?php } ?>
 						</div>

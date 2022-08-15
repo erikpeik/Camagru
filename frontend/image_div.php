@@ -3,7 +3,7 @@
 <div class="image-div" id="image_<?=$image['image_id']?>">
 	<div id='top-bar'>
 		<a href='<?=$APP_URL?>/profile/<?=$image['users_uid']?>'><?= $image['users_uid'] ?></a>
-		<?php if ($image['users_id'] == $_SESSION['user_id']) { ?>
+		<?php if (isset($_SESSION['user_id']) && $image['users_id'] == $_SESSION['user_id']) { ?>
 		<button onclick="remove_image(<?= $image['image_id'];?>)">
 			Remove <i class="fa-solid fa-trash-alt"></i>
 		</button>
