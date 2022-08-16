@@ -1,15 +1,15 @@
-# Camagru
+# Camagru 📸
 
 This project objective was to create Instagram look a like, allowing you make basic photo and video editing using your webcam.
 
-# Disclaimer
+## Disclaimer
 
 Camagru is one of the projects at 42 schools Web Devolopment branch.
 It was solo project so everything is made by me!
 
 [Link to Subject](#coming_soon)
 
-# Technologies
+## Technologies
 
 With the constraints of using PHP on the server-side, and HTML, CSS & JavaScript on the client-side without any frameworks.
 
@@ -27,7 +27,7 @@ With the constraints of using PHP on the server-side, and HTML, CSS & JavaScript
 
 * MySQL
 
-# Usage
+## Usage
 
 ### This project is live on [camagru.erikpeik.fi](https://camagru.erikpeik.fi)
 
