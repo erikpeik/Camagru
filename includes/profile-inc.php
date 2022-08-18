@@ -41,7 +41,10 @@ function get_users_images($pdo, $users_id) {
 
 function get_users_likes($pdo, $users_id) {
 	try {
-		$sql = "SELECT * FROM `likes` WHERE `users_id` = ?";
+		$sql = "SELECT * FROM `likes`
+				INNER JOIN `images`
+				ON `images`.`image_id` = `likes`.`image_id`
+				WHERE `images`.`users_id` = ?;";
 		$statement = $pdo->prepare($sql);
 		$statement->execute([$users_id]);
 		$fetch = $statement->fetchAll();
