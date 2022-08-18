@@ -69,7 +69,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 			<canvas id="canvas"></canvas>
 			<form id='image-form' method='post'>
 				<h1>New Post</h1>
-				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280" required></textarea><br />
+				<textarea id='description-field' name='caption' placeholder="Write a caption..." maxlength="280"></textarea><br />
 				<div id="buttons">
 					<button type='button' id='cancel-image'>Cancel</button>
 					<button type='submit' name='submit' value='submit' id='submit-image'>Submit</submit>
