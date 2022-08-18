@@ -49,12 +49,17 @@ if (isset($_GET['logout'])) {
 			} else {
 				$page = 1;
 			}
+			if ($page < 1) {
+				header("Location: ?page=1");
+				exit();
+			}
 			$per_page = 5;
 			$image_count = image_count($pdo);
 			if ($image_count > 0) {
 			$page_count = ceil($image_count / $per_page);
 			if ($page > $page_count) {
-				header("Location: index?page=$page_count");
+				header("Location: ?page=$page_count");
+				exit();
 			}
 			$data = fetch_page($pdo, $page, $per_page);
 			foreach ($data as $image) {
