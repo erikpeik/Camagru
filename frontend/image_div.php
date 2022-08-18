@@ -62,7 +62,7 @@
 			<form method='post' action=''>
 				<div class='input-container'>
 					<textarea id='comment_<?= $image['image_id'] ?>'
-					placeholder='Add a comment...' name='comment' oninput="auto_grow(this.form)" required></textarea>
+					placeholder='Add a comment...' maxlength="280" name='comment' oninput="auto_grow(this.form)" required></textarea>
 					<input type='submit' value='Post' onClick="add_comment(this.form, <?=$image['image_id'];?>); return false;">
 				</div>
 			</form>

@@ -22,7 +22,7 @@ function msg_handler($code) {
 		"- One special character [!@#$%^&*]";
 	}
 	else if ($code == 'uid_taken') {
-		$message = "Username is already taken, try other one.";
+		$message = "Username or email is already taken, try other one.";
 	}
 	else if ($code == 'user_not_found') {
 		$message = "The username you entered doesn't belong to an account. ".

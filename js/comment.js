@@ -56,18 +56,20 @@ function add_comment(form, image_id) {
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	xhr.onload = function() {
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'includes/get_comment_amount.php', true);
-		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		xhr.onload = function() {
-			var comment_amount = parseInt(xhr.responseText);
+		if (xhr.response == "Comment too long!") {
+			alert("Comment is too long! Maxlength is 280 characters.");
+		}
+		var xhr2 = new XMLHttpRequest();
+		xhr2.open('POST', 'includes/get_comment_amount.php', true);
+		xhr2.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr2.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		xhr2.onload = function() {
+			var comment_amount = parseInt(xhr2.responseText);
 			update_comment_amount(comment_amount, image_id);
 			get_comments(image_id);
 		}
 		var params = 'image_id=' + image_id;
-		xhr.send(params);
-
+		xhr2.send(params);
 	}
 	var params = 'image_id=' + image_id + '&comment=' + comment;
 	xhr.send(params);

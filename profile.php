@@ -13,7 +13,7 @@ require_once 'includes/comment_functions.php';
 require_once 'config/app.php';
 
 if (!isset($_GET['username'])) {
-	if ($_SESSION['user_id'] == -1) { ?>
+	if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == -1) { ?>
 		<script>
 			alert("Guests doesn't have profile page.", "index");
 			window.location.href = "<?=$APP_URL?>";
