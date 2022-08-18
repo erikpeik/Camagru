@@ -60,6 +60,7 @@ camera_button.addEventListener('click', async function() {
 	sticker_bar.style.display = 'inline-block';
 	drafts.style.display = 'inline-block';
 
+	container.style.display = '';
 	sticker_div.innerHTML = '';
 	upload_button.style.display = 'none';
 	video.style.display = "block";
@@ -172,6 +173,13 @@ function back_to_camera() {
 	container.style.width = '';
 	container.style.marginTop = '0px';
 	upload_div.style.display = '';
+}
+
+function back_to_default() {
+	container.style.display = 'none';
+	upload_button.style.display = 'none';
+	video.style.display = "none";
+	click_button.style.display = "none";
 }
 
 cancel_image.addEventListener("click", function(e) {

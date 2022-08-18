@@ -26,7 +26,9 @@ upload_form.addEventListener('change', function(e) {
 	xhr.open('POST', 'includes/load_image.php', true);
 	xhr.onload = function() {
 		var data = this.response;
-		if (data.match(/Error: /) == null) {
+		if (data == "Error: No file selected."){
+			back_to_default();
+		} else if (data.match(/Error: /) == null) {
 			var img = document.createElement("img");
 			img.src = 'data:image/jpg;base64,' + this.response;
 			img.id = "upload";
@@ -37,9 +39,11 @@ upload_form.addEventListener('change', function(e) {
 			video_div.style.display = "inline-block";
 			sticker_bar.style.display = "inline-block";
 			drafts.style.display = "inline-block";
+			container.style.display = '';
 			document.querySelector('#upload-photo').style.display = "inline-block";
 		} else {
 			alert(this.response);
+			back_to_default();
 		}
 	}
 	xhr.send(data);

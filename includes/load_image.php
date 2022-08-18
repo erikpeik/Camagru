@@ -46,4 +46,6 @@ if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_POST['or
 	$data = ob_get_clean();
 
 	print (base64_encode($data));
+} else {
+	echo "Error: No file selected.";
 }
