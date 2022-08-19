@@ -381,3 +381,9 @@
 	font-weight: 600;
 	font-size: 24px;
 }
+
+#comment_username {
+	font-weight: 500;
+	color: black;
+	text-decoration: none;
+}

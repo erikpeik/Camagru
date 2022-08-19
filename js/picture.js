@@ -166,12 +166,14 @@ function get_comments(image_id) {
 				var div = document.createElement("div");
 				var match = does_users_id_match(comment.users_id);
 				if (match == true) {
-					div.innerHTML = '<p><b style="font-weight: 500">' + comment.users_uid + '</b>: ' +
+					div.innerHTML = '<p><a href="../profile/' + comment.users_uid +
+					'" id="comment_username">' + comment.users_uid + '</a>: ' +
 				 	comment.comment + '</p>' + '<button onclick="delete_comment(' +
 					comment.comment_id + ', ' + comment.image_id + ')">' +
 					'<i class="fa fa-trash-o"></i></button>';
 				} else {
-					div.innerHTML = '<p><b style="font-weight: 500">' + comment.users_uid + '</b>: ' +
+					div.innerHTML = '<p><a href="../profile/' + comment.users_uid +
+					'" id="comment_username">' + comment.users_uid + '</a>: ' +
 				 	comment.comment + '</p>';
 				}
 				div.className = "comment";
