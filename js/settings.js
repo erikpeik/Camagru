@@ -30,6 +30,26 @@ change_picture.addEventListener('click', function () {
 		xhr.send(data);
 	}
 	overlay_content.appendChild(file);
+	div = document.createElement('div');
+	image_grid = document.createElement('div');
+	image_grid.className = "image_grid";
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', 'includes/get_users_pictures.php', true);
+	xhr.onload = function() {
+		var data = JSON.parse(this.response);
+		for (var i = 0; i < data.length; i++) {
+			var img = document.createElement('img');
+			img.src = "data:image/png;base64," + data[i]['image'];
+			img.className = 'users_pictures';
+			// img.onclick = function () {
+			// 	file.value = this.src;
+			// }
+			image_grid.appendChild(img);
+		}
+	}
+	div.appendChild(image_grid);
+	xhr.send();
+	overlay_content.appendChild(div);
 });
 
 cross.addEventListener('click', close_overlay);
