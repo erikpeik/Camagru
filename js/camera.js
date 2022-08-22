@@ -55,10 +55,10 @@ camera_button.addEventListener('click', async function() {
 
 	video.srcObject = stream;
 	video_div.style.display = 'inline-block';
-
 	click_button.style.display = "inline-block";
 	sticker_bar.style.display = 'inline-block';
 	drafts.style.display = 'inline-block';
+	image_form.style.display = "none";
 
 	container.style.display = '';
 	sticker_div.innerHTML = '';
@@ -94,6 +94,7 @@ click_button.addEventListener('click', function() {
 	input.setAttribute("name", "image");
 	image_form.appendChild(input);
 
+	cancel_image.style.display = 'inline-block';
 	upload_div.style.display = 'none';
 	video.style.display = "none";
 	document.querySelector('.camera-buttons').style.display = 'none';
@@ -146,6 +147,7 @@ function back_to_default() {
 	upload_button.style.display = 'none';
 	video.style.display = "none";
 	click_button.style.display = "none";
+	image_form.style.display = "none";
 }
 
 cancel_image.addEventListener("click", function(e) {
@@ -159,8 +161,12 @@ cancel_image.addEventListener("click", function(e) {
 image_form.addEventListener('submit', function(e) {
 	var sticker_res = "";
 	var check = sticker_div.getElementsByClassName('sticker');
-	var picture = document.querySelector("#final");
 	var data = this;
+
+	var picture = document.querySelector("#final");
+	if (picture == null) {
+		var picture = document.querySelector("#upload");
+	}
 
 	for (i = 0; i < check.length; i++) {
 		if (i != 0) {
@@ -169,6 +175,7 @@ image_form.addEventListener('submit', function(e) {
 		var char = check[i].id.charAt(check[i].id.length - 1);
 		sticker_res += char;
 	}
+
 	var http = new XMLHttpRequest();
 	var params = 'img=' + picture.src + '&stickers=' + sticker_res;
 	for (i = 0; i < check.length; i++) {
@@ -187,6 +194,7 @@ image_form.addEventListener('submit', function(e) {
 
 		params += '&sticker_' + char + '=' + left + ',' + top + ',' + width + ',' + height;
 	}
+
 	http.open('POST', 'includes/camera-inc.php', true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onload = function() {

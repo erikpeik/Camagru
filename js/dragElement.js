@@ -1,7 +1,9 @@
 function dragElement(element, nbr) {
-	let upload_img = document.querySelector('#upload');
-	let final_img = document.querySelector('#final');
 	let sticker = document.querySelector("#sticker_" + nbr);
+	let final_img = document.querySelector('#final');
+	if (final_img == null) {
+		final_img = document.querySelector("#upload");
+	}
 
 	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 	if (document.getElementById(element.id + "header")) {
@@ -33,14 +35,7 @@ function dragElement(element, nbr) {
 			if (top_pos > video.offsetHeight - sticker.offsetHeight) {
 				top_pos = video.offsetHeight - sticker.offsetHeight;
 			}
-		} else if (upload_img != null) {
-			if (left_pos > upload_img.offsetWidth - sticker.offsetWidth) {
-				left_pos = upload_img.offsetWidth - sticker.offsetWidth;
-			}
-			if (top_pos > upload_img.offsetHeight - sticker.offsetHeight) {
-				top_pos = upload_img.offsetHeight - sticker.offsetHeight;
-			}
-		} else if (final_img != null) {
+		}  else if (final_img != null) {
 			if (left_pos > final_img.offsetWidth - sticker.offsetWidth) {
 				left_pos = final_img.offsetWidth - sticker.offsetWidth;
 			}
@@ -91,13 +86,6 @@ function dragElement(element, nbr) {
 			}
 			if (top_pos > video.offsetHeight - sticker.offsetHeight) {
 				top_pos = video.offsetHeight - sticker.offsetHeight;
-			}
-		} else if (upload_img != null) {
-			if (left_pos > upload_img.offsetWidth - sticker.offsetWidth) {
-				left_pos = upload_img.offsetWidth - sticker.offsetWidth;
-			}
-			if (top_pos > upload_img.offsetHeight - sticker.offsetHeight) {
-				top_pos = upload_img.offsetHeight - sticker.offsetHeight;
 			}
 		} else if (final_img != null) {
 			if (left_pos > final_img.offsetWidth - sticker.offsetWidth) {
