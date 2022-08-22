@@ -39,11 +39,17 @@
 	transition: all 0.5s;
 	transition-timing-function: ease;
 	margin-top: 10px;
+	cursor: pointer;
 }
 
 .camera-buttons button:hover {
 	box-shadow: 0 0 10px rgba(141, 141, 141, 0.2);
 	color: rgb(57, 57, 57);
+}
+
+#disabled {
+	color: gray;
+	cursor: not-allowed;
 }
 
 .sticker {
@@ -142,7 +148,7 @@
 	margin: 5px 25px 5px auto;
 }
 
-#click-photo {
+.click-photo {
 	display: none;
 }
 

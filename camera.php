@@ -41,9 +41,9 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 			</div>
 			<?php } ?>
 			<div class='camera-buttons'>
-				<button id="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
-				<button id="click-photo"><i class="ti ti-camera"></i> Take Picture</button>
-				<button id='upload-photo' style="display: none;"><i class="ti ti-upload"></i> Upload Picture</button>
+				<button class="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
+				<button class="click-photo" id="disabled" style="display: none;"><i class="ti ti-camera"></i> Take Picture</button>
+				<button class="upload-photo" style="display: none;"><i class="ti ti-upload"></i> Upload Picture</button>
 			</div>
 
 			<div class='container'>

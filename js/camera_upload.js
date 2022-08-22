@@ -40,7 +40,7 @@ upload_form.addEventListener('change', function(e) {
 			sticker_bar.style.display = "inline-block";
 			drafts.style.display = "inline-block";
 			container.style.display = '';
-			document.querySelector('#upload-photo').style.display = "inline-block";
+			upload_button.style.display = "inline-block";
 		} else {
 			alert(this.response);
 			back_to_default();
