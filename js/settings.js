@@ -30,7 +30,14 @@ change_picture.addEventListener('click', function () {
 		xhr.send(data);
 	}
 	overlay_content.appendChild(file);
-	div = document.createElement('div');
+	or_bar = document.createElement('div');
+	or_bar.className = 'or_bar';
+	or_bar.innerHTML = "<div id='or_text'>OR</div><div id='or_line'></div>";
+	overlay_content.appendChild(or_bar);
+	h3 = document.createElement('h3');
+	h3.className = "h3_text";
+	h3.innerHTML = 'Select one of your own pictures';
+	overlay_content.appendChild(h3);
 	image_grid = document.createElement('div');
 	image_grid.className = "image_grid";
 	var xhr = new XMLHttpRequest();
@@ -41,15 +48,21 @@ change_picture.addEventListener('click', function () {
 			var img = document.createElement('img');
 			img.src = "data:image/png;base64," + data[i]['image'];
 			img.className = 'users_pictures';
-			// img.onclick = function () {
-			// 	file.value = this.src;
-			// }
+			img.onclick = function () {
+				var data = this.src;
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'includes/change_picture.php', true);
+				xhr.onload = function() {
+					document.location.reload(true);
+				}
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr.send("image=" + data);
+			}
 			image_grid.appendChild(img);
 		}
 	}
-	div.appendChild(image_grid);
 	xhr.send();
-	overlay_content.appendChild(div);
+	overlay_content.appendChild(image_grid);
 });
 
 cross.addEventListener('click', close_overlay);

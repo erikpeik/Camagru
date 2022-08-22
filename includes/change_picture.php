@@ -56,3 +56,16 @@ if (isset($_FILES['file']) && isset($_FILES['file']['name']) && isset($_SESSION[
 	}
 	print (base64_encode($data));
 }
+
+if (isset($_SESSION['user_id']) && isset($_POST["image"])) {
+	$image = str_replace(' ', '+', $_POST['image']);
+	$image = preg_replace("/data:image\/.*;base64,/", "", $image);
+	try {
+		$sql = "UPDATE `users` SET `profile_picture` = ? WHERE users_id = ?";
+		$statement = $pdo->prepare($sql);
+		$statement->execute([$image, $_SESSION['user_id']]);
+	} catch (PDOException $e) {
+		echo "Error: " . $e->getMessage();
+	}
+	print ($image);
+}
