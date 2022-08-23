@@ -35,6 +35,16 @@ function add_like(image_id) {
 }
 
 function show_likes(image_id) {
+	var APP_URL;
+	var http = new XMLHttpRequest();
+	http.open('POST', '../includes/get_app_url.php', true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	http.onload = function() {
+		APP_URL = http.responseText;
+	}
+	http.send();
+
 	var xhr = new XMLHttpRequest();
 
 	xhr.open('POST', '../includes/get_like_names.php', true);
@@ -51,7 +61,8 @@ function show_likes(image_id) {
 			}
 			for (var i = 0; i < data.length; i++) {
 				var li = document.createElement("li");
-				li.innerHTML = data[i].users_name;
+				li.innerHTML = "<a href='"+APP_URL+"/profile/"+data[i].users_uid+"'>"
+				+ data[i].users_uid + "</a>";
 				ul.appendChild(li);
 			}
 			overlay_content.appendChild(ul);

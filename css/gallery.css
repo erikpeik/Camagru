@@ -156,6 +156,12 @@
 	margin-bottom: 5px;
 }
 
+#overlay_content a {
+	color: black;
+	text-decoration: none;
+	font-weight: 500;
+}
+
 #share_picture {
 	width: 95%;
 	border: 1px solid rgb(219, 219, 219);
