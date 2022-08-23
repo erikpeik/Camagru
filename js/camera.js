@@ -14,7 +14,7 @@ let cancel_image = document.querySelector("#cancel-image");
 let container = document.querySelector('.container');
 let upload_div = document.querySelector('.upload_image');
 let upload_form = document.querySelector('#upload_form');
-let upload_button = document.querySelector(".upload-photo");
+let description_field = document.querySelector('#description-field');
 
 var stream_width;
 var stream_height;
@@ -62,7 +62,6 @@ camera_button.addEventListener('click', async function() {
 
 	container.style.display = '';
 	sticker_div.innerHTML = '';
-	upload_button.style.display = 'none';
 	video.style.display = "block";
 	let upload_image = document.querySelector('#upload');
 	if (upload_image != null) {
@@ -94,6 +93,7 @@ click_button.addEventListener('click', function() {
 	input.setAttribute("name", "image");
 	image_form.appendChild(input);
 
+	description_field.value = "";
 	cancel_image.style.display = 'inline-block';
 	upload_div.style.display = 'none';
 	video.style.display = "none";
@@ -144,7 +144,6 @@ function back_to_camera() {
 
 function back_to_default() {
 	container.style.display = 'none';
-	upload_button.style.display = 'none';
 	video.style.display = "none";
 	click_button.style.display = "none";
 	image_form.style.display = "none";
@@ -212,6 +211,7 @@ image_form.addEventListener('submit', function(e) {
 				document.querySelector("#final").remove();
 			}
 			back_to_camera();
+			sticker_div.innerHTML = "";
 		}
 		var params = 'image=' + img_data + '&caption=' + data['caption'].value +
 		'&submit=' + data['submit'].value;

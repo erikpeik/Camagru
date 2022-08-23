@@ -43,9 +43,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 			<div class='camera-buttons'>
 				<button class="start-camera"><i class="ti ti-camera-off"></i> Start Camera</button>
 				<button class="click-photo" id="disabled" style="display: none;"><i class="ti ti-camera"></i> Take Picture</button>
-				<button class="upload-photo" style="display: none;"><i class="ti ti-upload"></i> Upload Picture</button>
 			</div>
-
 			<div class='container'>
 				<div id='stickers'>
 					<span id="cam_texts">Stickers</span>
