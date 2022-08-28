@@ -19,6 +19,8 @@ if (isset($_SESSION["user_id"])) {
 		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body style='min-height: 0'>
+		<?php include "frontend/header.php"; ?>
+		<main>
 		<div class='login-container'>
 			<div class='box'>
 				<section class="signup-form">
@@ -51,9 +53,10 @@ if (isset($_SESSION["user_id"])) {
 						<div id='or_text'>OR</div>
 						<div id='or_line'></div>
 				</div>
-				<button id='forget_password' class='login_guest'>Log In as Guest</button>
+				<a href='.'><button id='forget_password'>Continue without Login</button></a>
 			</div>
 		</div>
+		</main>
 	</body>
 	<script src='js/login.js'></script>
 </html>

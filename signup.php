@@ -19,6 +19,8 @@ if (isset($_SESSION["user_id"])) {
 		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body style='min-height: 0'>
+		<?php include "frontend/header.php"; ?>
+		<main>
 		<div class='login-container'>
 			<div class='box'>
 				<section class="signup-form">
@@ -67,5 +69,6 @@ if (isset($_SESSION["user_id"])) {
 				<p id='login-text'>Have an account? <span id='signup-text' onclick="location.href = 'login'">Log in<span></p>
 			</div>
 		</div>
+		</main>
 	</body>
 </html>

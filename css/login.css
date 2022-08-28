@@ -167,6 +167,7 @@ input:-webkit-autofill {
 	border: none;
 	background: none;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #lock {
