@@ -1,6 +1,8 @@
 <?php
 ob_start();
 
+require_once("config/pdo.php");
+
 if (!isset($_SESSION)) {
 	session_start();
 }
@@ -61,7 +63,23 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['user_uid'])
 				</div>
 				<div id='drafts'>
 					<span id="cam_texts">Uploaded Images</span>
-					<ul id='draft_list'></ul>
+					<ul id='draft_list'>
+						<?php
+							$sql = "SELECT `image`, `image_id`
+									FROM `images`
+									WHERE `users_id` = ?
+									ORDER BY `image_id` DESC;";
+							$statement = $pdo->prepare($sql);
+							$statement->execute([$_SESSION['user_id']]);
+							$result = $statement->fetchAll();
+							foreach ($result as $row) {
+								$image = base64_encode($row['image']); ?>
+								<li>
+									<img src='data:image/jpg;charset=utf8;base64,<?=$image?>'
+									onclick="window.open('picture/<?=$row['image_id']?>')">
+								</li>
+						<?php }?>
+					</ul>
 				</div>
 			</div>
 			<canvas id="canvas"></canvas>

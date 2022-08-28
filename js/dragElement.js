@@ -1,9 +1,5 @@
 function dragElement(element, nbr) {
 	let sticker = document.querySelector("#sticker_" + nbr);
-	let final_img = document.querySelector('#final');
-	if (final_img == null) {
-		final_img = document.querySelector("#upload");
-	}
 
 	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 	if (document.getElementById(element.id + "header")) {
@@ -17,6 +13,10 @@ function dragElement(element, nbr) {
 	}, { passive: true });
 
 	sticker.addEventListener('touchmove', function(e) {
+		let final_img = document.querySelector('#final');
+		if (final_img == null) {
+			final_img = document.querySelector("#upload");
+		}
 		var position = video.getBoundingClientRect();
 		var touch_location = e.targetTouches[0];
 
@@ -65,6 +65,11 @@ function dragElement(element, nbr) {
 	function elementDrag(e) {
 		e = e || window.event;
 		e.preventDefault();
+
+		let final_img = document.querySelector('#final');
+		if (final_img == null) {
+			final_img = document.querySelector("#upload");
+		}
 
 		pos1 = pos3 - e.clientX;
 		pos2 = pos4 - e.clientY;

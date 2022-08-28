@@ -206,12 +206,13 @@ image_form.addEventListener('submit', function(e) {
 			var img = document.createElement("img");
 			img.src = 'data:image/jpg;charset=utf8;base64,' + img_data;
 			li.appendChild(img);
-			draft_list.append(li);
+			draft_list.prepend(li);
 			if (document.querySelector("#final") != null) {
 				document.querySelector("#final").remove();
 			}
 			back_to_camera();
 			sticker_div.innerHTML = "";
+			click_button.setAttribute("id", "disabled");
 		}
 		var params = 'image=' + img_data + '&caption=' + data['caption'].value +
 		'&submit=' + data['submit'].value;
