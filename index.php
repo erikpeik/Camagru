@@ -28,7 +28,7 @@ if (isset($_GET['logout'])) {
 		<link rel="stylesheet" href="css/gallery.css">
 		<script src='js/comment.js'></script>
 		<script src='js/image.js'></script>
-		<?php require('js/does_it_match.php'); ?>
+		<script src='js/does_it_match.js'></script>
 	</head>
 	<body>
 		<?php include "frontend/header.php"; ?>

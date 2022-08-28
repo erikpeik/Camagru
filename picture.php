@@ -46,5 +46,5 @@ if (isset($_GET['photo'])) {
 		<?php require 'frontend/footer.html'; ?>
 	</body>
 	<script src="<?=$APP_URL?>/js/picture.js"></script>
-	<?php require 'js/does_it_match.php'?>
+	<script src='<?=$APP_URL?>/js/does_it_match.js'></script>
 </html>
