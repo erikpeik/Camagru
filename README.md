@@ -7,7 +7,7 @@ This project objective was to create Instagram look a like, allowing you make ba
 Camagru is one of the projects at 42 schools Web Devolopment branch.
 It was solo project so everything is made by me!
 
-[Link to Subject](#coming_soon)
+[Link to Subject](https://github.com/erikpeik/Camagru/blob/master/docs/subject.pdf)
 
 ## Technologies
 
